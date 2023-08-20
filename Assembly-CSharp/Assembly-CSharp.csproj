@@ -1,15 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>net4.7</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>5</LangVersion>
+    <LangVersion>7</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup />
-  <ItemGroup />
   <ItemGroup>
 	  <Reference Include="UnityEngine">
 		  <HintPath>D:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.dll</HintPath>
@@ -63,4 +62,7 @@
       <HintPath>D:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy $(TargetPath) D:\Galgame\lostsmile\LOSTSMILE_Data\Managed\$(TargetName).dll" />
+	</Target>
 </Project>

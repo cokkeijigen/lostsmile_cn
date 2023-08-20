@@ -1,5 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace Utage
 {
@@ -24,12 +26,18 @@ namespace Utage
 				return null;
 			}
 			string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
-			StaticAsset staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
-			if (staticAsset == null)
+			StaticAsset staticAsset;
+			// iTsukeziegn， 尝试获取cn_data目录下的资源
+			if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
 			{
-				return null;
+				staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
+				if (staticAsset == null)
+				{
+					return null;
+				}
 			}
-			return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
+            // end
+            return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 		}
 
 		public bool Contains(Object asset)

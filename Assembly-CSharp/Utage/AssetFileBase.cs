@@ -58,7 +58,7 @@ namespace Utage
 
 		public AssetFileBase(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
 		{
-			FileManager = mangager;
+            FileManager = mangager;
 			FileInfo = fileInfo;
 			FileType = fileInfo.FileType;
 			SettingData = settingData;
@@ -119,6 +119,7 @@ namespace Utage
 
 		protected virtual string ParseLoadPath()
 		{
+
 			switch (FileInfo.StrageType)
 			{
 			case AssetFileStrageType.Server:

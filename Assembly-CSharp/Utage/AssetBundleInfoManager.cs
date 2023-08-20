@@ -103,7 +103,8 @@ namespace Utage
 					return null;
 				}
 			}
-			return value;
+
+            return value;
 		}
 
 		public void AddAssetBundleInfo(string resourcePath, string assetBunleUrl, int assetBunleVersion, int assetBunleSize = 0)

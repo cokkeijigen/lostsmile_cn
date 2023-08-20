@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Utage
@@ -15,6 +15,10 @@ namespace Utage
 			{
 				return asset;
 			}
+			set // iTuskezigen, 访问器添加set
+			{
+                asset = value;
+            }
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -273,15 +274,17 @@ namespace Utage
 		private AssetFileBase AddSub(string path, IAssetFileSettingData settingData)
 		{
 			AssetFileBase value;
-			if (!fileTbl.TryGetValue(path, out value))
+
+            if (!fileTbl.TryGetValue(path, out value))
 			{
 				if (path.Contains(" "))
 				{
 					Debug.LogWarning("[" + path + "] contains white space");
 				}
+
 				AssetBundleInfo assetBundleInfo = AssetBundleInfoManager.FindAssetBundleInfo(path);
 				AssetFileInfo fileInfo = new AssetFileInfo(path, settings, assetBundleInfo);
-				value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
+                value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
 				if (value == null)
 				{
 					value = CustomLoadManager.Find(this, fileInfo, settingData);
@@ -406,6 +409,7 @@ namespace Utage
 					{
 						Debug.LogError("Load Failed. Dummy file loaded:" + file.FileName + "\n" + file.LoadErrorMsg);
 					}
+
 					file.LoadDummy(dummyFiles);
 					loadingFileList.Remove(file);
 					LoadNextFile();
@@ -611,13 +615,17 @@ namespace Utage
 
 		public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
 		{
+			//iTsukezigen++  Ìæ»»´æµµÖÐµÄÂ·¾¶
 			if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
 			{
-				int num = path.LastIndexOf("/LOSTSMILE_Data");
-				path = ((num != -1) ? ("file:///" + CurrentDir + path.Substring(num)) : path);
+				int index = path.LastIndexOf("/LOSTSMILE_Data");
+				path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
 			}
+			//end++
+
 			if (!IsEditorErrorCheck)
 			{
+
 				return GetInstance().AddSub(path, settingData);
 			}
 			if (path.Contains(" "))

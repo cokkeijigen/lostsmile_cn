@@ -234,6 +234,7 @@ namespace Utage
 
 		private void InitDefaultDirInfo(string root, DefaultDirInfo info)
 		{
+			//LogPrinter.Puts($"{root}");
 			info.defaultDir = FilePathUtil.Combine(root, info.defaultDir);
 		}
 

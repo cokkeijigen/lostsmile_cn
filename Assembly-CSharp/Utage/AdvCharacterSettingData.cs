@@ -66,7 +66,8 @@ namespace Utage
 				if (!string.IsNullOrEmpty(FileName))
 				{
 					File = AssetFileManager.GetFileCreateIfMissing(FileNameToPath(FileName));
-				}
+
+                }
 			}
 		}
 
