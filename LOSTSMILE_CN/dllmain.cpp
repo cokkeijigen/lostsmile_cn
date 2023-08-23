@@ -47,9 +47,9 @@ namespace Hook {
     intptr_t __fastcall sub_1808759D0(intptr_t opStr, intptr_t ipStr1, intptr_t ipStr2) {
 
         *((int64_t*)(opStr + 0x00)) = 0x00;
-        *((int8_t*)(opStr + 0x08)) = 0x00;
         *((int64_t*)(opStr + 0x18)) = 0x00;
         *((int32_t*)(opStr + 0x20)) = 0x45;
+        *((int8_t *)(opStr + 0x08)) = 0x00;
         char* src_str1 = (char*)*(intptr_t*)ipStr1;
         char* src_str2 = (char*)*(intptr_t*)ipStr2;
 
