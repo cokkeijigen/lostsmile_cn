@@ -145,6 +145,7 @@
     <Library Include="..\detours.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\detours.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
