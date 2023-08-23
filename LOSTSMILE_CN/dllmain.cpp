@@ -6,22 +6,25 @@
 
 namespace Hook::Mem {
 
-    bool MemWrite(intptr_t Addr, int8_t* Buf, size_t Size) {
+    bool MemWrite(uintptr_t Addr, uint8_t* Buf, size_t Size) {
         DWORD oldPro;
         SIZE_T wirteBytes = 0;
         if (VirtualProtect((VOID*)Addr, Size, PAGE_EXECUTE_READWRITE, &oldPro)) {
-            WriteProcessMemory(INVALID_HANDLE_VALUE, (VOID*)Addr, Buf, Size, &wirteBytes);
+            WriteProcessMemory(GetCurrentProcess(), (VOID*)Addr, Buf, Size, &wirteBytes);
             VirtualProtect((VOID*)Addr, Size, oldPro, &oldPro);
+            printf("MemWrite %p %zx bytes\n", (void*)Addr, wirteBytes);
             return Size == wirteBytes;
         }
         return false;
     }
 
-    bool JmpWrite(intptr_t orgAddr, intptr_t tarAddr) {
-        int8_t jmp_write[5] = { 0xe9, 0x0, 0x0, 0x0, 0x0 };
-        tarAddr = tarAddr - orgAddr - 5;
-        memcpy(jmp_write + 1, &tarAddr, 4);
-        return MemWrite(orgAddr, jmp_write, 5);
+    bool JmpWrite(uintptr_t orgAddr, uintptr_t tarAddr) {
+        printf("JmpWrite orgin=%p, tagetr=%p\n", (void*)orgAddr, (void*)tarAddr);
+        uint8_t jmp_write[] = { 0x48, 0xb8,  // mov rax, addr; jmp rax
+                0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,  
+                0xff, 0xe0};
+        memcpy(jmp_write + 2, &tarAddr, 8);
+        return MemWrite(orgAddr, jmp_write, sizeof(jmp_write));
     }
 }
 
@@ -31,18 +34,9 @@ namespace Hook::type {
 
 namespace Hook {
 
-    intptr_t UnityPlayerBaseAddr;
+    uintptr_t UnityPlayerBaseAddr;
     std::string cn_path("/LOSTSMILE_CN/");
     type::sub_180875B20ptr sub_180875B20;
-
-    void init() {
-        UnityPlayerBaseAddr = (intptr_t)GetModuleHandle(L"unityplayer.dll");
-        sub_180875B20 = (type::sub_180875B20ptr)(UnityPlayerBaseAddr + 0x875B20);
-        std::filesystem::path cur_path = std::filesystem::current_path();
-        std::string g_path = cur_path.string();
-        std::replace(g_path.begin(), g_path.end(), '\\', '/');
-        cn_path.insert(0, g_path);
-    }
 
     intptr_t __fastcall sub_1808759D0(intptr_t opStr, intptr_t ipStr1, intptr_t ipStr2) {
 
@@ -52,6 +46,7 @@ namespace Hook {
         *((int8_t *)(opStr + 0x08)) = 0x00;
         char* src_str1 = (char*)*(intptr_t*)ipStr1;
         char* src_str2 = (char*)*(intptr_t*)ipStr2;
+        printf("in sub_1808759D0 ipstr1=%s, ipstr2=%s\n", src_str1, src_str2);
 
         if (src_str2 && GetFileAttributesA(std::string(cn_path + src_str2).c_str()) != -1) {
             size_t length = *(intptr_t*)(ipStr1 + 0x18);
@@ -71,6 +66,20 @@ namespace Hook {
         return opStr;
     }
 
+    void init() {
+        HMODULE hmod = LoadLibraryA("UnityPlayer.dll");
+        UnityPlayerBaseAddr = (uintptr_t)GetModuleHandle(L"unityplayer.dll");
+        printf("UnityPlayer hmod=%p, UnityPlayerBaseAddr %p\n", hmod, (void*)UnityPlayerBaseAddr);
+
+        sub_180875B20 = (type::sub_180875B20ptr)(UnityPlayerBaseAddr + 0x875B20);
+        printf("sub_180875B20 %p, rva=%zx, sub_1808759D0=%p\n",
+            (void*)sub_180875B20, (size_t)sub_180875B20 - UnityPlayerBaseAddr, sub_1808759D0);
+        std::filesystem::path cur_path = std::filesystem::current_path();
+        std::string g_path = cur_path.string();
+        std::replace(g_path.begin(), g_path.end(), '\\', '/');
+        cn_path.insert(0, g_path);
+    }
+
     void start() {
         Mem::JmpWrite(UnityPlayerBaseAddr + 0x8759D0, (intptr_t)sub_1808759D0);
     }
@@ -81,14 +90,15 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReser
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+#ifdef _DEBUG
+        AllocConsole();
+        freopen("CONOUT$", "w", stdout);
+        freopen("CONIN$", "r", stdin);
+        system("pause");
+#endif 
         Hook::init();
         Hook::start();
-    #ifdef _DEBUG
-        //AllocConsole();
-        //freopen("CONOUT$", "w", stdout);
-        //freopen("CONIN$", "r", stdin);
-        //system("pause");
-    #endif 
+
         break;
     case DLL_THREAD_ATTACH:
         break;
