@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Utage
@@ -240,8 +241,9 @@ namespace Utage
 			if (strage == StrageType.Local || strage == StrageType.LocalAndServerScenario)
 			{
 				Engine.BootFromExportData(Scenarios, RootResourceDir);
-			}
-			else
+
+            }
+            else
 			{
 				Engine.BootFromExportData(Scenarios, GetDynamicStrageRoot());
 			}

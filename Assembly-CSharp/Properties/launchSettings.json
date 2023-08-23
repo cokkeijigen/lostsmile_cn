@@ -2,7 +2,7 @@
   "profiles": {
     "Assembly-CSharp": {
       "commandName": "Executable",
-      "executablePath": "D:\\Galgame\\lostsmile\\LOSTSMILE.exe",
+      "executablePath": "D:\\Galgame\\lostsmile\\LOSTSMILE_CN.exe",
       "workingDirectory": "D:\\Galgame\\lostsmile\\"
     }
   }

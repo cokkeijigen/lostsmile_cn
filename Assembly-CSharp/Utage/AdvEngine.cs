@@ -349,7 +349,8 @@ namespace Utage
 
 		public void BootFromExportData(AdvImportScenarios scenarios, string resourceDir)
 		{
-			base.gameObject.SetActive(true);
+
+            base.gameObject.SetActive(true);
 			StopAllCoroutines();
 			StartCoroutine(CoBootFromExportData(scenarios, resourceDir));
 		}
@@ -466,7 +467,8 @@ namespace Utage
 
 		private IEnumerator CoBootInit(string rootDirResource)
 		{
-			BootInitCustomCommand();
+
+            BootInitCustomCommand();
 			DataManager.BootInit(rootDirResource);
 			GraphicManager.BootInit(this, DataManager.SettingDataManager.LayerSetting);
 			Param.InitDefaultAll(DataManager.SettingDataManager.DefaultParam);

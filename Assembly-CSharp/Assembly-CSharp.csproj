@@ -63,6 +63,6 @@
     </Reference>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="copy $(TargetPath) D:\Galgame\lostsmile\LOSTSMILE_Data\Managed\$(TargetName).dll" />
+		<Exec Command="copy $(TargetPath) D:\Galgame\lostsmile\LOSTSMILE_CN\$(TargetName).dll" />
 	</Target>
 </Project>

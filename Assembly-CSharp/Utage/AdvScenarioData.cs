@@ -16,7 +16,7 @@ namespace Utage
 
 		private Dictionary<string, AdvScenarioLabelData> scenarioLabels = new Dictionary<string, AdvScenarioLabelData>();
 
-		private string Name
+		public string Name
 		{
 			get
 			{

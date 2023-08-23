@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UtageExtensions;
 
 namespace Utage
 {
@@ -24,7 +25,7 @@ namespace Utage
 				{
 					return fileName;
 				}
-				string path;
+                string path;
 				if (FilePathUtil.IsAbsoluteUri(fileName))
 				{
 					path = fileName;
@@ -234,7 +235,6 @@ namespace Utage
 
 		private void InitDefaultDirInfo(string root, DefaultDirInfo info)
 		{
-			//LogPrinter.Puts($"{root}");
 			info.defaultDir = FilePathUtil.Combine(root, info.defaultDir);
 		}
 

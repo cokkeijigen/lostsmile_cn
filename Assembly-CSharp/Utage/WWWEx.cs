@@ -52,14 +52,15 @@ namespace Utage
 
 		public WWWEx(string url, int assetBundleVersion)
 		{
-			AssetBundleVersion = assetBundleVersion;
+            AssetBundleVersion = assetBundleVersion;
 			LoadType = Type.Cache;
 			InitSub(url);
 		}
 
 		private void InitSub(string url)
 		{
-			Url = url;
+
+            Url = url;
 			RetryCount = 5;
 			TimeOut = 5f;
 			Progress = 0f;

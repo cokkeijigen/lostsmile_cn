@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text; 
 
 // iTsukezigen, 输出日志用
@@ -33,5 +35,21 @@ public class LogPrinter
             ); 
         }
         LogPrinter.Puts(sb.ToString()); 
+    }
+
+
+    public static void Dump(object obj, string name)
+    {
+        try
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(Path.Combine(Debug, name), FileMode.Create);
+            formatter.Serialize(stream, obj);
+            stream.Close();
+        }
+        catch (Exception e)
+        {
+            LogPrinter.Puts($"[BootInitScenariodData] {e.Message}", "err");
+        }
     }
 }

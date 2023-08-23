@@ -16,7 +16,7 @@ namespace CHS{
         private static void CHSAssetBundlesLoadIfNotInitialized()
         {
             string cn_BundlesDir = Directory.GetCurrentDirectory();
-            cn_BundlesDir = Path.Combine(cn_BundlesDir, "LOSTSMILE_Data", "StreamingAssets", "cn_data");
+            cn_BundlesDir = Path.Combine(cn_BundlesDir, "LOSTSMILE_CN", "Assets");
             if (Directory.Exists(cn_BundlesDir))
             {
                 if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
@@ -24,6 +24,7 @@ namespace CHS{
                 {
                     try
                     {
+                        if (!filePath.EndsWith(".asset")) continue;
                         AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
                         CHSAssetBundles.Add(assetBundle);
                     }
@@ -46,8 +47,8 @@ namespace CHS{
                     if (bundle.Contains(fileName))
                     {
                         staticAsset = new StaticAsset();
-                        staticAsset.Asset = bundle.LoadAsset<VideoClip>(fileName);
-                        LogPrinter.Puts($"找到文件：{fileName}");
+                        staticAsset.Asset = bundle.LoadAsset<UnityEngine.Object>(fileName);
+                        //LogPrinter.Puts($"找到文件：{fileName}");
                         return staticAsset.Asset != null;
                     }
                 } catch (Exception e) {

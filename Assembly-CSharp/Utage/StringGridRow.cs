@@ -12,19 +12,19 @@ namespace Utage
 		private StringGrid grid;
 
 		[SerializeField]
-		private int rowIndex;
+        public int rowIndex;
 
 		[NonSerialized]
 		private int debugIndex = -1;
 
 		[SerializeField]
-		private string[] strings;
+        public string[] strings;
 
 		[SerializeField]
-		private bool isEmpty;
+        public bool isEmpty;
 
 		[SerializeField]
-		private bool isCommentOut;
+		public bool isCommentOut;
 
 		[NonSerialized]
 		private string debugInfo;

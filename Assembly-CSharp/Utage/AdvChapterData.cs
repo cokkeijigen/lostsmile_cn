@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using static Utage.MiniAnimationData;
 
 namespace Utage
 {
@@ -67,10 +69,12 @@ namespace Utage
 		}
 
 		public void AddScenario(Dictionary<string, AdvScenarioData> scenarioDataTbl)
-		{
+        {
+
 			foreach (AdvImportBook data in DataList)
 			{
-				foreach (AdvImportScenarioSheet importGrid in data.ImportGridList)
+                //LogPrinter.Dump(data.ImportGridList, data.name);
+                foreach (AdvImportScenarioSheet importGrid in data.ImportGridList)
 				{
 					if (scenarioDataTbl.ContainsKey(importGrid.SheetName))
 					{

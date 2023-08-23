@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Linq;
 
 namespace Utage
 {
@@ -118,7 +122,9 @@ namespace Utage
 			foreach (AdvScenarioData value in scenarioDataTbl.Values)
 			{
 				value.Init(settingDataManager);
-			}
+          
+                //LogPrinter.Puts($"[BootInitScenariodData] Name: {value.Name}   DataGridName: {value.DataGridName}");
+            }
 		}
 
 		public virtual IEnumerator CoBootInitScenariodData()
