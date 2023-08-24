@@ -90,8 +90,6 @@ namespace Utage
 
 		private static AssetFileManager instance;
 
-		private static string CurrentDir;
-
 		public FileIOManager FileIOManager
 		{
 			get
@@ -611,11 +609,6 @@ namespace Utage
 
 		public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
 		{
-			if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
-			{
-				int num = path.LastIndexOf("/LOSTSMILE_Data");
-				path = ((num != -1) ? ("file:///" + CurrentDir + path.Substring(num)) : path);
-			}
 			if (!IsEditorErrorCheck)
 			{
 				return GetInstance().AddSub(path, settingData);
