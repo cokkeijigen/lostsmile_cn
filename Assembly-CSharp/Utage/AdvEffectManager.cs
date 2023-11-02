@@ -22,21 +22,9 @@ namespace Utage
 		[SerializeField]
 		private List<Texture2D> ruleTextureList = new List<Texture2D>();
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponentInParent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponentInParent<AdvEngine>());
 
-		private AdvUguiMessageWindowManager MessageWindow
-		{
-			get
-			{
-				return messageWindow ?? (messageWindow = Engine.GetComponentInChildren<AdvUguiMessageWindowManager>(true));
-			}
-		}
+		private AdvUguiMessageWindowManager MessageWindow => messageWindow ?? (messageWindow = Engine.GetComponentInChildren<AdvUguiMessageWindowManager>(true));
 
 		public List<Texture2D> RuleTextureList
 		{

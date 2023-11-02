@@ -44,13 +44,7 @@ namespace Utage
 
 		private List<GameObject> items = new List<GameObject>();
 
-		public Type ScrollType
-		{
-			get
-			{
-				return scrollType;
-			}
-		}
+		public Type ScrollType => scrollType;
 
 		public GameObject ItemPrefab
 		{
@@ -64,29 +58,11 @@ namespace Utage
 			}
 		}
 
-		public RectTransform Content
-		{
-			get
-			{
-				return content ?? (content = ScrollRect.content);
-			}
-		}
+		public RectTransform Content => content ?? (content = ScrollRect.content);
 
-		public bool IsStopScroolWithAllInnner
-		{
-			get
-			{
-				return isStopScroolWithAllInnner;
-			}
-		}
+		public bool IsStopScroolWithAllInnner => isStopScroolWithAllInnner;
 
-		public bool IsAutoCenteringOnRepostion
-		{
-			get
-			{
-				return isAutoCenteringOnRepostion;
-			}
-		}
+		public bool IsAutoCenteringOnRepostion => isAutoCenteringOnRepostion;
 
 		public UguiAlignGroup PositionGroup
 		{
@@ -104,21 +80,9 @@ namespace Utage
 			}
 		}
 
-		public ScrollRect ScrollRect
-		{
-			get
-			{
-				return scrollRect ?? (scrollRect = GetComponent<ScrollRect>());
-			}
-		}
+		public ScrollRect ScrollRect => scrollRect ?? (scrollRect = GetComponent<ScrollRect>());
 
-		public RectTransform ScrollRectTransform
-		{
-			get
-			{
-				return scrollRectTransform ?? (scrollRectTransform = ScrollRect.GetComponent<RectTransform>());
-			}
-		}
+		public RectTransform ScrollRectTransform => scrollRectTransform ?? (scrollRectTransform = ScrollRect.GetComponent<RectTransform>());
 
 		public GameObject MinArrow
 		{
@@ -144,13 +108,7 @@ namespace Utage
 			}
 		}
 
-		public List<GameObject> Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public List<GameObject> Items => items;
 
 		public void CreateItems(int itemNum, Action<GameObject, int> callbackCreateItem)
 		{
@@ -159,10 +117,7 @@ namespace Utage
 			{
 				GameObject gameObject = Content.AddChildPrefab(ItemPrefab.gameObject);
 				items.Add(gameObject);
-				if (callbackCreateItem != null)
-				{
-					callbackCreateItem(gameObject, i);
-				}
+				callbackCreateItem?.Invoke(gameObject, i);
 			}
 			Reposition();
 		}

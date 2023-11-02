@@ -48,7 +48,7 @@ namespace Utage
 			}
 			catch (Exception innerException)
 			{
-				throw new ArgumentException(string.Format("Could not add flags type '{0}'.", typeof(T).Name), innerException);
+				throw new ArgumentException($"Could not add flags type '{typeof(T).Name}'.", innerException);
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace Utage
 			}
 			catch (Exception innerException)
 			{
-				throw new ArgumentException(string.Format("Could not remove flags type '{0}'.", typeof(T).Name), innerException);
+				throw new ArgumentException($"Could not remove flags type '{typeof(T).Name}'.", innerException);
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace Utage
 			}
 			catch (Exception innerException)
 			{
-				throw new ArgumentException(string.Format("Could not SetEnable flags type '{0}'.", typeof(T).Name), innerException);
+				throw new ArgumentException($"Could not SetEnable flags type '{typeof(T).Name}'.", innerException);
 			}
 		}
 	}

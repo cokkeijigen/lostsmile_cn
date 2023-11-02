@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 namespace Utage
@@ -52,13 +51,7 @@ namespace Utage
 		[SerializeField]
 		private List<string> chapterNames = new List<string>();
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
 
 		public StrageType Strage
 		{
@@ -132,13 +125,7 @@ namespace Utage
 			}
 		}
 
-		public List<string> ChapterNames
-		{
-			get
-			{
-				return chapterNames;
-			}
-		}
+		public List<string> ChapterNames => chapterNames;
 
 		public bool IsLoadStart { get; set; }
 
@@ -241,9 +228,8 @@ namespace Utage
 			if (strage == StrageType.Local || strage == StrageType.LocalAndServerScenario)
 			{
 				Engine.BootFromExportData(Scenarios, RootResourceDir);
-
-            }
-            else
+			}
+			else
 			{
 				Engine.BootFromExportData(Scenarios, GetDynamicStrageRoot());
 			}

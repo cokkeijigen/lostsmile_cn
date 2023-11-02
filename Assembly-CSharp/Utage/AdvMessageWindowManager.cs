@@ -32,45 +32,15 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public MessageWindowEvent OnReset
-		{
-			get
-			{
-				return onReset;
-			}
-		}
+		public MessageWindowEvent OnReset => onReset;
 
-		public MessageWindowEvent OnChangeActiveWindows
-		{
-			get
-			{
-				return onChangeActiveWindows;
-			}
-		}
+		public MessageWindowEvent OnChangeActiveWindows => onChangeActiveWindows;
 
-		public MessageWindowEvent OnChangeCurrentWindow
-		{
-			get
-			{
-				return onChangeCurrentWindow;
-			}
-		}
+		public MessageWindowEvent OnChangeCurrentWindow => onChangeCurrentWindow;
 
-		public MessageWindowEvent OnTextChange
-		{
-			get
-			{
-				return onTextChange;
-			}
-		}
+		public MessageWindowEvent OnTextChange => onTextChange;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
 		public Dictionary<string, AdvMessageWindow> AllWindows
 		{
@@ -96,25 +66,13 @@ namespace Utage
 			}
 		}
 
-		public Dictionary<string, AdvMessageWindow> ActiveWindows
-		{
-			get
-			{
-				return activeWindows;
-			}
-		}
+		public Dictionary<string, AdvMessageWindow> ActiveWindows => activeWindows;
 
 		public AdvMessageWindow CurrentWindow { get; private set; }
 
 		public AdvMessageWindow LastWindow { get; private set; }
 
-		public string SaveKey
-		{
-			get
-			{
-				return "MessageWindowManager";
-			}
-		}
+		public string SaveKey => "MessageWindowManager";
 
 		public bool IsCurrent(string name)
 		{
@@ -160,8 +118,7 @@ namespace Utage
 			ActiveWindows.Clear();
 			foreach (string name in names)
 			{
-				AdvMessageWindow value;
-				if (!AllWindows.TryGetValue(name, out value))
+				if (!AllWindows.TryGetValue(name, out var value))
 				{
 					Debug.LogError(name + " is not found in message windows");
 				}
@@ -188,8 +145,7 @@ namespace Utage
 			{
 				return;
 			}
-			AdvMessageWindow value;
-			if (!ActiveWindows.TryGetValue(name, out value))
+			if (!ActiveWindows.TryGetValue(name, out var value))
 			{
 				if (!AllWindows.TryGetValue(name, out value))
 				{

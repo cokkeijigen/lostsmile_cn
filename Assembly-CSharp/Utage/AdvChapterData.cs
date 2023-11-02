@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using static Utage.MiniAnimationData;
 
 namespace Utage
 {
@@ -16,29 +14,11 @@ namespace Utage
 		[SerializeField]
 		private List<StringGrid> settingList = new List<StringGrid>();
 
-		public string ChapterName
-		{
-			get
-			{
-				return chapterName;
-			}
-		}
+		public string ChapterName => chapterName;
 
-		public List<AdvImportBook> DataList
-		{
-			get
-			{
-				return dataList;
-			}
-		}
+		public List<AdvImportBook> DataList => dataList;
 
-		public List<StringGrid> SettingList
-		{
-			get
-			{
-				return settingList;
-			}
-		}
+		public List<StringGrid> SettingList => settingList;
 
 		public bool IsInited { get; set; }
 
@@ -52,29 +32,19 @@ namespace Utage
 			IsInited = true;
 			foreach (StringGrid setting in settingList)
 			{
-				IAdvSetting advSetting = AdvSheetParser.FindSettingData(settingDataManager, setting.SheetName);
-				if (advSetting != null)
-				{
-					advSetting.ParseGrid(setting);
-				}
+				AdvSheetParser.FindSettingData(settingDataManager, setting.SheetName)?.ParseGrid(setting);
 			}
 			foreach (StringGrid setting2 in settingList)
 			{
-				IAdvSetting advSetting2 = AdvSheetParser.FindSettingData(settingDataManager, setting2.SheetName);
-				if (advSetting2 != null)
-				{
-					advSetting2.BootInit(settingDataManager);
-				}
+				AdvSheetParser.FindSettingData(settingDataManager, setting2.SheetName)?.BootInit(settingDataManager);
 			}
 		}
 
 		public void AddScenario(Dictionary<string, AdvScenarioData> scenarioDataTbl)
-        {
-
+		{
 			foreach (AdvImportBook data in DataList)
 			{
-                //LogPrinter.Dump(data.ImportGridList, data.name);
-                foreach (AdvImportScenarioSheet importGrid in data.ImportGridList)
+				foreach (AdvImportScenarioSheet importGrid in data.ImportGridList)
 				{
 					if (scenarioDataTbl.ContainsKey(importGrid.SheetName))
 					{

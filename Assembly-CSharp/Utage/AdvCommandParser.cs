@@ -425,8 +425,7 @@ namespace Utage
 
 		public static string ParseScenarioLabel(StringGridRow row, AdvColumnName name)
 		{
-			string scenarioLabel;
-			if (!TryParseScenarioLabel(row, name, out scenarioLabel))
+			if (!TryParseScenarioLabel(row, name, out var scenarioLabel))
 			{
 				Debug.LogError(row.ToErrorString(LanguageAdvErrorMsg.LocalizeTextFormat(AdvErrorMsg.NotScenarioLabel, scenarioLabel)));
 			}

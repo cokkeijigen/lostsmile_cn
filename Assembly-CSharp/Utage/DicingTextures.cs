@@ -47,21 +47,9 @@ namespace Utage
 			}
 		}
 
-		public List<Texture2D> AtlasTextures
-		{
-			get
-			{
-				return atlasTextures;
-			}
-		}
+		public List<Texture2D> AtlasTextures => atlasTextures;
 
-		public List<DicingTextureData> TextureDataList
-		{
-			get
-			{
-				return textureDataList;
-			}
-		}
+		public List<DicingTextureData> TextureDataList => textureDataList;
 
 		internal DicingTextureData GetTextureData(string pattern)
 		{

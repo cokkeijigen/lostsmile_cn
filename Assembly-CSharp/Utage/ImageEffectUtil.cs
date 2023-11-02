@@ -38,37 +38,13 @@ namespace Utage
 			new ImageEffectPattern(ImageEffectType.Vortex.ToString(), typeof(Vortex), new Shader[1] { Shader.Find(ShaderManager.VortexName) })
 		};
 
-		public static bool SupportsImageEffects
-		{
-			get
-			{
-				return SystemInfo.supportsImageEffects;
-			}
-		}
+		public static bool SupportsImageEffects => SystemInfo.supportsImageEffects;
 
-		public static bool SupportsRenderTextures
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public static bool SupportsRenderTextures => true;
 
-		public static bool SupportsDepth
-		{
-			get
-			{
-				return SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.Depth);
-			}
-		}
+		public static bool SupportsDepth => SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.Depth);
 
-		public static bool SupportsHDRTextures
-		{
-			get
-			{
-				return SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf);
-			}
-		}
+		public static bool SupportsHDRTextures => SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf);
 
 		public static bool SupportDX11
 		{
@@ -109,9 +85,7 @@ namespace Utage
 		internal static bool TryGetComonentCreateIfMissing(string type, out ImageEffectBase component, out bool alreadyEnabled, GameObject target)
 		{
 			alreadyEnabled = false;
-			Type ComponentType;
-			Shader[] Shaders;
-			if (!TryParse(type, out ComponentType, out Shaders))
+			if (!TryParse(type, out var ComponentType, out var Shaders))
 			{
 				Debug.LogError(type + " is not find in Image effect patterns");
 				component = null;

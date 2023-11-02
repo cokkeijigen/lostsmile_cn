@@ -9,26 +9,13 @@ namespace Utage
 
 		private const int VERSION = 0;
 
-		public DictionaryInt Data
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public DictionaryInt Data => data;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "AdvReadHistorySaveData";
-			}
-		}
+		public string SaveKey => "AdvReadHistorySaveData";
 
 		public void AddReadPage(string scenarioLabel, int page)
 		{
-			DictionaryKeyValueInt val;
-			if (data.TryGetValue(scenarioLabel, out val))
+			if (data.TryGetValue(scenarioLabel, out DictionaryKeyValueInt val))
 			{
 				if (val.value < page)
 				{
@@ -43,8 +30,7 @@ namespace Utage
 
 		public bool CheckReadPage(string scenarioLabel, int pageNo)
 		{
-			DictionaryKeyValueInt val;
-			if (data.TryGetValue(scenarioLabel, out val) && pageNo <= val.value)
+			if (data.TryGetValue(scenarioLabel, out DictionaryKeyValueInt val) && pageNo <= val.value)
 			{
 				return true;
 			}

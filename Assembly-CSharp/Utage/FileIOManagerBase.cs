@@ -38,21 +38,9 @@ namespace Utage
 
 		protected static float[] audioSamplesWorkArray = new float[131072];
 
-		public static string SdkPersistentDataPath
-		{
-			get
-			{
-				return FilePathUtil.Combine(Application.persistentDataPath, "Utage/");
-			}
-		}
+		public static string SdkPersistentDataPath => FilePathUtil.Combine(Application.persistentDataPath, "Utage/");
 
-		public static string SdkTemporaryCachePath
-		{
-			get
-			{
-				return FilePathUtil.Combine(Application.temporaryCachePath, "Utage/");
-			}
-		}
+		public static string SdkTemporaryCachePath => FilePathUtil.Combine(Application.temporaryCachePath, "Utage/");
 
 		public static Func<byte[], byte[], byte[]> CustomEncode
 		{

@@ -84,53 +84,17 @@ namespace Utage
 			new string[0]
 		};
 
-		public iTweenType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public iTweenType Type => type;
 
-		public iTween.LoopType Loop
-		{
-			get
-			{
-				return loopType;
-			}
-		}
+		public iTween.LoopType Loop => loopType;
 
-		public int LoopCount
-		{
-			get
-			{
-				return loopCount;
-			}
-		}
+		public int LoopCount => loopCount;
 
-		public Dictionary<string, object> HashObjects
-		{
-			get
-			{
-				return hashObjects;
-			}
-		}
+		public Dictionary<string, object> HashObjects => hashObjects;
 
-		public string ErrorMsg
-		{
-			get
-			{
-				return errorMsg;
-			}
-		}
+		public string ErrorMsg => errorMsg;
 
-		public bool IsDynamic
-		{
-			get
-			{
-				return isDynamic;
-			}
-		}
+		public bool IsDynamic => isDynamic;
 
 		public bool IsEndlessLoop
 		{

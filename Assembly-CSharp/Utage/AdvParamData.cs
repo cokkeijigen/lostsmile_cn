@@ -29,21 +29,9 @@ namespace Utage
 
 		private FileType fileType;
 
-		public string Key
-		{
-			get
-			{
-				return key;
-			}
-		}
+		public string Key => key;
 
-		public ParamType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public ParamType Type => type;
 
 		public object Parameter
 		{
@@ -76,21 +64,9 @@ namespace Utage
 			}
 		}
 
-		public string ParameterString
-		{
-			get
-			{
-				return parameterString;
-			}
-		}
+		public string ParameterString => parameterString;
 
-		public FileType SaveFileType
-		{
-			get
-			{
-				return fileType;
-			}
-		}
+		public FileType SaveFileType => fileType;
 
 		public bool TryParse(string name, string type, string fileType)
 		{

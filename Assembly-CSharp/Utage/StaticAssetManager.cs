@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 namespace Utage
 {
@@ -11,13 +9,7 @@ namespace Utage
 		[SerializeField]
 		private List<StaticAsset> assets = new List<StaticAsset>();
 
-		private List<StaticAsset> Assets
-		{
-			get
-			{
-				return assets;
-			}
-		}
+		private List<StaticAsset> Assets => assets;
 
 		public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
 		{
@@ -26,18 +18,18 @@ namespace Utage
 				return null;
 			}
 			string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
-			StaticAsset staticAsset;
-			// iTsukeziegn， 尝试获取cn_data目录下的资源
-			if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
-			{
-				staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
-				if (staticAsset == null)
-				{
-					return null;
-				}
-			}
+            // iTsukeziegn++ 
+            StaticAsset staticAsset; // ���Ի�ȡLOSTSMILE_CNĿ¼�µ���Դ
+            if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
+            {
+                staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
+                if (staticAsset == null)
+                {
+                    return null;
+                }
+            }
             // end
-            return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
+			return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 		}
 
 		public bool Contains(Object asset)

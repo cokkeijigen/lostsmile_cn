@@ -17,8 +17,7 @@ namespace Utage
 
 		public bool TryGetValue(string key, out bool val)
 		{
-			DictionaryKeyValueBool val2;
-			if (TryGetValue(key, out val2))
+			if (TryGetValue(key, out DictionaryKeyValueBool val2))
 			{
 				val = val2.value;
 				return true;

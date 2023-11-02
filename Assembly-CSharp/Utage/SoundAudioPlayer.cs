@@ -22,13 +22,7 @@ namespace Utage
 
 		private List<SoundAudio> CurrentFrameAudioList { get; set; }
 
-		public bool IsLoading
-		{
-			get
-			{
-				return AudioList.Exists((SoundAudio x) => x.IsLoading);
-			}
-		}
+		public bool IsLoading => AudioList.Exists((SoundAudio x) => x.IsLoading);
 
 		internal void Init(string label, SoundGroup group)
 		{

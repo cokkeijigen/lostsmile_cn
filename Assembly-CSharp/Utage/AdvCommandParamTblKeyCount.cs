@@ -17,8 +17,7 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
-			AdvParamStructTbl value;
-			if (engine.Param.StructTbl.TryGetValue(tblName, out value))
+			if (engine.Param.StructTbl.TryGetValue(tblName, out var value))
 			{
 				int count = value.Tbl.Count;
 				if (!engine.Param.TrySetParameter(paramName, count))

@@ -9,13 +9,7 @@ namespace Utage
 		[SerializeField]
 		private string rootPath = "";
 
-		public string RootPath
-		{
-			get
-			{
-				return rootPath;
-			}
-		}
+		public string RootPath => rootPath;
 
 		private void Awake()
 		{
@@ -41,8 +35,7 @@ namespace Utage
 			{
 				return (settingData as AdvCommandSetting).Command is AdvCommandVideo;
 			}
-			AdvGraphicInfo advGraphicInfo = settingData as AdvGraphicInfo;
-			if (advGraphicInfo != null)
+			if (settingData is AdvGraphicInfo advGraphicInfo)
 			{
 				return advGraphicInfo.FileType == "Video";
 			}

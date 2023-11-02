@@ -52,8 +52,7 @@ namespace Utage
 				string[] stringArray;
 				if (AdvEntityData.ContainsEntitySimple(item2))
 				{
-					string[] strings;
-					if (AdvEntityData.TryCreateEntityStrings(item2, dataManager.DefaultParam.GetParameter, out strings))
+					if (AdvEntityData.TryCreateEntityStrings(item2, dataManager.DefaultParam.GetParameter, out var strings))
 					{
 						AdvEntityData item = new AdvEntityData(item2.Strings);
 						stringArray = strings;
@@ -81,9 +80,9 @@ namespace Utage
 			List<AdvCommand> list = new List<AdvCommand>();
 			foreach (StringGridRow row in base.Rows)
 			{
-                if (row.RowIndex >= base.DataTopRow && !row.IsEmptyOrCommantOut)
+				if (row.RowIndex >= base.DataTopRow && !row.IsEmptyOrCommantOut)
 				{
-                    AdvCommand advCommand = AdvCommandParser.CreateCommand(row, dataManager);
+					AdvCommand advCommand = AdvCommandParser.CreateCommand(row, dataManager);
 					int entityIndex = GetEntityIndex(row.RowIndex);
 					if (entityIndex >= 0)
 					{

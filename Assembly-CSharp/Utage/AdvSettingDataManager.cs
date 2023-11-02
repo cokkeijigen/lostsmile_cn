@@ -34,109 +34,31 @@ namespace Utage
 
 		public AdvImportScenarios ImportedScenarios { get; set; }
 
-		public AdvBootSetting BootSetting
-		{
-			get
-			{
-				return bootSetting;
-			}
-		}
+		public AdvBootSetting BootSetting => bootSetting;
 
-		public AdvCharacterSetting CharacterSetting
-		{
-			get
-			{
-				return characterSetting;
-			}
-		}
+		public AdvCharacterSetting CharacterSetting => characterSetting;
 
-		public AdvTextureSetting TextureSetting
-		{
-			get
-			{
-				return textureSetting;
-			}
-		}
+		public AdvTextureSetting TextureSetting => textureSetting;
 
-		public AdvSoundSetting SoundSetting
-		{
-			get
-			{
-				return soundSetting;
-			}
-		}
+		public AdvSoundSetting SoundSetting => soundSetting;
 
-		public AdvLayerSetting LayerSetting
-		{
-			get
-			{
-				return layerSetting;
-			}
-		}
+		public AdvLayerSetting LayerSetting => layerSetting;
 
-		public AdvParamManager DefaultParam
-		{
-			get
-			{
-				return defaultParam;
-			}
-		}
+		public AdvParamManager DefaultParam => defaultParam;
 
-		public AdvSceneGallerySetting SceneGallerySetting
-		{
-			get
-			{
-				return sceneGallerySetting;
-			}
-		}
+		public AdvSceneGallerySetting SceneGallerySetting => sceneGallerySetting;
 
-		public AdvLocalizeSetting LocalizeSetting
-		{
-			get
-			{
-				return localizeSetting;
-			}
-		}
+		public AdvLocalizeSetting LocalizeSetting => localizeSetting;
 
-		public AdvAnimationSetting AnimationSetting
-		{
-			get
-			{
-				return animationSetting;
-			}
-		}
+		public AdvAnimationSetting AnimationSetting => animationSetting;
 
-		public AdvEyeBlinkSetting EyeBlinkSetting
-		{
-			get
-			{
-				return eyeBlinkSetting;
-			}
-		}
+		public AdvEyeBlinkSetting EyeBlinkSetting => eyeBlinkSetting;
 
-		public AdvLipSynchSetting LipSynchSetting
-		{
-			get
-			{
-				return lipSynchSetting;
-			}
-		}
+		public AdvLipSynchSetting LipSynchSetting => lipSynchSetting;
 
-		public AdvParticleSetting ParticleSetting
-		{
-			get
-			{
-				return advParticleSetting;
-			}
-		}
+		public AdvParticleSetting ParticleSetting => advParticleSetting;
 
-		public AdvVideoSetting VideoSetting
-		{
-			get
-			{
-				return videoSetting;
-			}
-		}
+		public AdvVideoSetting VideoSetting => videoSetting;
 
 		private List<IAdvSetting> SettingDataList
 		{

@@ -4,13 +4,7 @@ namespace Utage
 	{
 		public AdvCommand Command { get; private set; }
 
-		public StringGridRow RowData
-		{
-			get
-			{
-				return Command.RowData;
-			}
-		}
+		public StringGridRow RowData => Command.RowData;
 
 		public AdvCommandSetting(AdvCommand command)
 		{

@@ -30,13 +30,7 @@ namespace Utage
 
 		private Coroutine currentCoroutine;
 
-		public AnimationCurve Curve
-		{
-			get
-			{
-				return curve;
-			}
-		}
+		public AnimationCurve Curve => curve;
 
 		public float Delay
 		{
@@ -78,45 +72,15 @@ namespace Utage
 
 		public bool IsPlaying { get; protected set; }
 
-		public CurveAnimationEvent OnStart
-		{
-			get
-			{
-				return onStart;
-			}
-		}
+		public CurveAnimationEvent OnStart => onStart;
 
-		public CurveAnimationEvent OnUpdate
-		{
-			get
-			{
-				return onUpdate;
-			}
-		}
+		public CurveAnimationEvent OnUpdate => onUpdate;
 
-		public CurveAnimationEvent OnComplete
-		{
-			get
-			{
-				return onComplete;
-			}
-		}
+		public CurveAnimationEvent OnComplete => onComplete;
 
-		protected float Time
-		{
-			get
-			{
-				return TimeUtil.GetTime(UnscaledTime);
-			}
-		}
+		protected float Time => TimeUtil.GetTime(UnscaledTime);
 
-		protected float DeltaTime
-		{
-			get
-			{
-				return TimeUtil.GetDeltaTime(UnscaledTime);
-			}
-		}
+		protected float DeltaTime => TimeUtil.GetDeltaTime(UnscaledTime);
 
 		protected float CurrentAnimationTime { get; set; }
 
@@ -157,23 +121,14 @@ namespace Utage
 			for (CurrentAnimationTime = 0f; CurrentAnimationTime < Duration; CurrentAnimationTime = Time - startTime)
 			{
 				Value = Curve.Evaluate(endTime * CurrentAnimationTime / Duration);
-				if (onUpdate != null)
-				{
-					onUpdate(Value);
-				}
+				onUpdate?.Invoke(Value);
 				OnUpdate.Invoke(this);
 				yield return null;
 			}
 			Value = Curve.Evaluate(endTime);
-			if (onUpdate != null)
-			{
-				onUpdate(Value);
-			}
+			onUpdate?.Invoke(Value);
 			OnUpdate.Invoke(this);
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 			OnComplete.Invoke(this);
 			IsPlaying = false;
 			currentCoroutine = null;

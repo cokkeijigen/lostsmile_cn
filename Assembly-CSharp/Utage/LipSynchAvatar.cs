@@ -9,13 +9,7 @@ namespace Utage
 	{
 		private AvatarImage avator;
 
-		private AvatarImage Avator
-		{
-			get
-			{
-				return base.gameObject.GetComponentCache(ref avator);
-			}
-		}
+		private AvatarImage Avator => base.gameObject.GetComponentCache(ref avator);
 
 		protected override IEnumerator CoUpdateLipSync()
 		{

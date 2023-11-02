@@ -19,39 +19,15 @@ namespace Utage
 
 		private const int Version0 = 0;
 
-		public AdvGraphicLoader Loader
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref loader);
-			}
-		}
+		public AdvGraphicLoader Loader => this.GetComponentCacheCreateIfMissing(ref loader);
 
-		public AdvGraphicLayer Layer
-		{
-			get
-			{
-				return layer;
-			}
-		}
+		public AdvGraphicLayer Layer => layer;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return Layer.Manager.Engine;
-			}
-		}
+		public AdvEngine Engine => Layer.Manager.Engine;
 
 		public AdvGraphicInfo LastResource { get; private set; }
 
-		public float PixelsToUnits
-		{
-			get
-			{
-				return Layer.Manager.PixelsToUnits;
-			}
-		}
+		public float PixelsToUnits => Layer.Manager.PixelsToUnits;
 
 		public bool EnableRenderTexture
 		{
@@ -73,13 +49,7 @@ namespace Utage
 
 		private Timer FadeTimer { get; set; }
 
-		public AdvEffectColor EffectColor
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref effectColor);
-			}
-		}
+		public AdvEffectColor EffectColor => this.GetComponentCacheCreateIfMissing(ref effectColor);
 
 		public RectTransform rectTransform { get; private set; }
 
@@ -155,14 +125,12 @@ namespace Utage
 		{
 			bool flag = false;
 			Vector3 localPosition = base.transform.localPosition;
-			float val;
-			if (command.TryParseCell<float>(AdvColumnName.Arg4, out val))
+			if (command.TryParseCell<float>(AdvColumnName.Arg4, out var val))
 			{
 				localPosition.x = val;
 				flag = true;
 			}
-			float val2;
-			if (command.TryParseCell<float>(AdvColumnName.Arg5, out val2))
+			if (command.TryParseCell<float>(AdvColumnName.Arg5, out var val2))
 			{
 				localPosition.y = val2;
 				flag = true;
@@ -240,10 +208,7 @@ namespace Utage
 		{
 			if (TargetObject == null)
 			{
-				if (onComplete != null)
-				{
-					onComplete();
-				}
+				onComplete?.Invoke();
 			}
 			else
 			{

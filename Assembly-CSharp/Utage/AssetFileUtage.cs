@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.IO;
 using UnityEngine;
 
 namespace Utage
@@ -30,8 +29,7 @@ namespace Utage
 		{
 			base.IsLoadEnd = false;
 			base.IsLoadError = false;
-
-            yield return LoadAsyncSub(LoadPath, delegate
+			yield return LoadAsyncSub(LoadPath, delegate
 			{
 				if (base.Priority != AssetFileLoadPriority.DownloadOnly)
 				{
@@ -47,7 +45,7 @@ namespace Utage
 
 		private IEnumerator LoadAsyncSub(string path, Action onComplete, Action onFailed)
 		{
-            AssetFileStrageType strageType = base.FileInfo.StrageType;
+			AssetFileStrageType strageType = base.FileInfo.StrageType;
 			if (strageType == AssetFileStrageType.Resources)
 			{
 				if (base.FileManager.EnableResourcesLoadAsync)
@@ -88,15 +86,15 @@ namespace Utage
 
 		private void LoadResource(string loadPath, Action onComplete, Action onFailed)
 		{
-            loadPath = FilePathUtil.GetPathWithoutExtension(loadPath);
+			loadPath = FilePathUtil.GetPathWithoutExtension(loadPath);
 			UnityEngine.Object asset = Resources.Load(loadPath, GetResourceType());
 			LoadAsset(asset, onComplete, onFailed);
 		}
 
 		private IEnumerator LoadResourceAsync(string loadPath, Action onComplete, Action onFailed)
 		{
-            loadPath = FilePathUtil.GetPathWithoutExtension(loadPath);
-            ResourceRequest request = Resources.LoadAsync(loadPath, GetResourceType());
+			loadPath = FilePathUtil.GetPathWithoutExtension(loadPath);
+			ResourceRequest request = Resources.LoadAsync(loadPath, GetResourceType());
 			while (!request.isDone)
 			{
 				yield return null;
@@ -107,7 +105,7 @@ namespace Utage
 		private IEnumerator LoadAssetBundleAsync(string path, Action onComplete, Action onFailed)
 		{
 			WWWEx wWWEx = MakeWWWEx(path);
-            wWWEx.RetryCount = base.FileManager.AutoRetryCountOnDonwloadError;
+			wWWEx.RetryCount = base.FileManager.AutoRetryCountOnDonwloadError;
 			wWWEx.TimeOut = base.FileManager.TimeOutDownload;
 			AssetBundle = null;
 			if (base.Priority == AssetFileLoadPriority.DownloadOnly)

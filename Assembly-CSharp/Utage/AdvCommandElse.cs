@@ -2,13 +2,7 @@ namespace Utage
 {
 	internal class AdvCommandElse : AdvCommand
 	{
-		public override bool IsIfCommand
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool IsIfCommand => true;
 
 		public AdvCommandElse(StringGridRow row)
 			: base(row)

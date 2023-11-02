@@ -32,36 +32,12 @@ namespace Utage
 
 		public static string VortexName = "Utage/ImageEffect/Vortex";
 
-		public static Shader RuleFade
-		{
-			get
-			{
-				return Shader.Find("Utage/UI/RuleFade");
-			}
-		}
+		public static Shader RuleFade => Shader.Find("Utage/UI/RuleFade");
 
-		public static Shader CrossFade
-		{
-			get
-			{
-				return Shader.Find("Utage/CrossFadeImage");
-			}
-		}
+		public static Shader CrossFade => Shader.Find("Utage/CrossFadeImage");
 
-		public static Shader RenderTexture
-		{
-			get
-			{
-				return Shader.Find("Utage/RenderTexture");
-			}
-		}
+		public static Shader RenderTexture => Shader.Find("Utage/RenderTexture");
 
-		public static Shader DrawByRenderTexture
-		{
-			get
-			{
-				return Shader.Find("Utage/DrawByRenderTexture");
-			}
-		}
+		public static Shader DrawByRenderTexture => Shader.Find("Utage/DrawByRenderTexture");
 	}
 }

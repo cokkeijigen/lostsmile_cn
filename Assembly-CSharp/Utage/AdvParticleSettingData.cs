@@ -4,13 +4,7 @@ namespace Utage
 	{
 		private AdvGraphicInfo graphic;
 
-		public AdvGraphicInfo Graphic
-		{
-			get
-			{
-				return graphic;
-			}
-		}
+		public AdvGraphicInfo Graphic => graphic;
 
 		public override bool InitFromStringGridRow(StringGridRow row)
 		{

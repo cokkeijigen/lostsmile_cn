@@ -17,13 +17,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public string Name
-		{
-			get
-			{
-				return Target.name;
-			}
-		}
+		public string Name => Target.name;
 
 		public GameObject Target { get; private set; }
 
@@ -39,13 +33,7 @@ namespace Utage
 			}
 		}
 
-		public Canvas Canvas
-		{
-			get
-			{
-				return canvas ?? (canvas = Target.GetComponentInParent<Canvas>());
-			}
-		}
+		public Canvas Canvas => canvas ?? (canvas = Target.GetComponentInParent<Canvas>());
 
 		public RectTransform CanvasRectTransform
 		{

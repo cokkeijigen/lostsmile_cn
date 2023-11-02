@@ -20,21 +20,9 @@ public class UtageSampleLoadCaharacter : MonoBehaviour
 	[SerializeField]
 	private string testPattern = "";
 
-	public AdvGraphicLoader Loader
-	{
-		get
-		{
-			return this.GetComponentCacheCreateIfMissing(ref loader);
-		}
-	}
+	public AdvGraphicLoader Loader => this.GetComponentCacheCreateIfMissing(ref loader);
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	private void Start()
 	{

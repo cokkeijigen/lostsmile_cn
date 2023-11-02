@@ -27,13 +27,7 @@ namespace Utage
 
 		private UguiNovelTextGenerator Generator { get; set; }
 
-		private UguiNovelText NovelText
-		{
-			get
-			{
-				return Generator.NovelText;
-			}
-		}
+		private UguiNovelText NovelText => Generator.NovelText;
 
 		internal TextData TextData { get; set; }
 

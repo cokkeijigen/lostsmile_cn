@@ -17,29 +17,11 @@ namespace Utage
 		[SerializeField]
 		protected AdvEngine engine;
 
-		public GameObject TargetRoot
-		{
-			get
-			{
-				return targetRoot ?? (targetRoot = base.gameObject);
-			}
-		}
+		public GameObject TargetRoot => targetRoot ?? (targetRoot = base.gameObject);
 
-		public Text Target
-		{
-			get
-			{
-				return text ?? (text = TargetRoot.GetComponentInChildren<Text>());
-			}
-		}
+		public Text Target => text ?? (text = TargetRoot.GetComponentInChildren<Text>());
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 		private void Awake()
 		{

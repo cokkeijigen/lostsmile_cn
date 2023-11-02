@@ -7,13 +7,7 @@ namespace Utage
 	{
 		private AssetFile file;
 
-		public AssetFile File
-		{
-			get
-			{
-				return file;
-			}
-		}
+		public AssetFile File => file;
 
 		public void Init(AssetFile file)
 		{

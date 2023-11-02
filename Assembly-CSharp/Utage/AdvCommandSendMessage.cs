@@ -34,69 +34,21 @@ namespace Utage
 			}
 		}
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
-		public string Arg2
-		{
-			get
-			{
-				return arg2;
-			}
-		}
+		public string Arg2 => arg2;
 
-		public string Arg3
-		{
-			get
-			{
-				return arg3;
-			}
-		}
+		public string Arg3 => arg3;
 
-		public string Arg4
-		{
-			get
-			{
-				return arg4;
-			}
-		}
+		public string Arg4 => arg4;
 
-		public string Arg5
-		{
-			get
-			{
-				return arg5;
-			}
-		}
+		public string Arg5 => arg5;
 
-		public string Text
-		{
-			get
-			{
-				return text;
-			}
-		}
+		public string Text => text;
 
-		public string Voice
-		{
-			get
-			{
-				return voice;
-			}
-		}
+		public string Voice => voice;
 
-		public int VoiceVersion
-		{
-			get
-			{
-				return voiceVersion;
-			}
-		}
+		public int VoiceVersion => voiceVersion;
 
 		public AdvCommandSendMessage(StringGridRow row)
 			: base(row)

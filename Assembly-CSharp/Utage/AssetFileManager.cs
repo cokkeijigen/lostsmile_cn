@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -91,9 +90,10 @@ namespace Utage
 
 		private static AssetFileManager instance;
 
-		private static string CurrentDir;
+		// iTsukezigen++
+        private static string CurrentDir;
 
-		public FileIOManager FileIOManager
+        public FileIOManager FileIOManager
 		{
 			get
 			{
@@ -141,29 +141,11 @@ namespace Utage
 			}
 		}
 
-		public int MaxFilesOnMemory
-		{
-			get
-			{
-				return rangeOfFilesOnMemory.Max;
-			}
-		}
+		public int MaxFilesOnMemory => rangeOfFilesOnMemory.Max;
 
-		public int MinFilesOnMemory
-		{
-			get
-			{
-				return rangeOfFilesOnMemory.Min;
-			}
-		}
+		public int MinFilesOnMemory => rangeOfFilesOnMemory.Min;
 
-		internal UnloadType UnloadUnusedType
-		{
-			get
-			{
-				return unloadType;
-			}
-		}
+		internal UnloadType UnloadUnusedType => unloadType;
 
 		public AssetFileManagerSettings Settings
 		{
@@ -189,21 +171,9 @@ namespace Utage
 			}
 		}
 
-		private CustomLoadManager CustomLoadManager
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref customLoadManager);
-			}
-		}
+		private CustomLoadManager CustomLoadManager => this.GetComponentCacheCreateIfMissing(ref customLoadManager);
 
-		private StaticAssetManager StaticAssetManager
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref staticAssetManager);
-			}
-		}
+		private StaticAssetManager StaticAssetManager => this.GetComponentCacheCreateIfMissing(ref staticAssetManager);
 
 		public Action<AssetFile> CallbackError
 		{
@@ -273,18 +243,15 @@ namespace Utage
 
 		private AssetFileBase AddSub(string path, IAssetFileSettingData settingData)
 		{
-			AssetFileBase value;
-
-            if (!fileTbl.TryGetValue(path, out value))
+			if (!fileTbl.TryGetValue(path, out var value))
 			{
 				if (path.Contains(" "))
 				{
 					Debug.LogWarning("[" + path + "] contains white space");
 				}
-
 				AssetBundleInfo assetBundleInfo = AssetBundleInfoManager.FindAssetBundleInfo(path);
 				AssetFileInfo fileInfo = new AssetFileInfo(path, settings, assetBundleInfo);
-                value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
+				value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
 				if (value == null)
 				{
 					value = CustomLoadManager.Find(this, fileInfo, settingData);
@@ -409,7 +376,6 @@ namespace Utage
 					{
 						Debug.LogError("Load Failed. Dummy file loaded:" + file.FileName + "\n" + file.LoadErrorMsg);
 					}
-
 					file.LoadDummy(dummyFiles);
 					loadingFileList.Remove(file);
 					LoadNextFile();
@@ -615,17 +581,16 @@ namespace Utage
 
 		public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
 		{
-			//iTsukezigen++  Ìæ»»´æµµÖÐµÄÂ·¾¶
-			if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
-			{
-				int index = path.LastIndexOf("/LOSTSMILE_Data");
-				path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
-			}
-			//end++
 
-			if (!IsEditorErrorCheck)
+            //iTsukezigen++  Ìæ»»´æµµÖÐµÄÂ·¾¶
+            if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
+            {
+                int index = path.LastIndexOf("/LOSTSMILE_Data");
+                path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
+            }
+            //end++
+            if (!IsEditorErrorCheck)
 			{
-
 				return GetInstance().AddSub(path, settingData);
 			}
 			if (path.Contains(" "))
@@ -746,10 +711,6 @@ namespace Utage
 				}
 			}
 			return instance;
-		}
-
-		static AssetFileManager()
-		{
 		}
 	}
 }

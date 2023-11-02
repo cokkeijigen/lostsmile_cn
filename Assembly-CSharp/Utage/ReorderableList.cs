@@ -10,12 +10,6 @@ namespace Utage
 		[SerializeField]
 		private List<T> list = new List<T>();
 
-		public List<T> List
-		{
-			get
-			{
-				return list;
-			}
-		}
+		public List<T> List => list;
 	}
 }

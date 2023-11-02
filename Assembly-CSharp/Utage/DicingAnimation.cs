@@ -25,13 +25,7 @@ namespace Utage
 
 		private DicingImage dicing;
 
-		private DicingImage Dicing
-		{
-			get
-			{
-				return base.gameObject.GetComponentCache(ref dicing);
-			}
-		}
+		private DicingImage Dicing => base.gameObject.GetComponentCache(ref dicing);
 
 		private void Awake()
 		{
@@ -76,10 +70,7 @@ namespace Utage
 					}
 				}
 			}
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 
 		private IEnumerator CoPlayOnce(List<string> patternList)

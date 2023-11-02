@@ -20,21 +20,9 @@ public class UtageUguiSoundRoom : UguiView
 
 	protected bool isChangedBgm;
 
-	public UtageUguiGallery Gallery
-	{
-		get
-		{
-			return gallery ?? (gallery = Object.FindObjectOfType<UtageUguiGallery>());
-		}
-	}
+	public UtageUguiGallery Gallery => gallery ?? (gallery = Object.FindObjectOfType<UtageUguiGallery>());
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	protected virtual void OnOpen()
 	{

@@ -125,29 +125,11 @@ namespace Utage
 
 		private const string FuncFloorToInt = "FloorToInt";
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
-		public TokenType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public TokenType Type => type;
 
-		public int Priority
-		{
-			get
-			{
-				return priority;
-			}
-		}
+		public int Priority => priority;
 
 		public object Variable
 		{
@@ -161,13 +143,7 @@ namespace Utage
 			}
 		}
 
-		public int NumFunctionArg
-		{
-			get
-			{
-				return numFunctionArg;
-			}
-		}
+		public int NumFunctionArg => numFunctionArg;
 
 		public bool IsValueType
 		{
@@ -249,28 +225,23 @@ namespace Utage
 			{
 				Debug.LogError(" Token is enmpty");
 			}
-			int result;
-			if (int.TryParse(name, out result))
+			if (int.TryParse(name, out var result))
 			{
 				return new ExpressionToken(name, false, TokenType.Number, 0, result);
 			}
-			float val;
-			if (WrapperUnityVersion.TryParseFloatGlobal(name, out val))
+			if (WrapperUnityVersion.TryParseFloatGlobal(name, out var val))
 			{
 				return new ExpressionToken(name, false, TokenType.Number, 0, val);
 			}
-			bool result2;
-			if (bool.TryParse(name, out result2))
+			if (bool.TryParse(name, out var result2))
 			{
 				return new ExpressionToken(name, false, TokenType.Number, 0, result2);
 			}
-			string outStr;
-			if (TryParseString(name, out outStr))
+			if (TryParseString(name, out var outStr))
 			{
 				return new ExpressionToken(name, false, TokenType.Number, 0, outStr);
 			}
-			ExpressionToken token;
-			if (TryParseFunction(name, out token))
+			if (TryParseFunction(name, out var token))
 			{
 				return token;
 			}

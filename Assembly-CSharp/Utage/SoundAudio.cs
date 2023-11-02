@@ -24,13 +24,7 @@ namespace Utage
 
 		private static float[] waveData = new float[256];
 
-		private SoundStreamStatus Status
-		{
-			get
-			{
-				return status;
-			}
-		}
+		private SoundStreamStatus Status => status;
 
 		public AudioSource AudioSource { get; private set; }
 

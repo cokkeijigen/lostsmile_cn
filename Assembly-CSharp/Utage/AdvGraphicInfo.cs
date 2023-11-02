@@ -103,21 +103,9 @@ namespace Utage
 
 		public string ConditionalExpression { get; private set; }
 
-		public AdvRenderTextureSetting RenderTextureSetting
-		{
-			get
-			{
-				return renderTextureSetting;
-			}
-		}
+		public AdvRenderTextureSetting RenderTextureSetting => renderTextureSetting;
 
-		internal bool IsUguiComponentType
-		{
-			get
-			{
-				return GetComponentType().IsSubclassOf(typeof(AdvGraphicObjectUguiBase));
-			}
-		}
+		internal bool IsUguiComponentType => GetComponentType().IsSubclassOf(typeof(AdvGraphicObjectUguiBase));
 
 		public AdvGraphicInfo(string dataType, int index, string key, StringGridRow row, IAdvSettingData advSettindData)
 		{
@@ -190,8 +178,7 @@ namespace Utage
 			string text2 = AdvParser.ParseCellOptional(RowData, AdvColumnName.EyeBlink, "");
 			if (!string.IsNullOrEmpty(text2))
 			{
-				AdvEyeBlinkData value;
-				if (dataManager.EyeBlinkSetting.Dictionary.TryGetValue(text2, out value))
+				if (dataManager.EyeBlinkSetting.Dictionary.TryGetValue(text2, out var value))
 				{
 					EyeBlinkData = value;
 				}
@@ -203,8 +190,7 @@ namespace Utage
 			string text3 = AdvParser.ParseCellOptional(RowData, AdvColumnName.LipSynch, "");
 			if (!string.IsNullOrEmpty(text3))
 			{
-				AdvLipSynchData value2;
-				if (dataManager.LipSynchSetting.Dictionary.TryGetValue(text3, out value2))
+				if (dataManager.LipSynchSetting.Dictionary.TryGetValue(text3, out var value2))
 				{
 					LipSynchData = value2;
 				}

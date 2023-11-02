@@ -12,13 +12,7 @@ namespace Utage
 
 		private LetterBoxCamera letterBoxCamera;
 
-		private LetterBoxCamera LetterBoxCamera
-		{
-			get
-			{
-				return this.GetComponentCache(ref letterBoxCamera);
-			}
-		}
+		private LetterBoxCamera LetterBoxCamera => this.GetComponentCache(ref letterBoxCamera);
 
 		protected override void RenderImage(RenderTexture source, RenderTexture destination)
 		{

@@ -19,29 +19,11 @@ namespace Utage
 
 		private UguiNovelTextLine textLine;
 
-		public Type LineType
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public Type LineType => type;
 
-		public UguiNovelTextCharacter CharacteData
-		{
-			get
-			{
-				return characteData;
-			}
-		}
+		public UguiNovelTextCharacter CharacteData => characteData;
 
-		internal UguiNovelTextCharacter TopCharacter
-		{
-			get
-			{
-				return stringData[0];
-			}
-		}
+		internal UguiNovelTextCharacter TopCharacter => stringData[0];
 
 		internal UguiNovelTextGeneratorAdditionalLine(Type type, List<UguiNovelTextCharacter> characters, int index, UguiNovelTextGenerator generator)
 		{

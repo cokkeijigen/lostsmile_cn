@@ -9,13 +9,7 @@ namespace Utage
 	{
 		private DicingImage dicing;
 
-		private DicingImage Dicing
-		{
-			get
-			{
-				return base.gameObject.GetComponentCache(ref dicing);
-			}
-		}
+		private DicingImage Dicing => base.gameObject.GetComponentCache(ref dicing);
 
 		protected override IEnumerator CoUpdateLipSync()
 		{

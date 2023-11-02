@@ -46,8 +46,7 @@ namespace Utage
 			Text text = CachedText;
 			if (text != null && !LanguageManagerBase.Instance.IgnoreLocalizeUiText)
 			{
-				string text2;
-				if (LanguageManagerBase.Instance.TryLocalizeText(key, out text2))
+				if (LanguageManagerBase.Instance.TryLocalizeText(key, out var text2))
 				{
 					text.text = text2;
 				}

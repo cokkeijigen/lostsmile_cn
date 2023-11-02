@@ -10,13 +10,7 @@ public class SampleSendMessageByName : MonoBehaviour, IAdvSaveData, IBinaryIO
 
 	private const int Version = 0;
 
-	public string SaveKey
-	{
-		get
-		{
-			return "SampleSendMessageByName";
-		}
-	}
+	public string SaveKey => "SampleSendMessageByName";
 
 	private void Test(AdvCommandSendMessageByName command)
 	{

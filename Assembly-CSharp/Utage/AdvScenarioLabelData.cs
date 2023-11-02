@@ -14,13 +14,7 @@ namespace Utage
 
 		public AdvScenarioLabelData Next { get; internal set; }
 
-		public int PageNum
-		{
-			get
-			{
-				return PageDataList.Count;
-			}
-		}
+		public int PageNum => PageDataList.Count;
 
 		public bool IsSavePoint
 		{
@@ -265,10 +259,7 @@ namespace Utage
 			{
 				GetPageData(i).GetJumpScenarioLabelDataList(dataManager).ForEach(delegate(AdvScenarioLabelData x)
 				{
-					if (x != null)
-					{
-						x.PreloadDeep(dataManager, fileSet, maxFilePreload, deepLevel);
-					}
+					x?.PreloadDeep(dataManager, fileSet, maxFilePreload, deepLevel);
 				});
 			}
 		}
@@ -286,17 +277,13 @@ namespace Utage
 				return;
 			}
 			GetPageData(0).AddToFileSet(fileSet);
-			if (fileSet.Count >= maxFilePreload)
+			if (fileSet.Count < maxFilePreload)
 			{
-				return;
-			}
-			GetPageData(0).GetAutoJumpLabels(dataManager).ForEach(delegate(AdvScenarioLabelData x)
-			{
-				if (x != null)
+				GetPageData(0).GetAutoJumpLabels(dataManager).ForEach(delegate(AdvScenarioLabelData x)
 				{
-					x.PreloadDeep(dataManager, fileSet, maxFilePreload, deepLevel);
-				}
-			});
+					x?.PreloadDeep(dataManager, fileSet, maxFilePreload, deepLevel);
+				});
+			}
 		}
 	}
 }

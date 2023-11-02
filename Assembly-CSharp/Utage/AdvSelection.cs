@@ -25,29 +25,11 @@ namespace Utage
 
 		public string Label { get; private set; }
 
-		public string Text
-		{
-			get
-			{
-				return text;
-			}
-		}
+		public string Text => text;
 
-		public string JumpLabel
-		{
-			get
-			{
-				return jumpLabel;
-			}
-		}
+		public string JumpLabel => jumpLabel;
 
-		public ExpressionParser Exp
-		{
-			get
-			{
-				return exp;
-			}
-		}
+		public ExpressionParser Exp => exp;
 
 		public string PrefabName { get; protected set; }
 
@@ -55,29 +37,11 @@ namespace Utage
 
 		public float? Y { get; protected set; }
 
-		public string SpriteName
-		{
-			get
-			{
-				return spriteName;
-			}
-		}
+		public string SpriteName => spriteName;
 
-		public bool IsPolygon
-		{
-			get
-			{
-				return isPolygon;
-			}
-		}
+		public bool IsPolygon => isPolygon;
 
-		public StringGridRow RowData
-		{
-			get
-			{
-				return row;
-			}
-		}
+		public StringGridRow RowData => row;
 
 		public AdvSelection(string jumpLabel, string text, ExpressionParser exp, string prefabName, float? x, float? y, StringGridRow row)
 		{

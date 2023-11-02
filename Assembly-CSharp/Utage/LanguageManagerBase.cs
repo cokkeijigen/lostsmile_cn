@@ -52,53 +52,17 @@ namespace Utage
 			}
 		}
 
-		public string Language
-		{
-			get
-			{
-				return language;
-			}
-		}
+		public string Language => language;
 
-		public string DefaultLanguage
-		{
-			get
-			{
-				return defaultLanguage;
-			}
-		}
+		public string DefaultLanguage => defaultLanguage;
 
-		public string DataLanguage
-		{
-			get
-			{
-				return dataLanguage;
-			}
-		}
+		public string DataLanguage => dataLanguage;
 
-		public bool IgnoreLocalizeUiText
-		{
-			get
-			{
-				return ignoreLocalizeUiText;
-			}
-		}
+		public bool IgnoreLocalizeUiText => ignoreLocalizeUiText;
 
-		public bool IgnoreLocalizeVoice
-		{
-			get
-			{
-				return ignoreLocalizeVoice;
-			}
-		}
+		public bool IgnoreLocalizeVoice => ignoreLocalizeVoice;
 
-		public List<string> VoiceLanguages
-		{
-			get
-			{
-				return voiceLanguages;
-			}
-		}
+		public List<string> VoiceLanguages => voiceLanguages;
 
 		public Action OnChangeLanugage { get; set; }
 
@@ -120,13 +84,7 @@ namespace Utage
 
 		private LanguageData Data { get; set; }
 
-		public List<string> Languages
-		{
-			get
-			{
-				return Data.Languages;
-			}
-		}
+		public List<string> Languages => Data.Languages;
 
 		private void OnEnable()
 		{
@@ -163,8 +121,7 @@ namespace Utage
 
 		public string LocalizeText(string dataName, string key)
 		{
-			string text;
-			if (Data.ContainsKey(key) && Data.TryLocalizeText(out text, CurrentLanguage, DefaultLanguage, key, dataName))
+			if (Data.ContainsKey(key) && Data.TryLocalizeText(out var text, CurrentLanguage, DefaultLanguage, key, dataName))
 			{
 				return text;
 			}

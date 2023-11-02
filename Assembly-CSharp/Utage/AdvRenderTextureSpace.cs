@@ -19,13 +19,7 @@ namespace Utage
 
 		private AdvRenderTextureSetting Setting { get; set; }
 
-		public AdvRenderTextureMode RenderTextureType
-		{
-			get
-			{
-				return Setting.RenderTextureType;
-			}
-		}
+		public AdvRenderTextureMode RenderTextureType => Setting.RenderTextureType;
 
 		internal void Init(AdvGraphicInfo graphic, float pixelsToUnits)
 		{

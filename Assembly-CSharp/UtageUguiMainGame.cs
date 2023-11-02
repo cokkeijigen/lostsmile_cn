@@ -43,21 +43,9 @@ public class UtageUguiMainGame : UguiView
 
 	protected string scenarioLabel;
 
-	public virtual AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public virtual AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
-	public virtual LetterBoxCamera LetterBoxCamera
-	{
-		get
-		{
-			return letterBoxCamera ?? (letterBoxCamera = Object.FindObjectOfType<LetterBoxCamera>());
-		}
-	}
+	public virtual LetterBoxCamera LetterBoxCamera => letterBoxCamera ?? (letterBoxCamera = Object.FindObjectOfType<LetterBoxCamera>());
 
 	protected virtual void Awake()
 	{

@@ -36,9 +36,7 @@ namespace Utage
 		protected override void OnStartEffect(GameObject target, AdvEngine engine, AdvScenarioThread thread)
 		{
 			Camera componentInChildren = target.GetComponentInChildren<Camera>(true);
-			ImageEffectBase imageEffect;
-			bool alreadyEnabled;
-			ImageEffectUtil.TryGetComonentCreateIfMissing(ImageEffectType.ColorFade.ToString(), out imageEffect, out alreadyEnabled, componentInChildren.gameObject);
+			ImageEffectUtil.TryGetComonentCreateIfMissing(ImageEffectType.ColorFade.ToString(), out var imageEffect, out var alreadyEnabled, componentInChildren.gameObject);
 			ColorFade colorFade = imageEffect as ColorFade;
 			float start;
 			float end;

@@ -30,13 +30,7 @@ namespace Utage
 
 		private Color effectColor = Color.white;
 
-		public CharData.CustomCharaInfo CustomInfo
-		{
-			get
-			{
-				return charData.CustomInfo;
-			}
-		}
+		public CharData.CustomCharaInfo CustomInfo => charData.CustomInfo;
 
 		public float Width
 		{
@@ -50,53 +44,17 @@ namespace Utage
 			}
 		}
 
-		public int FontSize
-		{
-			get
-			{
-				return fontSize;
-			}
-		}
+		public int FontSize => fontSize;
 
-		public int DefaultFontSize
-		{
-			get
-			{
-				return defaultFontSize;
-			}
-		}
+		public int DefaultFontSize => defaultFontSize;
 
-		public FontStyle FontStyle
-		{
-			get
-			{
-				return fontStyle;
-			}
-		}
+		public FontStyle FontStyle => fontStyle;
 
-		public UIVertex[] Verts
-		{
-			get
-			{
-				return verts;
-			}
-		}
+		public UIVertex[] Verts => verts;
 
-		public float PositionX
-		{
-			get
-			{
-				return X0 + OffsetX;
-			}
-		}
+		public float PositionX => X0 + OffsetX;
 
-		public float PositionY
-		{
-			get
-			{
-				return Y0 + OffsetY;
-			}
-		}
+		public float PositionY => Y0 + OffsetY;
 
 		private float X0 { get; set; }
 
@@ -106,21 +64,9 @@ namespace Utage
 
 		private float OffsetY { get; set; }
 
-		public char Char
-		{
-			get
-			{
-				return charData.Char;
-			}
-		}
+		public char Char => charData.Char;
 
-		public bool IsBr
-		{
-			get
-			{
-				return charData.IsBr;
-			}
-		}
+		public bool IsBr => charData.IsBr;
 
 		public bool IsBrOrAutoBr
 		{
@@ -202,21 +148,9 @@ namespace Utage
 			}
 		}
 
-		public float BeginPositionX
-		{
-			get
-			{
-				return PositionX - RubySpaceSize;
-			}
-		}
+		public float BeginPositionX => PositionX - RubySpaceSize;
 
-		public float EndPositionX
-		{
-			get
-			{
-				return PositionX + Width + RubySpaceSize;
-			}
-		}
+		public float EndPositionX => PositionX + Width + RubySpaceSize;
 
 		public bool IsVisible { get; set; }
 

@@ -65,9 +65,7 @@ namespace Utage
 			for (int i = 0; i < num2; i++)
 			{
 				string text = reader.ReadString();
-				ImageEffectBase component;
-				bool alreadyEnabled;
-				if (!ImageEffectUtil.TryGetComonentCreateIfMissing(text, out component, out alreadyEnabled, LetterBoxCamera.gameObject))
+				if (!ImageEffectUtil.TryGetComonentCreateIfMissing(text, out var component, out var _, LetterBoxCamera.gameObject))
 				{
 					Debug.LogError("Unkonwo Image Effect Type [ " + text + " ]");
 					reader.SkipBuffer();

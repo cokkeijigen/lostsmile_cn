@@ -63,13 +63,7 @@ namespace Utage
 
 		private bool isDebugLog;
 
-		public UguiNovelText NovelText
-		{
-			get
-			{
-				return novelText ?? (novelText = GetComponent<UguiNovelText>());
-			}
-		}
+		public UguiNovelText NovelText => novelText ?? (novelText = GetComponent<UguiNovelText>());
 
 		private UguiNovelTextGeneratorInfo Info
 		{
@@ -83,29 +77,11 @@ namespace Utage
 			}
 		}
 
-		private TextData TextData
-		{
-			get
-			{
-				return Info.TextData;
-			}
-		}
+		private TextData TextData => Info.TextData;
 
-		internal List<UguiNovelTextLine> LineDataList
-		{
-			get
-			{
-				return Info.LineDataList;
-			}
-		}
+		internal List<UguiNovelTextLine> LineDataList => Info.LineDataList;
 
-		public List<UguiNovelTextHitArea> HitGroupLists
-		{
-			get
-			{
-				return Info.HitGroupLists;
-			}
-		}
+		public List<UguiNovelTextHitArea> HitGroupLists => Info.HitGroupLists;
 
 		public float Space
 		{
@@ -251,13 +227,7 @@ namespace Utage
 			}
 		}
 
-		public bool IsUnicodeFont
-		{
-			get
-			{
-				return isUnicodeFont;
-			}
-		}
+		public bool IsUnicodeFont => isUnicodeFont;
 
 		public RectTransform CachedRectTransform
 		{
@@ -291,13 +261,7 @@ namespace Utage
 			}
 		}
 
-		public Vector3 EndPosition
-		{
-			get
-			{
-				return Info.EndPosition;
-			}
-		}
+		public Vector3 EndPosition => Info.EndPosition;
 
 		internal void RefreshEndPosition()
 		{

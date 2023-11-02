@@ -153,7 +153,7 @@ namespace Utage
 			{
 				return url;
 			}
-			return string.Format("{0}?datetime={1}", url, DateTime.Now.ToFileTime());
+			return $"{url}?datetime={DateTime.Now.ToFileTime()}";
 		}
 
 		public static string ToStreamingAssetsPath(string path)
@@ -191,8 +191,7 @@ namespace Utage
 		{
 			path = Format(path);
 			directoryPath = Format(directoryPath);
-			string newPath;
-			if (!TryRemoveDirectory(path, directoryPath, out newPath))
+			if (!TryRemoveDirectory(path, directoryPath, out var newPath))
 			{
 				Debug.LogError("RemoveDirectoryPath Error [" + path + "]  [" + directoryPath + "] ");
 			}

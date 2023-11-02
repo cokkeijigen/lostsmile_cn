@@ -12,21 +12,9 @@ namespace Utage
 
 		private List<ExpressionToken> tokens;
 
-		public string Exp
-		{
-			get
-			{
-				return exp;
-			}
-		}
+		public string Exp => exp;
 
-		public string ErrorMsg
-		{
-			get
-			{
-				return errorMsg;
-			}
-		}
+		public string ErrorMsg => errorMsg;
 
 		private void AddErrorMsg(string msg)
 		{

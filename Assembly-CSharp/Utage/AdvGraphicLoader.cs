@@ -39,10 +39,7 @@ namespace Utage
 				yield return null;
 			}
 			OnComplete.Invoke();
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 
 		public void Unload()

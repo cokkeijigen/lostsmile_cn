@@ -31,53 +31,17 @@ namespace Utage
 
 		private List<GameObject> items = new List<GameObject>();
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
-		protected List<GameObject> PrefabList
-		{
-			get
-			{
-				return prefabList;
-			}
-		}
+		protected List<GameObject> PrefabList => prefabList;
 
-		protected AdvSelectionManager SelectionManager
-		{
-			get
-			{
-				return engine.SelectionManager;
-			}
-		}
+		protected AdvSelectionManager SelectionManager => engine.SelectionManager;
 
-		public UguiListView ListView
-		{
-			get
-			{
-				return listView ?? (listView = GetComponent<UguiListView>());
-			}
-		}
+		public UguiListView ListView => listView ?? (listView = GetComponent<UguiListView>());
 
-		private CanvasGroup CanvasGroup
-		{
-			get
-			{
-				return base.gameObject.GetComponentCacheCreateIfMissing(ref canvasGroup);
-			}
-		}
+		private CanvasGroup CanvasGroup => base.gameObject.GetComponentCacheCreateIfMissing(ref canvasGroup);
 
-		public List<GameObject> Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public List<GameObject> Items => items;
 
 		public virtual void Open()
 		{

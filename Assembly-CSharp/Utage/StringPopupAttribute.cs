@@ -7,13 +7,7 @@ namespace Utage
 	{
 		private List<string> stringList = new List<string>();
 
-		public List<string> StringList
-		{
-			get
-			{
-				return stringList;
-			}
-		}
+		public List<string> StringList => stringList;
 
 		public StringPopupAttribute(params string[] args)
 		{

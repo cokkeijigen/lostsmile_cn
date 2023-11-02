@@ -51,12 +51,9 @@ namespace Utage
 					{
 						break;
 					}
-					PropertyType val;
-					if (!stringGridRow.TryParseCellTypeOptional(0, PropertyType.Custom, out val))
+					if (!stringGridRow.TryParseCellTypeOptional(0, PropertyType.Custom, out var val))
 					{
-						string str;
-						string str2;
-						stringGridRow.ParseCell<string>(0).Separate('.', false, out str, out str2);
+						stringGridRow.ParseCell<string>(0).Separate('.', false, out var str, out var str2);
 						Type type = Type.GetType(str);
 						if (type == null)
 						{
@@ -97,8 +94,7 @@ namespace Utage
 			List<float> list = new List<float>();
 			for (int i = 1; i < row.Strings.Length; i++)
 			{
-				float val;
-				if (!row.TryParseCell<float>(i, out val))
+				if (!row.TryParseCell<float>(i, out var val))
 				{
 					Debug.LogError(row.ToErrorString("TimeTbl pase error"));
 				}
@@ -136,8 +132,7 @@ namespace Utage
 				AnimationEvent animationEvent = new AnimationEvent();
 				if (propertyType == PropertyType.Texture)
 				{
-					string val;
-					if (!row.TryParseCell<string>(i, out val))
+					if (!row.TryParseCell<string>(i, out var val))
 					{
 						continue;
 					}
@@ -157,14 +152,13 @@ namespace Utage
 			AnimationCurve animationCurve = new AnimationCurve();
 			for (int i = 0; i < row.Strings.Length; i++)
 			{
-				float val;
-				if (i != 0 && !row.IsEmptyCell(i) && row.TryParseCell<float>(i, out val))
+				if (i != 0 && !row.IsEmptyCell(i) && row.TryParseCell<float>(i, out var val))
 				{
 					animationCurve.AddKey(new Keyframe(timeTbl[i - 1], val));
 				}
 			}
-			int num = animationCurve.keys.Length;
-			int num2 = 1;
+			_ = animationCurve.keys.Length;
+			_ = 1;
 			return animationCurve;
 		}
 

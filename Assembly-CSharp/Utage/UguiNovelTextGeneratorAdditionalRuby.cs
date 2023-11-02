@@ -16,45 +16,15 @@ namespace Utage
 
 		private UguiNovelTextLine textLine;
 
-		public List<UguiNovelTextCharacter> RubyList
-		{
-			get
-			{
-				return rubyList;
-			}
-		}
+		public List<UguiNovelTextCharacter> RubyList => rubyList;
 
-		internal UguiNovelTextCharacter TopCharacter
-		{
-			get
-			{
-				return stringData[0];
-			}
-		}
+		internal UguiNovelTextCharacter TopCharacter => stringData[0];
 
-		public float RubyWidth
-		{
-			get
-			{
-				return rubyWidth;
-			}
-		}
+		public float RubyWidth => rubyWidth;
 
-		public float StringWidth
-		{
-			get
-			{
-				return stringWidth;
-			}
-		}
+		public float StringWidth => stringWidth;
 
-		public bool IsWideType
-		{
-			get
-			{
-				return RubyWidth > StringWidth;
-			}
-		}
+		public bool IsWideType => RubyWidth > StringWidth;
 
 		internal UguiNovelTextGeneratorAdditionalRuby(List<UguiNovelTextCharacter> characters, int index, UguiNovelTextGenerator generator)
 		{

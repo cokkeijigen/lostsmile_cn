@@ -13,13 +13,7 @@ namespace Utage
 
 		public AssetFileInfo FileInfo { get; private set; }
 
-		public virtual string FileName
-		{
-			get
-			{
-				return FileInfo.FileName;
-			}
-		}
+		public virtual string FileName => FileInfo.FileName;
 
 		public IAssetFileSettingData SettingData { get; private set; }
 
@@ -58,7 +52,7 @@ namespace Utage
 
 		public AssetFileBase(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
 		{
-            FileManager = mangager;
+			FileManager = mangager;
 			FileInfo = fileInfo;
 			FileType = fileInfo.FileType;
 			SettingData = settingData;
@@ -119,7 +113,6 @@ namespace Utage
 
 		protected virtual string ParseLoadPath()
 		{
-
 			switch (FileInfo.StrageType)
 			{
 			case AssetFileStrageType.Server:

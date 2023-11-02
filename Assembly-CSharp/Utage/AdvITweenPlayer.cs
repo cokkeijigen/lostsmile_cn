@@ -27,21 +27,9 @@ namespace Utage
 
 		private List<AdvITweenPlayer> oldTweenPlayers = new List<AdvITweenPlayer>();
 
-		public bool IsEndlessLoop
-		{
-			get
-			{
-				return data.IsEndlessLoop;
-			}
-		}
+		public bool IsEndlessLoop => data.IsEndlessLoop;
 
-		public bool IsPlaying
-		{
-			get
-			{
-				return isPlaying;
-			}
-		}
+		public bool IsPlaying => isPlaying;
 
 		public bool IsAddType
 		{

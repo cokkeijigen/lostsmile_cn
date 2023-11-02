@@ -105,13 +105,7 @@ namespace Utage
 		[NotEditable]
 		private Vector2 size;
 
-		public string OptionTag
-		{
-			get
-			{
-				return optionTag;
-			}
-		}
+		public string OptionTag => optionTag;
 
 		public Vector2 Size
 		{

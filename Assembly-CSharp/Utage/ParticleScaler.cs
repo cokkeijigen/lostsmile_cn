@@ -124,8 +124,7 @@ namespace Utage
 			}
 			if (ChangeGravity)
 			{
-				float value;
-				if (!defaultGravities.TryGetValue(particle, out value))
+				if (!defaultGravities.TryGetValue(particle, out var value))
 				{
 					value = main.gravityModifier.constant;
 					defaultGravities.Add(particle, value);

@@ -45,8 +45,7 @@ namespace Utage
 
 		public AdvSoundSettingData FindData(string label)
 		{
-			AdvSoundSettingData value;
-			if (!base.Dictionary.TryGetValue(label, out value))
+			if (!base.Dictionary.TryGetValue(label, out var value))
 			{
 				return null;
 			}
@@ -55,12 +54,7 @@ namespace Utage
 
 		public StringGridRow FindRowData(string label)
 		{
-			AdvSoundSettingData advSoundSettingData = FindData(label);
-			if (advSoundSettingData == null)
-			{
-				return null;
-			}
-			return advSoundSettingData.RowData;
+			return FindData(label)?.RowData;
 		}
 
 		public List<AdvSoundSettingData> GetSoundRoomList()

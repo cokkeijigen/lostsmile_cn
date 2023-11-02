@@ -3,10 +3,9 @@ using UnityEngine;
 using System.IO;
 using Utage;
 using System;
-using UnityEngine.Video;
 
-// iTsukezigen, CHS资源加载器
-namespace CHS{
+// iTsukezigen++ CHS资源加载器
+namespace CHS {
     public class AssetManager
     {
 

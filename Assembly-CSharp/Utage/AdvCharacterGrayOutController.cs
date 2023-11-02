@@ -47,13 +47,7 @@ namespace Utage
 
 		private Dictionary<AdvGraphicLayer, int> defaultOrders = new Dictionary<AdvGraphicLayer, int>();
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
 
 		public LightingMask Mask
 		{
@@ -115,21 +109,9 @@ namespace Utage
 			}
 		}
 
-		public bool EnableChangeOrder
-		{
-			get
-			{
-				return enableChangeOrder;
-			}
-		}
+		public bool EnableChangeOrder => enableChangeOrder;
 
-		public int OrderOffset
-		{
-			get
-			{
-				return orderOffset;
-			}
-		}
+		public int OrderOffset => orderOffset;
 
 		private void Awake()
 		{
@@ -178,8 +160,7 @@ namespace Utage
 		{
 			if (EnableChangeOrder)
 			{
-				int value;
-				if (!defaultOrders.TryGetValue(layer, out value))
+				if (!defaultOrders.TryGetValue(layer, out var value))
 				{
 					value = layer.Canvas.sortingOrder;
 					defaultOrders.Add(layer, layer.Canvas.sortingOrder);

@@ -10,13 +10,7 @@ namespace Utage
 		[SerializeField]
 		private StringGridDictionary dictionary;
 
-		public List<StringGridDictionaryKeyValue> List
-		{
-			get
-			{
-				return dictionary.List;
-			}
-		}
+		public List<StringGridDictionaryKeyValue> List => dictionary.List;
 
 		public void Clear()
 		{

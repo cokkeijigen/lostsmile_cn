@@ -65,13 +65,7 @@ namespace Utage
 
 		public string MainPattern { get; private set; }
 
-		public DicingTextureData PatternData
-		{
-			get
-			{
-				return patternData;
-			}
-		}
+		public DicingTextureData PatternData => patternData;
 
 		public bool SkipTransParentCell
 		{
@@ -225,8 +219,7 @@ namespace Utage
 
 		public bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
 		{
-			Vector2 localPoint;
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(base.rectTransform, sp, eventCamera, out localPoint);
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(base.rectTransform, sp, eventCamera, out var localPoint);
 			return HitTest(localPoint);
 		}
 

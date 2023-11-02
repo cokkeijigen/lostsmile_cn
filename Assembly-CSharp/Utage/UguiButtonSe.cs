@@ -17,13 +17,7 @@ namespace Utage
 
 		public SoundPlayMode highlitedPlayMode;
 
-		private Selectable Selectable
-		{
-			get
-			{
-				return selectable ?? (selectable = GetComponent<Selectable>());
-			}
-		}
+		private Selectable Selectable => selectable ?? (selectable = GetComponent<Selectable>());
 
 		public void OnPointerClick(PointerEventData data)
 		{

@@ -52,13 +52,7 @@ namespace Utage
 			}
 		}
 
-		public virtual Graphic Target
-		{
-			get
-			{
-				return target ?? (target = GetComponent<RawImage>());
-			}
-		}
+		public virtual Graphic Target => target ?? (target = GetComponent<RawImage>());
 
 		private Timer Timer
 		{

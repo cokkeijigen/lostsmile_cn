@@ -10,13 +10,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public Dictionary<string, AdvParamData> Tbl
-		{
-			get
-			{
-				return tbl;
-			}
-		}
+		public Dictionary<string, AdvParamData> Tbl => tbl;
 
 		public AdvParamStruct()
 		{
@@ -57,7 +51,7 @@ namespace Utage
 					string fileType = ((i < fileTypes.Length) ? fileTypes.Strings[i] : "");
 					if (!advParamData.TryParse(text, type, fileType))
 					{
-						Debug.LogError(string.Format("{0} Header [<b>{1}</b>]: ", names.Grid.Name, i));
+						Debug.LogError($"{names.Grid.Name} Header [<b>{i}</b>]: ");
 					}
 					else
 					{
@@ -123,8 +117,7 @@ namespace Utage
 			{
 				if (item.Value.SaveFileType != AdvParamData.FileType.System)
 				{
-					AdvParamData value;
-					if (Tbl.TryGetValue(item.Key, out value))
+					if (Tbl.TryGetValue(item.Key, out var value))
 					{
 						value.Copy(item.Value);
 					}
@@ -190,8 +183,7 @@ namespace Utage
 			{
 				string key = reader.ReadString();
 				string paramString = reader.ReadString();
-				AdvParamData value;
-				if (Tbl.TryGetValue(key, out value) && value.SaveFileType == fileType)
+				if (Tbl.TryGetValue(key, out var value) && value.SaveFileType == fileType)
 				{
 					value.Read(paramString);
 				}

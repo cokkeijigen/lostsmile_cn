@@ -16,55 +16,19 @@ namespace Utage
 
 		private Dictionary<string, AdvScenarioLabelData> scenarioLabels = new Dictionary<string, AdvScenarioLabelData>();
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		private string Name => name;
 
 		public AdvImportScenarioSheet DataGrid { get; private set; }
 
-		public string DataGridName
-		{
-			get
-			{
-				return DataGrid.Name;
-			}
-		}
+		public string DataGridName => DataGrid.Name;
 
-		public bool IsInit
-		{
-			get
-			{
-				return isInit;
-			}
-		}
+		public bool IsInit => isInit;
 
-		public bool IsAlreadyBackGroundLoad
-		{
-			get
-			{
-				return isAlreadyBackGroundLoad;
-			}
-		}
+		public bool IsAlreadyBackGroundLoad => isAlreadyBackGroundLoad;
 
-		public List<AdvScenarioJumpData> JumpDataList
-		{
-			get
-			{
-				return jumpDataList;
-			}
-		}
+		public List<AdvScenarioJumpData> JumpDataList => jumpDataList;
 
-		public Dictionary<string, AdvScenarioLabelData> ScenarioLabels
-		{
-			get
-			{
-				return scenarioLabels;
-			}
-		}
+		public Dictionary<string, AdvScenarioLabelData> ScenarioLabels => scenarioLabels;
 
 		public AdvScenarioData(AdvImportScenarioSheet grid)
 		{
@@ -196,12 +160,7 @@ namespace Utage
 
 		public AdvScenarioLabelData FindNextScenarioLabelData(string scenarioLabel)
 		{
-			AdvScenarioLabelData advScenarioLabelData = FindScenarioLabelData(scenarioLabel);
-			if (advScenarioLabelData != null)
-			{
-				return advScenarioLabelData.Next;
-			}
-			return null;
+			return FindScenarioLabelData(scenarioLabel)?.Next;
 		}
 	}
 }

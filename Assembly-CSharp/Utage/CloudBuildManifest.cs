@@ -35,77 +35,23 @@ namespace Utage
 		[SerializeField]
 		private string cloudBuildTargetName = "";
 
-		public string ScmCommitId
-		{
-			get
-			{
-				return scmCommitId;
-			}
-		}
+		public string ScmCommitId => scmCommitId;
 
-		public string ScmBranch
-		{
-			get
-			{
-				return scmBranch;
-			}
-		}
+		public string ScmBranch => scmBranch;
 
-		public string BuildNumber
-		{
-			get
-			{
-				return buildNumber;
-			}
-		}
+		public string BuildNumber => buildNumber;
 
-		public string BuildStartTime
-		{
-			get
-			{
-				return buildStartTime;
-			}
-		}
+		public string BuildStartTime => buildStartTime;
 
-		public string ProjectId
-		{
-			get
-			{
-				return projectId;
-			}
-		}
+		public string ProjectId => projectId;
 
-		public string BundleId
-		{
-			get
-			{
-				return bundleId;
-			}
-		}
+		public string BundleId => bundleId;
 
-		public string UnityVersion
-		{
-			get
-			{
-				return unityVersion;
-			}
-		}
+		public string UnityVersion => unityVersion;
 
-		public string XCodeVersion
-		{
-			get
-			{
-				return xcodeVersion;
-			}
-		}
+		public string XCodeVersion => xcodeVersion;
 
-		public string CloudBuildTargetName
-		{
-			get
-			{
-				return cloudBuildTargetName;
-			}
-		}
+		public string CloudBuildTargetName => cloudBuildTargetName;
 
 		public static string VersionText()
 		{
@@ -114,7 +60,7 @@ namespace Utage
 			{
 				return "Not Unity Cloud Build";
 			}
-			return string.Format("{0} #{1}  UTC: {2}", cloudBuildManifest.CloudBuildTargetName, cloudBuildManifest.BuildNumber, cloudBuildManifest.BuildStartTime);
+			return $"{cloudBuildManifest.CloudBuildTargetName} #{cloudBuildManifest.BuildNumber}  UTC: {cloudBuildManifest.BuildStartTime}";
 		}
 
 		public static CloudBuildManifest Instance()

@@ -101,77 +101,23 @@ namespace Utage
 			}
 		}
 
-		public AdvDataManager DataManager
-		{
-			get
-			{
-				return dataManager ?? (dataManager = GetComponent<AdvDataManager>());
-			}
-		}
+		public AdvDataManager DataManager => dataManager ?? (dataManager = GetComponent<AdvDataManager>());
 
-		public AdvScenarioPlayer ScenarioPlayer
-		{
-			get
-			{
-				return scenarioPlayer ?? (scenarioPlayer = GetComponent<AdvScenarioPlayer>());
-			}
-		}
+		public AdvScenarioPlayer ScenarioPlayer => scenarioPlayer ?? (scenarioPlayer = GetComponent<AdvScenarioPlayer>());
 
-		public AdvPage Page
-		{
-			get
-			{
-				return page ?? (page = GetComponent<AdvPage>());
-			}
-		}
+		public AdvPage Page => page ?? (page = GetComponent<AdvPage>());
 
-		public AdvSelectionManager SelectionManager
-		{
-			get
-			{
-				return selectionManager ?? (selectionManager = GetComponent<AdvSelectionManager>());
-			}
-		}
+		public AdvSelectionManager SelectionManager => selectionManager ?? (selectionManager = GetComponent<AdvSelectionManager>());
 
-		public AdvMessageWindowManager MessageWindowManager
-		{
-			get
-			{
-				return messageWindowManager ?? (messageWindowManager = base.gameObject.GetComponentCreateIfMissing<AdvMessageWindowManager>());
-			}
-		}
+		public AdvMessageWindowManager MessageWindowManager => messageWindowManager ?? (messageWindowManager = base.gameObject.GetComponentCreateIfMissing<AdvMessageWindowManager>());
 
-		public AdvBacklogManager BacklogManager
-		{
-			get
-			{
-				return backlogManager ?? (backlogManager = GetComponent<AdvBacklogManager>());
-			}
-		}
+		public AdvBacklogManager BacklogManager => backlogManager ?? (backlogManager = GetComponent<AdvBacklogManager>());
 
-		public AdvConfig Config
-		{
-			get
-			{
-				return config ?? (config = GetComponent<AdvConfig>());
-			}
-		}
+		public AdvConfig Config => config ?? (config = GetComponent<AdvConfig>());
 
-		public AdvSystemSaveData SystemSaveData
-		{
-			get
-			{
-				return systemSaveData ?? (systemSaveData = GetComponent<AdvSystemSaveData>());
-			}
-		}
+		public AdvSystemSaveData SystemSaveData => systemSaveData ?? (systemSaveData = GetComponent<AdvSystemSaveData>());
 
-		public AdvSaveManager SaveManager
-		{
-			get
-			{
-				return saveManager ?? (saveManager = GetComponent<AdvSaveManager>());
-			}
-		}
+		public AdvSaveManager SaveManager => saveManager ?? (saveManager = GetComponent<AdvSaveManager>());
 
 		public AdvGraphicManager GraphicManager
 		{
@@ -186,45 +132,15 @@ namespace Utage
 			}
 		}
 
-		public AdvEffectManager EffectManager
-		{
-			get
-			{
-				return effectManager ?? (effectManager = base.transform.GetCompoentInChildrenCreateIfMissing<AdvEffectManager>());
-			}
-		}
+		public AdvEffectManager EffectManager => effectManager ?? (effectManager = base.transform.GetCompoentInChildrenCreateIfMissing<AdvEffectManager>());
 
-		public AdvUiManager UiManager
-		{
-			get
-			{
-				return uiManager ?? (uiManager = UnityEngine.Object.FindObjectOfType<AdvUiManager>());
-			}
-		}
+		public AdvUiManager UiManager => uiManager ?? (uiManager = UnityEngine.Object.FindObjectOfType<AdvUiManager>());
 
-		public SoundManager SoundManager
-		{
-			get
-			{
-				return soundManager ?? (soundManager = UnityEngine.Object.FindObjectOfType<SoundManager>());
-			}
-		}
+		public SoundManager SoundManager => soundManager ?? (soundManager = UnityEngine.Object.FindObjectOfType<SoundManager>());
 
-		public CameraManager CameraManager
-		{
-			get
-			{
-				return cameraManager ?? (cameraManager = UnityEngine.Object.FindObjectOfType<CameraManager>());
-			}
-		}
+		public CameraManager CameraManager => cameraManager ?? (cameraManager = UnityEngine.Object.FindObjectOfType<CameraManager>());
 
-		public AdvParamManager Param
-		{
-			get
-			{
-				return param;
-			}
-		}
+		public AdvParamManager Param => param;
 
 		public List<AdvCustomCommandManager> CustomCommandManagerList
 		{
@@ -255,45 +171,15 @@ namespace Utage
 			}
 		}
 
-		public AdvEvent OnPageTextChange
-		{
-			get
-			{
-				return onPageTextChange;
-			}
-		}
+		public AdvEvent OnPageTextChange => onPageTextChange;
 
-		public AdvEvent OnChangeLanguage
-		{
-			get
-			{
-				return onChangeLanguage;
-			}
-		}
+		public AdvEvent OnChangeLanguage => onChangeLanguage;
 
-		public bool IsWaitBootLoading
-		{
-			get
-			{
-				return isWaitBootLoading;
-			}
-		}
+		public bool IsWaitBootLoading => isWaitBootLoading;
 
-		public bool IsStarted
-		{
-			get
-			{
-				return isStarted;
-			}
-		}
+		public bool IsStarted => isStarted;
 
-		public bool IsSceneGallery
-		{
-			get
-			{
-				return isSceneGallery;
-			}
-		}
+		public bool IsSceneGallery => isSceneGallery;
 
 		public bool IsLoading
 		{
@@ -327,13 +213,7 @@ namespace Utage
 			}
 		}
 
-		public bool IsPausingScenario
-		{
-			get
-			{
-				return ScenarioPlayer.IsPausing;
-			}
-		}
+		public bool IsPausingScenario => ScenarioPlayer.IsPausing;
 
 		public bool IsEndOrPauseScenario
 		{
@@ -349,8 +229,7 @@ namespace Utage
 
 		public void BootFromExportData(AdvImportScenarios scenarios, string resourceDir)
 		{
-
-            base.gameObject.SetActive(true);
+			base.gameObject.SetActive(true);
 			StopAllCoroutines();
 			StartCoroutine(CoBootFromExportData(scenarios, resourceDir));
 		}
@@ -467,8 +346,7 @@ namespace Utage
 
 		private IEnumerator CoBootInit(string rootDirResource)
 		{
-
-            BootInitCustomCommand();
+			BootInitCustomCommand();
 			DataManager.BootInit(rootDirResource);
 			GraphicManager.BootInit(this, DataManager.SettingDataManager.LayerSetting);
 			Param.InitDefaultAll(DataManager.SettingDataManager.DefaultParam);

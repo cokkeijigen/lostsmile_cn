@@ -15,21 +15,9 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public Dictionary<string, AdvGuiBase> Objects
-		{
-			get
-			{
-				return objects;
-			}
-		}
+		public Dictionary<string, AdvGuiBase> Objects => objects;
 
-		public virtual string SaveKey
-		{
-			get
-			{
-				return "GuiManager";
-			}
-		}
+		public virtual string SaveKey => "GuiManager";
 
 		protected virtual void Awake()
 		{
@@ -78,8 +66,7 @@ namespace Utage
 					string text = reader.ReadString();
 					int count = reader.ReadInt32();
 					byte[] buffer = reader.ReadBytes(count);
-					AdvGuiBase value;
-					if (objects.TryGetValue(text, out value))
+					if (objects.TryGetValue(text, out var value))
 					{
 						value.ReadBuffer(buffer);
 					}

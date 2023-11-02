@@ -32,29 +32,11 @@ namespace Utage
 			}
 		}
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
-		public AdvUguiSelection Selection
-		{
-			get
-			{
-				return selection ?? (selection = GetComponent<AdvUguiSelection>());
-			}
-		}
+		public AdvUguiSelection Selection => selection ?? (selection = GetComponent<AdvUguiSelection>());
 
-		public float TimeCount
-		{
-			get
-			{
-				return time;
-			}
-		}
+		public float TimeCount => time;
 
 		private void Awake()
 		{

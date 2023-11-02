@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Linq;
 
 namespace Utage
 {
@@ -47,37 +43,13 @@ namespace Utage
 			}
 		}
 
-		public AdvSettingDataManager SettingDataManager
-		{
-			get
-			{
-				return settingDataManager;
-			}
-		}
+		public AdvSettingDataManager SettingDataManager => settingDataManager;
 
-		public Dictionary<string, AdvScenarioData> ScenarioDataTbl
-		{
-			get
-			{
-				return scenarioDataTbl;
-			}
-		}
+		public Dictionary<string, AdvScenarioData> ScenarioDataTbl => scenarioDataTbl;
 
-		public bool IsReadySettingData
-		{
-			get
-			{
-				return settingDataManager != null;
-			}
-		}
+		public bool IsReadySettingData => settingDataManager != null;
 
-		public AdvMacroManager MacroManager
-		{
-			get
-			{
-				return macroManager;
-			}
-		}
+		public AdvMacroManager MacroManager => macroManager;
 
 		public virtual void BootInit(string rootDirResource)
 		{
@@ -122,9 +94,7 @@ namespace Utage
 			foreach (AdvScenarioData value in scenarioDataTbl.Values)
 			{
 				value.Init(settingDataManager);
-          
-                //LogPrinter.Puts($"[BootInitScenariodData] Name: {value.Name}   DataGridName: {value.DataGridName}");
-            }
+			}
 		}
 
 		public virtual IEnumerator CoBootInitScenariodData()
@@ -265,12 +235,7 @@ namespace Utage
 			{
 				if (value.IsContainsScenarioLabel(scenarioLabel))
 				{
-					AdvScenarioLabelData advScenarioLabelData = value.FindScenarioLabelData(scenarioLabel);
-					if (advScenarioLabelData == null)
-					{
-						return null;
-					}
-					return advScenarioLabelData.MakePreloadFileListSub(this, page, maxFilePreload, preloadDeep);
+					return value.FindScenarioLabelData(scenarioLabel)?.MakePreloadFileListSub(this, page, maxFilePreload, preloadDeep);
 				}
 			}
 			return null;

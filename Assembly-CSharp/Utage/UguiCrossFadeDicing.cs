@@ -10,13 +10,7 @@ namespace Utage
 	{
 		private DicingTextureData fadePatternData;
 
-		public override Graphic Target
-		{
-			get
-			{
-				return target ?? (target = GetComponent<DicingImage>());
-			}
-		}
+		public override Graphic Target => target ?? (target = GetComponent<DicingImage>());
 
 		internal void CrossFade(DicingTextureData fadePatternData, Texture fadeTexture, float time, Action onComplete)
 		{
@@ -44,7 +38,7 @@ namespace Utage
 			if (num4 != verts2.Count)
 			{
 				num4 = Mathf.Min(num4, verts2.Count);
-				Debug.LogError(string.Format("Not equal texture size {0} and {1}", dicingImage.PatternData.Name, fadePatternData.Name));
+				Debug.LogError($"Not equal texture size {dicingImage.PatternData.Name} and {fadePatternData.Name}");
 			}
 			for (int i = 0; i < num4; i++)
 			{

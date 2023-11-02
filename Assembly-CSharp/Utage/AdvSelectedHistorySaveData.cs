@@ -62,13 +62,7 @@ namespace Utage
 
 		private const int VERSION = 0;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "AdvSelectedHistorySaveData";
-			}
-		}
+		public string SaveKey => "AdvSelectedHistorySaveData";
 
 		public void AddData(AdvSelection selection)
 		{

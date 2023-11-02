@@ -14,13 +14,7 @@ namespace Utage
 
 		public AdvGraphicInfoList Graphic { get; private set; }
 
-		public string LocalizeNameText
-		{
-			get
-			{
-				return LanguageManagerBase.Instance.LocalizeText(TextParser.MakeLogText(NameText));
-			}
-		}
+		public string LocalizeNameText => LanguageManagerBase.Instance.LocalizeText(TextParser.MakeLogText(NameText));
 
 		public static AdvCharacterInfo Create(AdvCommand command, AdvSettingDataManager dataManager)
 		{

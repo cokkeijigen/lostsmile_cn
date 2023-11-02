@@ -7,13 +7,7 @@ namespace Utage
 	{
 		private List<int> popupList = new List<int>();
 
-		public List<int> PopupList
-		{
-			get
-			{
-				return popupList;
-			}
-		}
+		public List<int> PopupList => popupList;
 
 		public IntPopupAttribute(params int[] args)
 		{

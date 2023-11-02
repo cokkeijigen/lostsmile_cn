@@ -59,13 +59,7 @@ namespace Utage
 
 		private bool isDefault;
 
-		public string Name
-		{
-			get
-			{
-				return base.Key;
-			}
-		}
+		public string Name => base.Key;
 
 		public LayerType Type { get; private set; }
 

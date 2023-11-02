@@ -12,13 +12,7 @@ namespace Utage
 	{
 		private AdvGraphicBase advGraphic;
 
-		private AdvGraphicBase AdvGraphic
-		{
-			get
-			{
-				return this.GetComponentCache(ref advGraphic);
-			}
-		}
+		private AdvGraphicBase AdvGraphic => this.GetComponentCache(ref advGraphic);
 
 		private StringGridRow Row { get; set; }
 
@@ -58,11 +52,5 @@ namespace Utage
 				componentInParent.GetComponentCreateIfMissing<GraphicRaycaster>().enabled = enable;
 			}
 		}
-
-		//[SpecialName]
-		//GameObject IAdvClickEvent.get_gameObject()
-		//{
-		//	return base.gameObject;
-		//}
 	}
 }

@@ -102,19 +102,13 @@ namespace Utage
 		public override void RuleFadeIn(AdvEngine engine, AdvTransitionArgs data, Action onComplete)
 		{
 			Debug.LogError(base.gameObject.name + " is not support RuleFadeIn", base.gameObject);
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 
 		public override void RuleFadeOut(AdvEngine engine, AdvTransitionArgs data, Action onComplete)
 		{
 			Debug.LogError(base.gameObject.name + " is not support RuleFadeOut", base.gameObject);
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 
 		public override void Write(BinaryWriter writer)

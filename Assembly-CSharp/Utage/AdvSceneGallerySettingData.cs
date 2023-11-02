@@ -12,53 +12,17 @@ namespace Utage
 
 		private int thumbnailVersion;
 
-		public string ScenarioLabel
-		{
-			get
-			{
-				return base.Key;
-			}
-		}
+		public string ScenarioLabel => base.Key;
 
-		public string Title
-		{
-			get
-			{
-				return title;
-			}
-		}
+		public string Title => title;
 
-		public string LocalizedTitle
-		{
-			get
-			{
-				return AdvParser.ParseCellLocalizedText(base.RowData, AdvColumnName.Title);
-			}
-		}
+		public string LocalizedTitle => AdvParser.ParseCellLocalizedText(base.RowData, AdvColumnName.Title);
 
-		public string Category
-		{
-			get
-			{
-				return category;
-			}
-		}
+		public string Category => category;
 
-		public string ThumbnailPath
-		{
-			get
-			{
-				return thumbnailPath;
-			}
-		}
+		public string ThumbnailPath => thumbnailPath;
 
-		public int ThumbnailVersion
-		{
-			get
-			{
-				return thumbnailVersion;
-			}
-		}
+		public int ThumbnailVersion => thumbnailVersion;
 
 		public override bool InitFromStringGridRow(StringGridRow row)
 		{

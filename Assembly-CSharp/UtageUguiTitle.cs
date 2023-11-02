@@ -19,13 +19,7 @@ public class UtageUguiTitle : UguiView
 
 	public GameObject downloadButton;
 
-	public AdvEngineStarter Starter
-	{
-		get
-		{
-			return starter ?? (starter = Object.FindObjectOfType<AdvEngineStarter>());
-		}
-	}
+	public AdvEngineStarter Starter => starter ?? (starter = Object.FindObjectOfType<AdvEngineStarter>());
 
 	protected virtual void OnOpen()
 	{

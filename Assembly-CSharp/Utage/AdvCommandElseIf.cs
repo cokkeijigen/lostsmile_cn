@@ -6,13 +6,7 @@ namespace Utage
 	{
 		private ExpressionParser exp;
 
-		public override bool IsIfCommand
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool IsIfCommand => true;
 
 		public AdvCommandElseIf(StringGridRow row, AdvSettingDataManager dataManager)
 			: base(row)

@@ -38,31 +38,13 @@ namespace Utage
 
 		private const int Version0 = 0;
 
-		internal SoundManager SoundManager
-		{
-			get
-			{
-				return SoundManagerSystem.SoundManager;
-			}
-		}
+		internal SoundManager SoundManager => SoundManagerSystem.SoundManager;
 
 		internal SoundManagerSystem SoundManagerSystem { get; private set; }
 
-		internal Dictionary<string, SoundAudioPlayer> PlayerList
-		{
-			get
-			{
-				return playerList;
-			}
-		}
+		internal Dictionary<string, SoundAudioPlayer> PlayerList => playerList;
 
-		public string GroupName
-		{
-			get
-			{
-				return base.gameObject.name;
-			}
-		}
+		public string GroupName => base.gameObject.name;
 
 		public bool MultiPlay
 		{
@@ -126,13 +108,7 @@ namespace Utage
 
 		public float CurrentGroupVolume { get; set; }
 
-		public List<SoundGroup> DuckGroups
-		{
-			get
-			{
-				return duckGroups;
-			}
-		}
+		public List<SoundGroup> DuckGroups => duckGroups;
 
 		private float DuckVolume { get; set; }
 
@@ -217,8 +193,7 @@ namespace Utage
 
 		private SoundAudioPlayer GetPlayer(string label)
 		{
-			SoundAudioPlayer value;
-			if (PlayerList.TryGetValue(label, out value))
+			if (PlayerList.TryGetValue(label, out var value))
 			{
 				return value;
 			}

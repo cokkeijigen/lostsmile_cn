@@ -12,38 +12,26 @@ namespace Utage
 		private StringGrid grid;
 
 		[SerializeField]
-        public int rowIndex;
+		private int rowIndex;
 
 		[NonSerialized]
 		private int debugIndex = -1;
 
 		[SerializeField]
-        public string[] strings;
+		private string[] strings;
 
 		[SerializeField]
-        public bool isEmpty;
+		private bool isEmpty;
 
 		[SerializeField]
-		public bool isCommentOut;
+		private bool isCommentOut;
 
 		[NonSerialized]
 		private string debugInfo;
 
-		public StringGrid Grid
-		{
-			get
-			{
-				return grid;
-			}
-		}
+		public StringGrid Grid => grid;
 
-		public int RowIndex
-		{
-			get
-			{
-				return rowIndex;
-			}
-		}
+		public int RowIndex => rowIndex;
 
 		public int DebugIndex
 		{
@@ -57,37 +45,13 @@ namespace Utage
 			}
 		}
 
-		public string[] Strings
-		{
-			get
-			{
-				return strings;
-			}
-		}
+		public string[] Strings => strings;
 
-		public int Length
-		{
-			get
-			{
-				return strings.Length;
-			}
-		}
+		public int Length => strings.Length;
 
-		public bool IsEmpty
-		{
-			get
-			{
-				return isEmpty;
-			}
-		}
+		public bool IsEmpty => isEmpty;
 
-		public bool IsCommentOut
-		{
-			get
-			{
-				return isCommentOut;
-			}
-		}
+		public bool IsCommentOut => isCommentOut;
 
 		public bool IsEmptyOrCommantOut
 		{
@@ -167,8 +131,7 @@ namespace Utage
 
 		public bool IsEmptyCell(string columnName)
 		{
-			int index;
-			if (Grid.TryGetColumnIndex(columnName, out index))
+			if (Grid.TryGetColumnIndex(columnName, out var index))
 			{
 				return IsEmptyCell(index);
 			}
@@ -198,8 +161,7 @@ namespace Utage
 
 		public T ParseCell<T>(string columnName)
 		{
-			T val;
-			if (!TryParseCell<T>(columnName, out val))
+			if (!TryParseCell<T>(columnName, out var val))
 			{
 				Debug.LogError(ToErrorStringWithPraseColumnName(columnName));
 			}
@@ -208,8 +170,7 @@ namespace Utage
 
 		public T ParseCell<T>(int index)
 		{
-			T val;
-			if (!TryParseCell<T>(index, out val))
+			if (!TryParseCell<T>(index, out var val))
 			{
 				Debug.LogError(ToErrorStringWithPraseColumnIndex(index));
 			}
@@ -218,8 +179,7 @@ namespace Utage
 
 		public T ParseCellOptional<T>(string columnName, T defaultVal)
 		{
-			T val;
-			if (!TryParseCell<T>(columnName, out val))
+			if (!TryParseCell<T>(columnName, out var val))
 			{
 				return defaultVal;
 			}
@@ -228,8 +188,7 @@ namespace Utage
 
 		public T ParseCellOptional<T>(int index, T defaultVal)
 		{
-			T val;
-			if (!TryParseCell<T>(index, out val))
+			if (!TryParseCell<T>(index, out var val))
 			{
 				return defaultVal;
 			}
@@ -238,8 +197,7 @@ namespace Utage
 
 		public bool TryParseCell<T>(string columnName, out T val)
 		{
-			int index;
-			if (Grid.TryGetColumnIndex(columnName, out index))
+			if (Grid.TryGetColumnIndex(columnName, out var index))
 			{
 				return TryParseCell<T>(index, out val);
 			}
@@ -332,8 +290,7 @@ namespace Utage
 
 		public T[] ParseCellArray<T>(string columnName)
 		{
-			T[] val;
-			if (!TryParseCellArray<T>(columnName, out val))
+			if (!TryParseCellArray<T>(columnName, out var val))
 			{
 				Debug.LogError(ToErrorStringWithPraseColumnName(columnName));
 			}
@@ -342,8 +299,7 @@ namespace Utage
 
 		public T[] ParseCellArray<T>(int index)
 		{
-			T[] val;
-			if (!TryParseCellArray<T>(index, out val))
+			if (!TryParseCellArray<T>(index, out var val))
 			{
 				Debug.LogError(ToErrorStringWithPraseColumnIndex(index));
 			}
@@ -352,8 +308,7 @@ namespace Utage
 
 		public T[] ParseCellOptionalArray<T>(string columnName, T[] defaultVal)
 		{
-			T[] val;
-			if (!TryParseCellArray<T>(columnName, out val))
+			if (!TryParseCellArray<T>(columnName, out var val))
 			{
 				return defaultVal;
 			}
@@ -362,8 +317,7 @@ namespace Utage
 
 		public T[] ParseCellOptionalArray<T>(int index, T[] defaultVal)
 		{
-			T[] val;
-			if (!TryParseCellArray<T>(index, out val))
+			if (!TryParseCellArray<T>(index, out var val))
 			{
 				return defaultVal;
 			}
@@ -372,8 +326,7 @@ namespace Utage
 
 		public bool TryParseCellArray<T>(string columnName, out T[] val)
 		{
-			int index;
-			if (Grid.TryGetColumnIndex(columnName, out index))
+			if (Grid.TryGetColumnIndex(columnName, out var index))
 			{
 				return TryParseCellArray<T>(index, out val);
 			}
@@ -403,8 +356,7 @@ namespace Utage
 			val = new T[num];
 			for (int i = 0; i < num; i++)
 			{
-				T val2;
-				if (!TryParse<T>(array[i].Trim(), out val2))
+				if (!TryParse<T>(array[i].Trim(), out var val2))
 				{
 					return false;
 				}

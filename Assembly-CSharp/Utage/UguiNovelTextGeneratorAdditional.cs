@@ -9,21 +9,9 @@ namespace Utage
 
 		private List<UguiNovelTextGeneratorAdditionalLine> lineList = new List<UguiNovelTextGeneratorAdditionalLine>();
 
-		public List<UguiNovelTextGeneratorAdditionalRuby> RubyList
-		{
-			get
-			{
-				return rubyList;
-			}
-		}
+		public List<UguiNovelTextGeneratorAdditionalRuby> RubyList => rubyList;
 
-		public List<UguiNovelTextGeneratorAdditionalLine> LineList
-		{
-			get
-			{
-				return lineList;
-			}
-		}
+		public List<UguiNovelTextGeneratorAdditionalLine> LineList => lineList;
 
 		internal UguiNovelTextGeneratorAdditional(List<UguiNovelTextCharacter> characters, UguiNovelTextGenerator generataor)
 		{

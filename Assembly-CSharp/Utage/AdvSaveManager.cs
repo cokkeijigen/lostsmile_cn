@@ -26,29 +26,11 @@ namespace Utage
 			[SerializeField]
 			private int saveMax = 9;
 
-			public int CaptureWidth
-			{
-				get
-				{
-					return captureWidth;
-				}
-			}
+			public int CaptureWidth => captureWidth;
 
-			public int CaptureHeight
-			{
-				get
-				{
-					return captureHeight;
-				}
-			}
+			public int CaptureHeight => captureHeight;
 
-			public int SaveMax
-			{
-				get
-				{
-					return saveMax;
-				}
-			}
+			public int SaveMax => saveMax;
 		}
 
 		[SerializeField]
@@ -86,29 +68,11 @@ namespace Utage
 
 		protected Texture2D captureTexture;
 
-		protected virtual FileIOManager FileIOManager
-		{
-			get
-			{
-				return fileIOManager ?? (fileIOManager = UnityEngine.Object.FindObjectOfType<FileIOManager>());
-			}
-		}
+		protected virtual FileIOManager FileIOManager => fileIOManager ?? (fileIOManager = UnityEngine.Object.FindObjectOfType<FileIOManager>());
 
-		public virtual SaveType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public virtual SaveType Type => type;
 
-		public virtual bool IsAutoSave
-		{
-			get
-			{
-				return isAutoSave;
-			}
-		}
+		public virtual bool IsAutoSave => isAutoSave;
 
 		public virtual string DirectoryName
 		{
@@ -134,29 +98,11 @@ namespace Utage
 			}
 		}
 
-		public int CaptureWidth
-		{
-			get
-			{
-				return defaultSetting.CaptureWidth;
-			}
-		}
+		public int CaptureWidth => defaultSetting.CaptureWidth;
 
-		public int CaptureHeight
-		{
-			get
-			{
-				return defaultSetting.CaptureHeight;
-			}
-		}
+		public int CaptureHeight => defaultSetting.CaptureHeight;
 
-		protected virtual int SaveMax
-		{
-			get
-			{
-				return defaultSetting.SaveMax;
-			}
-		}
+		protected virtual int SaveMax => defaultSetting.SaveMax;
 
 		public virtual List<IBinaryIO> CustomSaveDataIOList
 		{
@@ -179,37 +125,13 @@ namespace Utage
 			}
 		}
 
-		public virtual AdvSaveData AutoSaveData
-		{
-			get
-			{
-				return autoSaveData;
-			}
-		}
+		public virtual AdvSaveData AutoSaveData => autoSaveData;
 
-		public virtual AdvSaveData CurrentAutoSaveData
-		{
-			get
-			{
-				return currentAutoSaveData;
-			}
-		}
+		public virtual AdvSaveData CurrentAutoSaveData => currentAutoSaveData;
 
-		public virtual AdvSaveData QuickSaveData
-		{
-			get
-			{
-				return quickSaveData;
-			}
-		}
+		public virtual AdvSaveData QuickSaveData => quickSaveData;
 
-		public virtual List<AdvSaveData> SaveDataList
-		{
-			get
-			{
-				return saveDataList;
-			}
-		}
+		public virtual List<AdvSaveData> SaveDataList => saveDataList;
 
 		public virtual Texture2D CaptureTexture
 		{

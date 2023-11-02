@@ -526,8 +526,7 @@ namespace UtageExtensions
 
 		public static TValue GetValueOrSetDefaultIfMissing<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
 		{
-			TValue value;
-			if (!dictionary.TryGetValue(key, out value))
+			if (!dictionary.TryGetValue(key, out var value))
 			{
 				dictionary.Add(key, defaultValue);
 				return defaultValue;
@@ -537,8 +536,7 @@ namespace UtageExtensions
 
 		public static TValue GetValueOrGetNullIfMissing<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) where TValue : class
 		{
-			TValue value;
-			if (!dictionary.TryGetValue(key, out value))
+			if (!dictionary.TryGetValue(key, out var value))
 			{
 				return null;
 			}

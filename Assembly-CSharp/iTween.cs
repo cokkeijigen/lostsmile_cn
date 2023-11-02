@@ -3222,7 +3222,7 @@ public class iTween : MonoBehaviour
 
 	public static void CameraFadeSwap(Texture2D texture)
 	{
-		bool flag = (bool)cameraFade;
+		_ = (bool)cameraFade;
 	}
 
 	public static GameObject CameraFadeAdd(Texture2D texture, int depth)

@@ -10,21 +10,9 @@ namespace Utage
 
 		private AdvGallerySaveData saveData;
 
-		public string ThumbnailPath
-		{
-			get
-			{
-				return thumbnailPath;
-			}
-		}
+		public string ThumbnailPath => thumbnailPath;
 
-		public int NumTotal
-		{
-			get
-			{
-				return list.Count;
-			}
-		}
+		public int NumTotal => list.Count;
 
 		public int NumOpen
 		{

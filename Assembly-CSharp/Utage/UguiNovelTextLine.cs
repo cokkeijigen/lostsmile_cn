@@ -17,21 +17,9 @@ namespace Utage
 
 		private float totalHeight;
 
-		public List<UguiNovelTextCharacter> Characters
-		{
-			get
-			{
-				return characters;
-			}
-		}
+		public List<UguiNovelTextCharacter> Characters => characters;
 
-		public List<UguiNovelTextCharacter> RubyCharacters
-		{
-			get
-			{
-				return rubyCharacters;
-			}
-		}
+		public List<UguiNovelTextCharacter> RubyCharacters => rubyCharacters;
 
 		public bool IsOver
 		{
@@ -45,29 +33,11 @@ namespace Utage
 			}
 		}
 
-		public int MaxFontSize
-		{
-			get
-			{
-				return maxFontSize;
-			}
-		}
+		public int MaxFontSize => maxFontSize;
 
-		public float Width
-		{
-			get
-			{
-				return width;
-			}
-		}
+		public float Width => width;
 
-		public float TotalHeight
-		{
-			get
-			{
-				return totalHeight;
-			}
-		}
+		public float TotalHeight => totalHeight;
 
 		public float Y0 { get; set; }
 

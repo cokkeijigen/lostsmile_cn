@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using UnityEngine;
 
 namespace Utage
@@ -10,15 +10,15 @@ namespace Utage
 		private UnityEngine.Object asset;
 
 		public UnityEngine.Object Asset
-		{
-			get
-			{
-				return asset;
-			}
-			set // iTuskezigen, è®¿é—®å™¨æ·»åŠ set
-			{
+        {
+            get
+            {
+                return asset;
+            }
+            set // iTuskezigen++ ·ÃÎÊÆ÷Ìí¼Óset
+            {
                 asset = value;
             }
-		}
-	}
+        }
+    }
 }

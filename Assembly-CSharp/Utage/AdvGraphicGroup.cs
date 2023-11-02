@@ -97,8 +97,7 @@ namespace Utage
 			Vector3 localScale = Vector3.one;
 			Vector3 localPosition = Vector3.zero;
 			Quaternion localRotation = Quaternion.identity;
-			AdvGraphicObject value;
-			if (advGraphicLayer.CurrentGraphics.TryGetValue(name, out value))
+			if (advGraphicLayer.CurrentGraphics.TryGetValue(name, out var value))
 			{
 				localScale = value.rectTransform.localScale;
 				localPosition = value.rectTransform.localPosition;

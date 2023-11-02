@@ -8,21 +8,9 @@ namespace Utage
 
 		protected string targetName;
 
-		public AdvEffectManager.TargetType Target
-		{
-			get
-			{
-				return targetType;
-			}
-		}
+		public AdvEffectManager.TargetType Target => targetType;
 
-		public string TargetName
-		{
-			get
-			{
-				return targetName;
-			}
-		}
+		public string TargetName => targetName;
 
 		protected AdvCommandEffectBase(StringGridRow row)
 			: base(row)

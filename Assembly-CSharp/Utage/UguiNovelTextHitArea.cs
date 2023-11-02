@@ -21,13 +21,7 @@ namespace Utage
 
 		public string Arg { get; private set; }
 
-		public List<Rect> HitAreaList
-		{
-			get
-			{
-				return hitAreaList;
-			}
-		}
+		public List<Rect> HitAreaList => hitAreaList;
 
 		public UguiNovelTextHitArea(UguiNovelText novelText, CharData.HitEventType type, string arg, List<UguiNovelTextCharacter> characters)
 		{

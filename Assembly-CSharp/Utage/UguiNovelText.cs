@@ -26,21 +26,9 @@ namespace Utage
 			}
 		}
 
-		public UguiNovelTextGenerator TextGenerator
-		{
-			get
-			{
-				return textGenerator ?? (textGenerator = GetComponent<UguiNovelTextGenerator>());
-			}
-		}
+		public UguiNovelTextGenerator TextGenerator => textGenerator ?? (textGenerator = GetComponent<UguiNovelTextGenerator>());
 
-		public Vector3 EndPosition
-		{
-			get
-			{
-				return TextGenerator.EndPosition;
-			}
-		}
+		public Vector3 EndPosition => TextGenerator.EndPosition;
 
 		public Vector3 CurrentEndPosition
 		{
@@ -51,21 +39,9 @@ namespace Utage
 			}
 		}
 
-		public override float preferredHeight
-		{
-			get
-			{
-				return TextGenerator.PreferredHeight;
-			}
-		}
+		public override float preferredHeight => TextGenerator.PreferredHeight;
 
-		public override float preferredWidth
-		{
-			get
-			{
-				return TextGenerator.PreferredWidth;
-			}
-		}
+		public override float preferredWidth => TextGenerator.PreferredWidth;
 
 		protected override void OnPopulateMesh(VertexHelper vh)
 		{

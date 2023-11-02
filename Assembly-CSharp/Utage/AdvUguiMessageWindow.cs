@@ -49,21 +49,9 @@ namespace Utage
 		[SerializeField]
 		protected bool isLinkPositionIconBrPage = true;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
-		public UguiNovelText Text
-		{
-			get
-			{
-				return text;
-			}
-		}
+		public UguiNovelText Text => text;
 
 		public bool IsCurrent { get; protected set; }
 
@@ -217,10 +205,5 @@ namespace Utage
 			Engine.UiManager.Status = AdvUiManager.UiStatus.Backlog;
 		}
 
-		//[SpecialName]
-		//GameObject IAdvMessageWindow.get_gameObject()
-		//{
-		//	return base.gameObject;
-		//}
 	}
 }

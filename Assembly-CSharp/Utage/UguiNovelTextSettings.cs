@@ -22,45 +22,15 @@ namespace Utage
 		[SerializeField]
 		private bool forceIgonreJapaneseKinsoku;
 
-		internal string WordWrapSeparator
-		{
-			get
-			{
-				return wordWrapSeparator;
-			}
-		}
+		internal string WordWrapSeparator => wordWrapSeparator;
 
-		internal string KinsokuTop
-		{
-			get
-			{
-				return kinsokuTop;
-			}
-		}
+		internal string KinsokuTop => kinsokuTop;
 
-		internal string KinsokuEnd
-		{
-			get
-			{
-				return kinsokuEnd;
-			}
-		}
+		internal string KinsokuEnd => kinsokuEnd;
 
-		internal string IgnoreLetterSpace
-		{
-			get
-			{
-				return ignoreLetterSpace;
-			}
-		}
+		internal string IgnoreLetterSpace => ignoreLetterSpace;
 
-		internal string AutoIndentation
-		{
-			get
-			{
-				return autoIndentation;
-			}
-		}
+		internal string AutoIndentation => autoIndentation;
 
 		internal bool IsIgonreLetterSpace(UguiNovelTextCharacter current, UguiNovelTextCharacter next)
 		{

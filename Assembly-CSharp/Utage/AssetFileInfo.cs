@@ -6,13 +6,7 @@ namespace Utage
 
 		public AssetBundleInfo AssetBundleInfo { get; set; }
 
-		public AssetFileType FileType
-		{
-			get
-			{
-				return Setting.FileType;
-			}
-		}
+		public AssetFileType FileType => Setting.FileType;
 
 		public AssetFileSetting Setting { get; private set; }
 
