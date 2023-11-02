@@ -4,4 +4,5 @@
 ## `LOSTSMILE_CN`
 **这个为`hook exe`和`dll loader`的源码，实现了资源重定向，可以与原版资源共存**
 ## `Assembly-CSharp` 
-**这个为官方`Assembly-CSharp.dll`反编译源码，修复原版的存档路径问题，以及加载自定义AssetBundle （注：release分支为未修改过的源码）**
+**这个为官方`Assembly-CSharp.dll`反编译源码，修复原版的存档路径问题，以及加载自定义AssetBundle <br>
+注：release分支为未修改过的源码**
