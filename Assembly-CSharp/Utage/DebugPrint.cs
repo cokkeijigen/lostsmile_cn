@@ -87,7 +87,7 @@ namespace Utage
 
 		private string FpsToString()
 		{
-			return string.Format("FPS:{0,3:#0.} Simple:{1,3:#0.00}\n", frameRate, 1f / Time.deltaTime);
+			return $"FPS:{frameRate,3:#0.} Simple:{1f / Time.deltaTime,3:#0.00}\n";
 		}
 
 		private string MemToString()

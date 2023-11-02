@@ -11,13 +11,7 @@ namespace Utage
 	{
 		private DicingImage dicing;
 
-		private DicingImage Dicing
-		{
-			get
-			{
-				return base.gameObject.GetComponentCache(ref dicing);
-			}
-		}
+		private DicingImage Dicing => base.gameObject.GetComponentCache(ref dicing);
 
 		protected override IEnumerator CoEyeBlink(Action onComplete)
 		{
@@ -27,10 +21,7 @@ namespace Utage
 				yield return new WaitForSeconds(data.Duration);
 			}
 			Dicing.TryChangePatternWithOption(Dicing.MainPattern, base.EyeTag, "");
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 	}
 }

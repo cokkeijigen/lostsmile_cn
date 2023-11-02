@@ -27,21 +27,9 @@ namespace Utage
 		[SerializeField]
 		protected int headerRow;
 
-		public List<StringGridRow> Rows
-		{
-			get
-			{
-				return rows ?? (rows = new List<StringGridRow>());
-			}
-		}
+		public List<StringGridRow> Rows => rows ?? (rows = new List<StringGridRow>());
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
 		public string SheetName
 		{
@@ -64,13 +52,7 @@ namespace Utage
 			}
 		}
 
-		public CsvType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		public CsvType Type => type;
 
 		public char CsvSeparator
 		{
@@ -84,13 +66,7 @@ namespace Utage
 			}
 		}
 
-		public int TextLength
-		{
-			get
-			{
-				return textLength;
-			}
-		}
+		public int TextLength => textLength;
 
 		public Dictionary<string, int> ColumnIndexTbl
 		{
@@ -104,21 +80,9 @@ namespace Utage
 			}
 		}
 
-		public int HeaderRow
-		{
-			get
-			{
-				return headerRow;
-			}
-		}
+		public int HeaderRow => headerRow;
 
-		public int DataTopRow
-		{
-			get
-			{
-				return HeaderRow + 1;
-			}
-		}
+		public int DataTopRow => HeaderRow + 1;
 
 		public StringGrid(string name, string sheetName, CsvType type)
 		{
@@ -243,8 +207,7 @@ namespace Utage
 
 		public int GetColumnIndex(string name)
 		{
-			int index;
-			if (TryGetColumnIndex(name, out index))
+			if (TryGetColumnIndex(name, out var index))
 			{
 				return index;
 			}

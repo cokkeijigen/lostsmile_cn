@@ -107,8 +107,7 @@ namespace Utage
 
 		private AdvCharacterSettingData FindData(string key)
 		{
-			AdvCharacterSettingData value;
-			if (!base.Dictionary.TryGetValue(key, out value))
+			if (!base.Dictionary.TryGetValue(key, out var value))
 			{
 				return null;
 			}
@@ -117,7 +116,7 @@ namespace Utage
 
 		internal static string ToDataKey(string name, string label)
 		{
-			return string.Format("{0},{1}", name, label);
+			return $"{name},{label}";
 		}
 	}
 }

@@ -29,13 +29,7 @@ public class UtageUguiCgGalleryViewer : UguiView, IPointerClickHandler, IEventSy
 
 	protected int currentIndex;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	public virtual ScrollRect ScrollRect
 	{

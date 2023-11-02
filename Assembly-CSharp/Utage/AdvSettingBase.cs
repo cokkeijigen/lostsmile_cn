@@ -6,13 +6,7 @@ namespace Utage
 	{
 		private List<StringGrid> gridList = new List<StringGrid>();
 
-		public List<StringGrid> GridList
-		{
-			get
-			{
-				return gridList;
-			}
-		}
+		public List<StringGrid> GridList => gridList;
 
 		public virtual void ParseGrid(StringGrid grid)
 		{

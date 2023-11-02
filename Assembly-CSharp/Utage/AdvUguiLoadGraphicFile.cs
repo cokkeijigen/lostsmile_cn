@@ -24,13 +24,7 @@ namespace Utage
 
 		public UnityEvent OnLoadEnd;
 
-		public AdvGraphicLoader Loader
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref loader);
-			}
-		}
+		public AdvGraphicLoader Loader => this.GetComponentCacheCreateIfMissing(ref loader);
 
 		protected virtual Graphic GraphicComponent { get; set; }
 

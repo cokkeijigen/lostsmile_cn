@@ -37,37 +37,13 @@ namespace Utage
 		[NonSerialized]
 		private List<QuadVerts> verts;
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
-		public string AtlasName
-		{
-			get
-			{
-				return atlasName;
-			}
-		}
+		public string AtlasName => atlasName;
 
-		public int Width
-		{
-			get
-			{
-				return width;
-			}
-		}
+		public int Width => width;
 
-		public int Height
-		{
-			get
-			{
-				return height;
-			}
-		}
+		public int Height => height;
 
 		internal List<QuadVerts> GetVerts(DicingTextures textures)
 		{

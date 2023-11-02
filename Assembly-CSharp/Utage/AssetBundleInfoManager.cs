@@ -76,26 +76,13 @@ namespace Utage
 			}
 		}
 
-		private AssetFileManager AssetFileManager
-		{
-			get
-			{
-				return this.GetComponentCache(ref assetFileManager);
-			}
-		}
+		private AssetFileManager AssetFileManager => this.GetComponentCache(ref assetFileManager);
 
-		private FileIOManager FileIOManager
-		{
-			get
-			{
-				return AssetFileManager.FileIOManager;
-			}
-		}
+		private FileIOManager FileIOManager => AssetFileManager.FileIOManager;
 
 		public AssetBundleInfo FindAssetBundleInfo(string path)
 		{
-			AssetBundleInfo value;
-			if (!dictionary.TryGetValue(path, out value))
+			if (!dictionary.TryGetValue(path, out var value))
 			{
 				string key = FilePathUtil.ChangeExtension(path, ".asset");
 				if (!dictionary.TryGetValue(key, out value))

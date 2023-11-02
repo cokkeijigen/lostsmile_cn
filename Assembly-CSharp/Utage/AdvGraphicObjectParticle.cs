@@ -32,7 +32,7 @@ namespace Utage
 
 		internal override void OnEffectColorsChange(AdvEffectColor color)
 		{
-			bool flag = (bool)currentObject;
+			_ = (bool)currentObject;
 		}
 
 		private void FadInOut(ParticleSystem particle, float alpha)

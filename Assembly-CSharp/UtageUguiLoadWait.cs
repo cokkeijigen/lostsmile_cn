@@ -50,21 +50,9 @@ public class UtageUguiLoadWait : UguiView
 	[SerializeField]
 	protected OpenDialogEvent onOpenDialog;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
-	public AdvEngineStarter Starter
-	{
-		get
-		{
-			return starter ?? (starter = Object.FindObjectOfType<AdvEngineStarter>());
-		}
-	}
+	public AdvEngineStarter Starter => starter ?? (starter = Object.FindObjectOfType<AdvEngineStarter>());
 
 	public virtual OpenDialogEvent OnOpenDialog
 	{

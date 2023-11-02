@@ -469,13 +469,7 @@ namespace Utage
 			}
 		}
 
-		public CustomCharaInfo CustomInfo
-		{
-			get
-			{
-				return customInfo;
-			}
-		}
+		public CustomCharaInfo CustomInfo => customInfo;
 
 		public bool IsBr
 		{

@@ -13,13 +13,7 @@ namespace Utage
 		[SerializeField]
 		private List<AdvChapterData> chapters = new List<AdvChapterData>();
 
-		public List<AdvChapterData> Chapters
-		{
-			get
-			{
-				return chapters;
-			}
-		}
+		public List<AdvChapterData> Chapters => chapters;
 
 		public bool CheckVersion()
 		{

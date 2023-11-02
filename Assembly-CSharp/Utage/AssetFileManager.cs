@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UtageExtensions;
@@ -138,29 +137,11 @@ namespace Utage
 			}
 		}
 
-		public int MaxFilesOnMemory
-		{
-			get
-			{
-				return rangeOfFilesOnMemory.Max;
-			}
-		}
+		public int MaxFilesOnMemory => rangeOfFilesOnMemory.Max;
 
-		public int MinFilesOnMemory
-		{
-			get
-			{
-				return rangeOfFilesOnMemory.Min;
-			}
-		}
+		public int MinFilesOnMemory => rangeOfFilesOnMemory.Min;
 
-		internal UnloadType UnloadUnusedType
-		{
-			get
-			{
-				return unloadType;
-			}
-		}
+		internal UnloadType UnloadUnusedType => unloadType;
 
 		public AssetFileManagerSettings Settings
 		{
@@ -186,21 +167,9 @@ namespace Utage
 			}
 		}
 
-		private CustomLoadManager CustomLoadManager
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref customLoadManager);
-			}
-		}
+		private CustomLoadManager CustomLoadManager => this.GetComponentCacheCreateIfMissing(ref customLoadManager);
 
-		private StaticAssetManager StaticAssetManager
-		{
-			get
-			{
-				return this.GetComponentCacheCreateIfMissing(ref staticAssetManager);
-			}
-		}
+		private StaticAssetManager StaticAssetManager => this.GetComponentCacheCreateIfMissing(ref staticAssetManager);
 
 		public Action<AssetFile> CallbackError
 		{
@@ -270,8 +239,7 @@ namespace Utage
 
 		private AssetFileBase AddSub(string path, IAssetFileSettingData settingData)
 		{
-			AssetFileBase value;
-			if (!fileTbl.TryGetValue(path, out value))
+			if (!fileTbl.TryGetValue(path, out var value))
 			{
 				if (path.Contains(" "))
 				{
@@ -731,10 +699,6 @@ namespace Utage
 				}
 			}
 			return instance;
-		}
-
-		static AssetFileManager()
-		{
 		}
 	}
 }

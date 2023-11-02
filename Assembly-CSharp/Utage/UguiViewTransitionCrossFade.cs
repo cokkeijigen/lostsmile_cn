@@ -13,21 +13,9 @@ namespace Utage
 
 		public float time = 1f;
 
-		public UguiView UguiView
-		{
-			get
-			{
-				return uguiView ?? (uguiView = GetComponent<UguiView>());
-			}
-		}
+		public UguiView UguiView => uguiView ?? (uguiView = GetComponent<UguiView>());
 
-		public bool IsPlaying
-		{
-			get
-			{
-				return isPlaying;
-			}
-		}
+		public bool IsPlaying => isPlaying;
 
 		public void Open()
 		{

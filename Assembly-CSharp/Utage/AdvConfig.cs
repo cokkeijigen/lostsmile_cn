@@ -46,29 +46,11 @@ namespace Utage
 
 		private bool isSkip;
 
-		public float SkipSpped
-		{
-			get
-			{
-				return skipSpeed;
-			}
-		}
+		public float SkipSpped => skipSpeed;
 
-		public bool SkipVoiceAndSe
-		{
-			get
-			{
-				return skipVoiceAndSe;
-			}
-		}
+		public bool SkipVoiceAndSe => skipVoiceAndSe;
 
-		public virtual string SaveKey
-		{
-			get
-			{
-				return "AdvConfig";
-			}
-		}
+		public virtual string SaveKey => "AdvConfig";
 
 		public bool IsFullScreen
 		{
@@ -182,13 +164,7 @@ namespace Utage
 			}
 		}
 
-		public float AutoPageWaitTime
-		{
-			get
-			{
-				return (1f - AutoBrPageSpeed) * (autoPageWaitSecMax - autoPageWaitSecMin) + autoPageWaitSecMin;
-			}
-		}
+		public float AutoPageWaitTime => (1f - AutoBrPageSpeed) * (autoPageWaitSecMax - autoPageWaitSecMin) + autoPageWaitSecMin;
 
 		public float MessageWindowTransparency
 		{
@@ -202,13 +178,7 @@ namespace Utage
 			}
 		}
 
-		public float MessageWindowAlpha
-		{
-			get
-			{
-				return 1f - MessageWindowTransparency;
-			}
-		}
+		public float MessageWindowAlpha => 1f - MessageWindowTransparency;
 
 		public float SoundMasterVolume
 		{

@@ -48,13 +48,7 @@ namespace Utage
 			}
 		}
 
-		public bool IsPlaying
-		{
-			get
-			{
-				return isPlaying;
-			}
-		}
+		public bool IsPlaying => isPlaying;
 
 		public void OnPointerClick(PointerEventData eventData)
 		{

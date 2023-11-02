@@ -20,29 +20,11 @@ namespace Utage
 		[NonSerialized]
 		private List<GameObject> targetObjectList = new List<GameObject>();
 
-		public override Camera eventCamera
-		{
-			get
-			{
-				return CachedCamera;
-			}
-		}
+		public override Camera eventCamera => CachedCamera;
 
-		private Camera CachedCamera
-		{
-			get
-			{
-				return cachedCamera ?? (cachedCamera = GetComponent<Camera>());
-			}
-		}
+		private Camera CachedCamera => cachedCamera ?? (cachedCamera = GetComponent<Camera>());
 
-		public override int sortOrderPriority
-		{
-			get
-			{
-				return m_Priority;
-			}
-		}
+		public override int sortOrderPriority => m_Priority;
 
 		public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
 		{

@@ -9,21 +9,9 @@ namespace Utage
 		[SerializeField]
 		private StringGrid grid;
 
-		public string Name
-		{
-			get
-			{
-				return base.Key;
-			}
-		}
+		public string Name => base.Key;
 
-		public StringGrid Grid
-		{
-			get
-			{
-				return grid;
-			}
-		}
+		public StringGrid Grid => grid;
 
 		public StringGridDictionaryKeyValue(string key, StringGrid grid)
 		{

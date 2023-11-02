@@ -61,8 +61,7 @@ namespace Utage
 
 		private AdvTextureSettingData FindData(string label)
 		{
-			AdvTextureSettingData value;
-			if (!base.Dictionary.TryGetValue(label, out value))
+			if (!base.Dictionary.TryGetValue(label, out var value))
 			{
 				return null;
 			}

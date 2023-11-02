@@ -20,13 +20,7 @@ public class SampleChatLog : MonoBehaviour
 
 	private List<GameObject> logs = new List<GameObject>();
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	private void Awake()
 	{

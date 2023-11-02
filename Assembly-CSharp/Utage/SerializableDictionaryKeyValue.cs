@@ -9,13 +9,7 @@ namespace Utage
 		[SerializeField]
 		private string key;
 
-		public string Key
-		{
-			get
-			{
-				return key;
-			}
-		}
+		public string Key => key;
 
 		public void InitKey(string key)
 		{

@@ -67,13 +67,7 @@ namespace Utage
 			}
 		}
 
-		public MiniAnimationData AnimationData
-		{
-			get
-			{
-				return animationData;
-			}
-		}
+		public MiniAnimationData AnimationData => animationData;
 
 		public override bool InitFromStringGridRow(StringGridRow row)
 		{
@@ -83,8 +77,7 @@ namespace Utage
 			IntervalMax = AdvParser.ParseCellOptional(row, AdvColumnName.IntervalMax, 6f);
 			RandomDoubleEyeBlink = AdvParser.ParseCellOptional(row, AdvColumnName.RandomDouble, 0.2f);
 			Tag = AdvParser.ParseCellOptional(row, AdvColumnName.Tag, "eye");
-			int index;
-			if (row.Grid.TryGetColumnIndex(AdvColumnName.Name0.QuickToString(), out index))
+			if (row.Grid.TryGetColumnIndex(AdvColumnName.Name0.QuickToString(), out var index))
 			{
 				animationData.TryParse(row, index);
 			}

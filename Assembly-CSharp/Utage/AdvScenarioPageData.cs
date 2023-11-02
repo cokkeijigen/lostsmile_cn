@@ -23,13 +23,7 @@ namespace Utage
 
 		internal bool EnableSave { get; private set; }
 
-		public bool IsEmptyText
-		{
-			get
-			{
-				return TextDataList.Count <= 0;
-			}
-		}
+		public bool IsEmptyText => TextDataList.Count <= 0;
 
 		public AdvScenarioPageData(AdvScenarioLabelData scenarioLabelData, int pageNo, List<AdvCommand> commandList)
 		{

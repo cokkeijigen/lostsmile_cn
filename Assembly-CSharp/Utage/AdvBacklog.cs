@@ -76,13 +76,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public bool IsEmpty
-		{
-			get
-			{
-				return dataList.Count <= 0;
-			}
-		}
+		public bool IsEmpty => dataList.Count <= 0;
 
 		public string Text
 		{

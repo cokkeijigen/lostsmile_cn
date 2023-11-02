@@ -16,13 +16,7 @@ namespace Utage
 
 			private AdvParamManager Param { get; set; }
 
-			public string SaveKey
-			{
-				get
-				{
-					return "ParamManagerIoInerface";
-				}
-			}
+			public string SaveKey => "ParamManagerIoInerface";
 
 			public IoInerface(AdvParamManager param, AdvParamData.FileType fileType)
 			{
@@ -57,13 +51,7 @@ namespace Utage
 
 		public bool IsInit { get; protected set; }
 
-		public Dictionary<string, AdvParamStructTbl> StructTbl
-		{
-			get
-			{
-				return structTbl;
-			}
-		}
+		public Dictionary<string, AdvParamStructTbl> StructTbl => structTbl;
 
 		public bool HasChangedSystemParam { get; set; }
 
@@ -114,20 +102,11 @@ namespace Utage
 		private bool TryGetParamData(string key, out AdvParamData data)
 		{
 			data = null;
-			string structName;
-			string indexKey;
-			string valueKey;
-			if (!ParseKey(key, out structName, out indexKey, out valueKey))
+			if (!ParseKey(key, out var structName, out var indexKey, out var valueKey))
 			{
-				AdvParamStruct @default = GetDefault();
-				if (@default == null)
-				{
-					return false;
-				}
-				return @default.Tbl.TryGetValue(key, out data);
+				return GetDefault()?.Tbl.TryGetValue(key, out data) ?? false;
 			}
-			AdvParamStruct paramStruct;
-			if (!TryGetParamTbl(structName, indexKey, out paramStruct))
+			if (!TryGetParamTbl(structName, indexKey, out var paramStruct))
 			{
 				return false;
 			}
@@ -166,8 +145,7 @@ namespace Utage
 				return;
 			}
 			string sheetName = grid.SheetName;
-			AdvParamStructTbl value;
-			if (!StructTbl.TryGetValue(sheetName, out value))
+			if (!StructTbl.TryGetValue(sheetName, out var value))
 			{
 				value = new AdvParamStructTbl();
 				StructTbl.Add(sheetName, value);
@@ -197,8 +175,7 @@ namespace Utage
 		{
 			foreach (KeyValuePair<string, AdvParamStructTbl> item in src.StructTbl)
 			{
-				AdvParamStructTbl value;
-				if (StructTbl.TryGetValue(item.Key, out value))
+				if (StructTbl.TryGetValue(item.Key, out var value))
 				{
 					value.InitDefaultNormal(item.Value);
 				}
@@ -269,8 +246,7 @@ namespace Utage
 
 		public bool TrySetParameter(string key, object parameter)
 		{
-			AdvParamData data;
-			if (!CheckSetParameterSub(key, parameter, out data))
+			if (!CheckSetParameterSub(key, parameter, out var data))
 			{
 				return false;
 			}
@@ -284,8 +260,7 @@ namespace Utage
 
 		public bool TryGetParameter(string key, out object parameter)
 		{
-			AdvParamData data;
-			if (TryGetParamData(key, out data))
+			if (TryGetParamData(key, out var data))
 			{
 				parameter = data.Parameter;
 				return true;
@@ -302,8 +277,7 @@ namespace Utage
 
 		public object GetParameter(string key)
 		{
-			object parameter;
-			if (TryGetParameter(key, out parameter))
+			if (TryGetParameter(key, out var parameter))
 			{
 				return parameter;
 			}

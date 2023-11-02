@@ -26,45 +26,15 @@ namespace Utage
 
 		public bool isCloseScrollWheelDown;
 
-		private BacklogType Type
-		{
-			get
-			{
-				return type;
-			}
-		}
+		private BacklogType Type => type;
 
-		public UguiListView ListView
-		{
-			get
-			{
-				return listView;
-			}
-		}
+		public UguiListView ListView => listView;
 
-		public UguiNovelText FullScreenLogText
-		{
-			get
-			{
-				return fullScreenLogText;
-			}
-		}
+		public UguiNovelText FullScreenLogText => fullScreenLogText;
 
-		protected AdvBacklogManager BacklogManager
-		{
-			get
-			{
-				return engine.BacklogManager;
-			}
-		}
+		protected AdvBacklogManager BacklogManager => engine.BacklogManager;
 
-		public virtual bool IsOpen
-		{
-			get
-			{
-				return base.gameObject.activeSelf;
-			}
-		}
+		public virtual bool IsOpen => base.gameObject.activeSelf;
 
 		public virtual void Close()
 		{

@@ -11,18 +11,11 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public Dictionary<string, AdvParamStruct> Tbl
-		{
-			get
-			{
-				return tbl;
-			}
-		}
+		public Dictionary<string, AdvParamStruct> Tbl => tbl;
 
 		public void AddSingle(StringGrid grid)
 		{
-			AdvParamStruct value;
-			if (!Tbl.TryGetValue("", out value))
+			if (!Tbl.TryGetValue("", out var value))
 			{
 				value = new AdvParamStruct();
 				Tbl.Add("", value);
@@ -74,8 +67,7 @@ namespace Utage
 		{
 			foreach (KeyValuePair<string, AdvParamStruct> item in src.Tbl)
 			{
-				AdvParamStruct value;
-				if (Tbl.TryGetValue(item.Key, out value))
+				if (Tbl.TryGetValue(item.Key, out var value))
 				{
 					value.InitDefaultNormal(item.Value);
 				}

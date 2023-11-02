@@ -37,45 +37,15 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public float PixelsToUnits
-		{
-			get
-			{
-				return pixelsToUnits;
-			}
-		}
+		public float PixelsToUnits => pixelsToUnits;
 
-		public float SortOderToZUnits
-		{
-			get
-			{
-				return sortOderToZUnits;
-			}
-		}
+		public float SortOderToZUnits => sortOderToZUnits;
 
-		public string BgSpriteName
-		{
-			get
-			{
-				return bgSpriteName;
-			}
-		}
+		public string BgSpriteName => bgSpriteName;
 
-		public bool ResetCharacterTransformOnChangeLayer
-		{
-			get
-			{
-				return resetCharacterTransformOnChangeLayer;
-			}
-		}
+		public bool ResetCharacterTransformOnChangeLayer => resetCharacterTransformOnChangeLayer;
 
-		public bool DebugAutoResetCanvasPosition
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public bool DebugAutoResetCanvasPosition => false;
 
 		public AdvGraphicRenderTextureManager RenderTextureManager
 		{
@@ -113,37 +83,13 @@ namespace Utage
 			}
 		}
 
-		public AdvGraphicGroup CharacterManager
-		{
-			get
-			{
-				return Groups[AdvLayerSettingData.LayerType.Character];
-			}
-		}
+		public AdvGraphicGroup CharacterManager => Groups[AdvLayerSettingData.LayerType.Character];
 
-		public AdvGraphicGroup SpriteManager
-		{
-			get
-			{
-				return Groups[AdvLayerSettingData.LayerType.Sprite];
-			}
-		}
+		public AdvGraphicGroup SpriteManager => Groups[AdvLayerSettingData.LayerType.Sprite];
 
-		public AdvGraphicGroup BgManager
-		{
-			get
-			{
-				return Groups[AdvLayerSettingData.LayerType.Bg];
-			}
-		}
+		public AdvGraphicGroup BgManager => Groups[AdvLayerSettingData.LayerType.Bg];
 
-		internal AdvEngine Engine
-		{
-			get
-			{
-				return engine;
-			}
-		}
+		internal AdvEngine Engine => engine;
 
 		internal bool IsLoading
 		{
@@ -160,13 +106,7 @@ namespace Utage
 			}
 		}
 
-		public string SaveKey
-		{
-			get
-			{
-				return "AdvGraphicManager";
-			}
-		}
+		public string SaveKey => "AdvGraphicManager";
 
 		public void BootInit(AdvEngine engine, AdvLayerSetting setting)
 		{
@@ -309,11 +249,7 @@ namespace Utage
 			AdvGraphicObject advGraphicObject = FindObject(name);
 			if (!(advGraphicObject == null))
 			{
-				IAdvClickEvent componentInChildren = advGraphicObject.gameObject.GetComponentInChildren<IAdvClickEvent>();
-				if (componentInChildren != null)
-				{
-					componentInChildren.RemoveClickEvent();
-				}
+				advGraphicObject.gameObject.GetComponentInChildren<IAdvClickEvent>()?.RemoveClickEvent();
 			}
 		}
 

@@ -78,8 +78,7 @@ namespace Utage
 				return defaultValue;
 			}
 			Vector2 vec = Vector2.one * 0.5f;
-			Pivot val;
-			if (TryParaseEnum<Pivot>(text, out val))
+			if (TryParaseEnum<Pivot>(text, out var val))
 			{
 				return PivotUtil.PivotEnumToVector2(val);
 			}
@@ -97,8 +96,7 @@ namespace Utage
 				return defaultValue;
 			}
 			Vector2 vec = defaultValue;
-			float val;
-			if (WrapperUnityVersion.TryParseFloatGlobal(text, out val))
+			if (WrapperUnityVersion.TryParseFloatGlobal(text, out var val))
 			{
 				return Vector2.one * val;
 			}
@@ -160,8 +158,7 @@ namespace Utage
 				return defaultValue;
 			}
 			Vector3 vec = defaultValue;
-			float val;
-			if (WrapperUnityVersion.TryParseFloatGlobal(text, out val))
+			if (WrapperUnityVersion.TryParseFloatGlobal(text, out var val))
 			{
 				return Vector3.one * val;
 			}

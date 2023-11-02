@@ -9,8 +9,7 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
-			AdvCommandJumpRandom advCommandJumpRandom = base.CurrentTread.JumpManager.GetRandomJumpCommand() as AdvCommandJumpRandom;
-			if (advCommandJumpRandom != null)
+			if (base.CurrentTread.JumpManager.GetRandomJumpCommand() is AdvCommandJumpRandom advCommandJumpRandom)
 			{
 				advCommandJumpRandom.DoRandomEnd(engine, base.CurrentTread);
 			}

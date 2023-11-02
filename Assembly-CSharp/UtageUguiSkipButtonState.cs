@@ -10,13 +10,7 @@ public class UtageUguiSkipButtonState : MonoBehaviour
 
 	public Toggle target;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	protected virtual void Update()
 	{

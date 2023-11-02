@@ -28,37 +28,13 @@ namespace Utage
 
 		private bool isParseParamOnly;
 
-		public List<CharData> CharList
-		{
-			get
-			{
-				return charList;
-			}
-		}
+		public List<CharData> CharList => charList;
 
-		public string ErrorMsg
-		{
-			get
-			{
-				return errorMsg;
-			}
-		}
+		public string ErrorMsg => errorMsg;
 
-		public int Length
-		{
-			get
-			{
-				return CharList.Count;
-			}
-		}
+		public int Length => CharList.Count;
 
-		public string OriginalText
-		{
-			get
-			{
-				return originalText;
-			}
-		}
+		public string OriginalText => originalText;
 
 		public string NoneMetaString
 		{
@@ -188,8 +164,7 @@ namespace Utage
 
 		private void AddDash(string arg)
 		{
-			int result;
-			if (!int.TryParse(arg, out result))
+			if (!int.TryParse(arg, out var result))
 			{
 				result = 1;
 			}
@@ -214,8 +189,7 @@ namespace Utage
 
 		private bool TryAddSpace(string arg)
 		{
-			int result;
-			if (!int.TryParse(arg, out result))
+			if (!int.TryParse(arg, out var result))
 			{
 				return false;
 			}

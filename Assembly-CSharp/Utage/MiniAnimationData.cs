@@ -23,13 +23,7 @@ namespace Utage
 			[SerializeField]
 			private string name;
 
-			public float Duration
-			{
-				get
-				{
-					return duration;
-				}
-			}
+			public float Duration => duration;
 
 			public Data(float duration, string name)
 			{
@@ -100,13 +94,7 @@ namespace Utage
 		[SerializeField]
 		private List<Data> dataList = new List<Data>();
 
-		public List<Data> DataList
-		{
-			get
-			{
-				return dataList;
-			}
-		}
+		public List<Data> DataList => dataList;
 
 		internal bool TryParse(StringGridRow row, int index)
 		{

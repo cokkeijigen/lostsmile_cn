@@ -16,13 +16,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return Manager.Engine;
-			}
-		}
+		public AdvEngine Engine => Manager.Engine;
 
 		public AdvGraphicManager Manager { get; private set; }
 
@@ -30,13 +24,7 @@ namespace Utage
 
 		public AdvGraphicObject DefaultObject { get; private set; }
 
-		public Dictionary<string, AdvGraphicObject> CurrentGraphics
-		{
-			get
-			{
-				return currentGraphics;
-			}
-		}
+		public Dictionary<string, AdvGraphicObject> CurrentGraphics => currentGraphics;
 
 		public Camera Camera { get; private set; }
 
@@ -44,13 +32,7 @@ namespace Utage
 
 		public Canvas Canvas { get; private set; }
 
-		public Vector2 GameScreenSize
-		{
-			get
-			{
-				return LetterBoxCamera.CurrentSize;
-			}
-		}
+		public Vector2 GameScreenSize => LetterBoxCamera.CurrentSize;
 
 		internal bool IsLoading
 		{
@@ -101,12 +83,8 @@ namespace Utage
 		internal void ResetCanvasRectTransform()
 		{
 			RectTransform obj = Canvas.transform as RectTransform;
-			float position;
-			float size;
-			SettingData.Horizontal.GetBorderdPositionAndSize(GameScreenSize.x, out position, out size);
-			float position2;
-			float size2;
-			SettingData.Vertical.GetBorderdPositionAndSize(GameScreenSize.y, out position2, out size2);
+			SettingData.Horizontal.GetBorderdPositionAndSize(GameScreenSize.x, out var position, out var size);
+			SettingData.Vertical.GetBorderdPositionAndSize(GameScreenSize.y, out var position2, out var size2);
 			obj.localPosition = new Vector3(position, position2, SettingData.Z) / Manager.PixelsToUnits;
 			obj.SetSize(size, size2);
 			obj.localScale = SettingData.Scale / Manager.PixelsToUnits;
@@ -179,8 +157,7 @@ namespace Utage
 				Debug.LogError(name + " grapic is null");
 				return null;
 			}
-			AdvGraphicObject value;
-			if (!currentGraphics.TryGetValue(name, out value))
+			if (!currentGraphics.TryGetValue(name, out var value))
 			{
 				return CreateObject(name, grapic);
 			}
@@ -189,9 +166,8 @@ namespace Utage
 
 		private AdvGraphicObject CreateObject(string name, AdvGraphicInfo grapic)
 		{
-			GameObject prefab;
 			AdvGraphicObject advGraphicObject;
-			if (grapic.TryGetAdvGraphicObjectPrefab(out prefab))
+			if (grapic.TryGetAdvGraphicObjectPrefab(out var prefab))
 			{
 				GameObject obj = Object.Instantiate(prefab);
 				obj.name = name;
@@ -213,8 +189,7 @@ namespace Utage
 
 		internal void FadeOut(string name, float fadeTime)
 		{
-			AdvGraphicObject value;
-			if (currentGraphics.TryGetValue(name, out value))
+			if (currentGraphics.TryGetValue(name, out var value))
 			{
 				value.FadeOut(fadeTime);
 				Remove(value);
@@ -223,8 +198,7 @@ namespace Utage
 
 		internal void DelayOut(string name, float delay)
 		{
-			AdvGraphicObject value;
-			if (currentGraphics.TryGetValue(name, out value))
+			if (currentGraphics.TryGetValue(name, out var value))
 			{
 				Remove(value);
 				StartCoroutine(CoDelayOut(value, delay));
@@ -252,8 +226,7 @@ namespace Utage
 
 		internal void FadeOutParticle(string name)
 		{
-			AdvGraphicObject value;
-			if (currentGraphics.TryGetValue(name, out value) && value.TargetObject is AdvGraphicObjectParticle)
+			if (currentGraphics.TryGetValue(name, out var value) && value.TargetObject is AdvGraphicObjectParticle)
 			{
 				value.FadeOut(0f);
 				Remove(value);
@@ -298,8 +271,7 @@ namespace Utage
 
 		internal AdvGraphicObject Find(string name)
 		{
-			AdvGraphicObject value;
-			if (currentGraphics.TryGetValue(name, out value))
+			if (currentGraphics.TryGetValue(name, out var value))
 			{
 				return value;
 			}

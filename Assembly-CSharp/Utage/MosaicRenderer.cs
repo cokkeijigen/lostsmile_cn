@@ -23,13 +23,7 @@ namespace Utage
 		[Hide("IgnoreAutoScale")]
 		public int gameScreenHeight = 600;
 
-		public bool IgnoreAutoScale
-		{
-			get
-			{
-				return !autoScale;
-			}
-		}
+		public bool IgnoreAutoScale => !autoScale;
 
 		private void OnValidate()
 		{

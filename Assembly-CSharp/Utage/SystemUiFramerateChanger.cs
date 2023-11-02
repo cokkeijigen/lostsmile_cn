@@ -20,7 +20,7 @@ namespace Utage
 		{
 			if (text != null)
 			{
-				text.text = string.Format("FPS:{0}", Application.targetFrameRate);
+				text.text = $"FPS:{Application.targetFrameRate}";
 			}
 		}
 

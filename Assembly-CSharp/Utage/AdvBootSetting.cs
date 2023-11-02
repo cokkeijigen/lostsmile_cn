@@ -73,93 +73,27 @@ namespace Utage
 
 		public string ResourceDir { get; set; }
 
-		public DefaultDirInfo CharacterDirInfo
-		{
-			get
-			{
-				return characterDirInfo;
-			}
-		}
+		public DefaultDirInfo CharacterDirInfo => characterDirInfo;
 
-		public DefaultDirInfo BgDirInfo
-		{
-			get
-			{
-				return bgDirInfo;
-			}
-		}
+		public DefaultDirInfo BgDirInfo => bgDirInfo;
 
-		public DefaultDirInfo EventDirInfo
-		{
-			get
-			{
-				return eventDirInfo;
-			}
-		}
+		public DefaultDirInfo EventDirInfo => eventDirInfo;
 
-		public DefaultDirInfo SpriteDirInfo
-		{
-			get
-			{
-				return spriteDirInfo;
-			}
-		}
+		public DefaultDirInfo SpriteDirInfo => spriteDirInfo;
 
-		public DefaultDirInfo ThumbnailDirInfo
-		{
-			get
-			{
-				return thumbnailDirInfo;
-			}
-		}
+		public DefaultDirInfo ThumbnailDirInfo => thumbnailDirInfo;
 
-		public DefaultDirInfo BgmDirInfo
-		{
-			get
-			{
-				return bgmDirInfo;
-			}
-		}
+		public DefaultDirInfo BgmDirInfo => bgmDirInfo;
 
-		public DefaultDirInfo SeDirInfo
-		{
-			get
-			{
-				return seDirInfo;
-			}
-		}
+		public DefaultDirInfo SeDirInfo => seDirInfo;
 
-		public DefaultDirInfo AmbienceDirInfo
-		{
-			get
-			{
-				return ambienceDirInfo;
-			}
-		}
+		public DefaultDirInfo AmbienceDirInfo => ambienceDirInfo;
 
-		public DefaultDirInfo VoiceDirInfo
-		{
-			get
-			{
-				return voiceDirInfo;
-			}
-		}
+		public DefaultDirInfo VoiceDirInfo => voiceDirInfo;
 
-		public DefaultDirInfo ParticleDirInfo
-		{
-			get
-			{
-				return particleDirInfo;
-			}
-		}
+		public DefaultDirInfo ParticleDirInfo => particleDirInfo;
 
-		public DefaultDirInfo VideoDirInfo
-		{
-			get
-			{
-				return videoDirInfo;
-			}
-		}
+		public DefaultDirInfo VideoDirInfo => videoDirInfo;
 
 		public void BootInit(string resourceDir)
 		{

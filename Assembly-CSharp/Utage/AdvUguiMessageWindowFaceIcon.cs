@@ -25,13 +25,7 @@ namespace Utage
 
 		protected GameObject iconRoot;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 		public bool AutoHideIconCharacterOff
 		{
@@ -94,8 +88,7 @@ namespace Utage
 				return false;
 			}
 			AdvGraphicInfo main = characterInfo.Graphic.Main;
-			AdvCharacterSettingData advCharacterSettingData = main.SettingData as AdvCharacterSettingData;
-			if (advCharacterSettingData == null)
+			if (!(main.SettingData is AdvCharacterSettingData advCharacterSettingData))
 			{
 				return false;
 			}

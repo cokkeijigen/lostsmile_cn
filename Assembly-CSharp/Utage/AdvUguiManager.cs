@@ -19,13 +19,7 @@ namespace Utage
 		[SerializeField]
 		protected bool disableMouseWheelBackLog;
 
-		public AdvUguiMessageWindowManager MessageWindow
-		{
-			get
-			{
-				return messageWindow ?? (messageWindow = GetMessageWindowManagerCreateIfMissing());
-			}
-		}
+		public AdvUguiMessageWindowManager MessageWindow => messageWindow ?? (messageWindow = GetMessageWindowManagerCreateIfMissing());
 
 		public override void Open()
 		{

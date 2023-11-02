@@ -21,21 +21,9 @@ namespace Utage
 
 		private bool isEntered;
 
-		public UguiNovelTextGenerator Generator
-		{
-			get
-			{
-				return generator ?? (generator = GetComponent<UguiNovelTextGenerator>());
-			}
-		}
+		public UguiNovelTextGenerator Generator => generator ?? (generator = GetComponent<UguiNovelTextGenerator>());
 
-		public UguiNovelText NovelText
-		{
-			get
-			{
-				return novelText ?? (novelText = GetComponent<UguiNovelText>());
-			}
-		}
+		public UguiNovelText NovelText => novelText ?? (novelText = GetComponent<UguiNovelText>());
 
 		public RectTransform CachedRectTransform
 		{
@@ -91,8 +79,7 @@ namespace Utage
 
 		private UguiNovelTextHitArea HitTest(Vector2 screenPoint, Camera cam)
 		{
-			Vector2 localPoint;
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(CachedRectTransform, screenPoint, cam, out localPoint);
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(CachedRectTransform, screenPoint, cam, out var localPoint);
 			foreach (UguiNovelTextHitArea hitGroupList in Generator.HitGroupLists)
 			{
 				if (hitGroupList.HitTest(localPoint))

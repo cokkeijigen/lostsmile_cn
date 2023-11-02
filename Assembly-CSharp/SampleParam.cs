@@ -7,13 +7,7 @@ public class SampleParam : MonoBehaviour
 	[SerializeField]
 	protected AdvEngine engine;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	public void ParamTest()
 	{

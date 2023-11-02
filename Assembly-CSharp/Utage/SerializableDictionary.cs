@@ -12,13 +12,7 @@ namespace Utage
 
 		protected Dictionary<string, T> dictionary = new Dictionary<string, T>();
 
-		public List<T> List
-		{
-			get
-			{
-				return list ?? (list = new List<T>());
-			}
-		}
+		public List<T> List => list ?? (list = new List<T>());
 
 		public int Count
 		{

@@ -9,13 +9,7 @@ namespace Utage
 
 		public string Key { get; protected set; }
 
-		public List<AdvGraphicInfo> InfoList
-		{
-			get
-			{
-				return infoList;
-			}
-		}
+		public List<AdvGraphicInfo> InfoList => infoList;
 
 		public AdvGraphicInfo Main
 		{

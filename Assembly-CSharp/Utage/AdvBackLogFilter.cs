@@ -26,13 +26,7 @@ namespace Utage
 			}
 		}
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 		private void Awake()
 		{

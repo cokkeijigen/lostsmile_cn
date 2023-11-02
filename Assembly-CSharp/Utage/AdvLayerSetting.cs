@@ -24,8 +24,7 @@ namespace Utage
 
 		public bool Contains(string layerName, AdvLayerSettingData.LayerType type)
 		{
-			AdvLayerSettingData value;
-			if (base.Dictionary.TryGetValue(layerName, out value))
+			if (base.Dictionary.TryGetValue(layerName, out var value))
 			{
 				return value.Type == type;
 			}

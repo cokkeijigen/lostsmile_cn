@@ -24,13 +24,7 @@ namespace Utage
 
 		public BlurType blurType;
 
-		protected override bool NeedRenderTexture
-		{
-			get
-			{
-				return true;
-			}
-		}
+		protected override bool NeedRenderTexture => true;
 
 		protected override void RenderImage(RenderTexture source, RenderTexture destination)
 		{

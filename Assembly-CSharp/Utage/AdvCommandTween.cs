@@ -60,7 +60,7 @@ namespace Utage
 				OnComplete(thread);
 			});
 			advITweenPlayer.Play();
-			bool isEndlessLoop = advITweenPlayer.IsEndlessLoop;
+			_ = advITweenPlayer.IsEndlessLoop;
 		}
 
 		private bool IsUnder2DSpace(GameObject target)

@@ -29,31 +29,13 @@ namespace Utage
 
 		internal string Id { get; set; }
 
-		public bool IsEntityType
-		{
-			get
-			{
-				return EntityData != null;
-			}
-		}
+		public bool IsEntityType => EntityData != null;
 
-		public List<AssetFile> LoadFileList
-		{
-			get
-			{
-				return loadFileList;
-			}
-		}
+		public List<AssetFile> LoadFileList => loadFileList;
 
 		public AdvScenarioThread CurrentTread { get; set; }
 
-		public virtual bool IsIfCommand
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public virtual bool IsIfCommand => false;
 
 		protected AdvCommand(StringGridRow row)
 		{
@@ -314,8 +296,7 @@ namespace Utage
 
 		public virtual string ParseScenarioLabel(AdvColumnName name)
 		{
-			string scenarioLabel;
-			if (!AdvCommandParser.TryParseScenarioLabel(RowData, name, out scenarioLabel))
+			if (!AdvCommandParser.TryParseScenarioLabel(RowData, name, out var scenarioLabel))
 			{
 				Debug.LogError(ToErrorString(LanguageAdvErrorMsg.LocalizeTextFormat(AdvErrorMsg.NotScenarioLabel, ParseCell<string>(name))));
 			}

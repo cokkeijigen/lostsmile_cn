@@ -39,13 +39,7 @@ namespace Utage
 
 		protected bool isIgnoreValueChange;
 
-		public Toggle[] TogglesToArray
-		{
-			get
-			{
-				return toggles.ToArray();
-			}
-		}
+		public Toggle[] TogglesToArray => toggles.ToArray();
 
 		public virtual int CurrentIndex
 		{
@@ -76,13 +70,7 @@ namespace Utage
 			}
 		}
 
-		public int Count
-		{
-			get
-			{
-				return toggles.Count;
-			}
-		}
+		public int Count => toggles.Count;
 
 		protected virtual void Awake()
 		{

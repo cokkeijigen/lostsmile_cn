@@ -12,13 +12,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "CameraManager";
-			}
-		}
+		public string SaveKey => "CameraManager";
 
 		public List<CameraRoot> CameraList
 		{

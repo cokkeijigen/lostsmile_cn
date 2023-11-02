@@ -21,28 +21,16 @@ namespace Utage
 		[SerializeField]
 		private List<string> optionPatternNameList = new List<string>();
 
-		public List<PartternData> DataList
-		{
-			get
-			{
-				return avatarPatternDataList;
-			}
-		}
+		public List<PartternData> DataList => avatarPatternDataList;
 
-		public List<string> OptionPatternNameList
-		{
-			get
-			{
-				return optionPatternNameList;
-			}
-		}
+		public List<string> OptionPatternNameList => optionPatternNameList;
 
 		public void SetPatternName(string tag, string patternName)
 		{
 			PartternData partternData = DataList.Find((PartternData x) => x.tag == tag);
 			if (partternData == null)
 			{
-				Debug.LogError(string.Format("Unknown Pattern [{0}], tag[{1}] ", patternName, tag));
+				Debug.LogError($"Unknown Pattern [{patternName}], tag[{tag}] ");
 			}
 			else
 			{

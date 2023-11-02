@@ -16,45 +16,15 @@ namespace Utage
 
 		public TextParser ParsedText { get; private set; }
 
-		public string OriginalText
-		{
-			get
-			{
-				return ParsedText.OriginalText;
-			}
-		}
+		public string OriginalText => ParsedText.OriginalText;
 
-		public string NoneMetaString
-		{
-			get
-			{
-				return ParsedText.NoneMetaString;
-			}
-		}
+		public string NoneMetaString => ParsedText.NoneMetaString;
 
-		public List<CharData> CharList
-		{
-			get
-			{
-				return ParsedText.CharList;
-			}
-		}
+		public List<CharData> CharList => ParsedText.CharList;
 
-		public int Length
-		{
-			get
-			{
-				return CharList.Count;
-			}
-		}
+		public int Length => CharList.Count;
 
-		public string ErrorMsg
-		{
-			get
-			{
-				return ParsedText.ErrorMsg;
-			}
-		}
+		public string ErrorMsg => ParsedText.ErrorMsg;
 
 		public bool ContainsSpeedTag { get; protected set; }
 

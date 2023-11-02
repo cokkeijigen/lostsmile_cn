@@ -21,21 +21,9 @@ public class SampleChatLogItem : MonoBehaviour
 
 	private AdvBacklog data;
 
-	public Button Button
-	{
-		get
-		{
-			return button ?? (button = GetComponent<Button>());
-		}
-	}
+	public Button Button => button ?? (button = GetComponent<Button>());
 
-	public AdvBacklog Data
-	{
-		get
-		{
-			return data;
-		}
-	}
+	public AdvBacklog Data => data;
 
 	private void OnInitData(AdvBacklog data)
 	{

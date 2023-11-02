@@ -25,9 +25,7 @@ namespace Utage
 		protected override void OnStartEffect(GameObject target, AdvEngine engine, AdvScenarioThread thread)
 		{
 			Camera componentInChildren = target.GetComponentInChildren<Camera>(true);
-			ImageEffectBase imageEffect;
-			bool alreadyEnabled;
-			if (!ImageEffectUtil.TryGetComonentCreateIfMissing(imageEffectType, out imageEffect, out alreadyEnabled, componentInChildren.gameObject))
+			if (!ImageEffectUtil.TryGetComonentCreateIfMissing(imageEffectType, out var imageEffect, out var _, componentInChildren.gameObject))
 			{
 				Complete(imageEffect, thread);
 				return;

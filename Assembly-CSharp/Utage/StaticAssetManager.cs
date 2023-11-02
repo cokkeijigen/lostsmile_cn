@@ -9,13 +9,7 @@ namespace Utage
 		[SerializeField]
 		private List<StaticAsset> assets = new List<StaticAsset>();
 
-		private List<StaticAsset> Assets
-		{
-			get
-			{
-				return assets;
-			}
-		}
+		private List<StaticAsset> Assets => assets;
 
 		public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
 		{

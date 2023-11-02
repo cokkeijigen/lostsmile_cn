@@ -61,13 +61,7 @@ namespace Utage
 			}
 		}
 
-		private FileIOManager FileIOManager
-		{
-			get
-			{
-				return fileIOManager ?? (fileIOManager = UnityEngine.Object.FindObjectOfType<FileIOManager>());
-			}
-		}
+		private FileIOManager FileIOManager => fileIOManager ?? (fileIOManager = UnityEngine.Object.FindObjectOfType<FileIOManager>());
 
 		public string DirectoryName
 		{
@@ -95,52 +89,22 @@ namespace Utage
 
 		public string Path { get; private set; }
 
-		public AdvReadHistorySaveData ReadData
-		{
-			get
-			{
-				return readData;
-			}
-		}
+		public AdvReadHistorySaveData ReadData => readData;
 
-		public AdvSelectedHistorySaveData SelectionData
-		{
-			get
-			{
-				return selectionData;
-			}
-		}
+		public AdvSelectedHistorySaveData SelectionData => selectionData;
 
-		public AdvGallerySaveData GalleryData
-		{
-			get
-			{
-				return galleryData;
-			}
-		}
+		public AdvGallerySaveData GalleryData => galleryData;
 
-		protected AdvEngine Engine
-		{
-			get
-			{
-				return engine;
-			}
-		}
+		protected AdvEngine Engine => engine;
 
-		protected virtual List<IBinaryIO> DataList
+		protected virtual List<IBinaryIO> DataList => new List<IBinaryIO>
 		{
-			get
-			{
-				return new List<IBinaryIO>
-				{
-					ReadData,
-					SelectionData,
-					Engine.Config,
-					GalleryData,
-					Engine.Param.SystemData
-				};
-			}
-		}
+			ReadData,
+			SelectionData,
+			Engine.Config,
+			GalleryData,
+			Engine.Param.SystemData
+		};
 
 		public virtual void Init(AdvEngine engine)
 		{

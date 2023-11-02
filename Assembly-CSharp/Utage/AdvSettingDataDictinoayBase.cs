@@ -33,7 +33,7 @@ namespace Utage
 
 		protected virtual bool TryParseContinues(T last, StringGridRow row)
 		{
-			T val = last;
+			_ = last;
 			return false;
 		}
 

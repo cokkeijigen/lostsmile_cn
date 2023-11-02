@@ -10,37 +10,13 @@ namespace Utage
 	{
 		internal AdvGraphicObject ParentObject { get; set; }
 
-		internal AdvGraphicLayer Layer
-		{
-			get
-			{
-				return ParentObject.Layer;
-			}
-		}
+		internal AdvGraphicLayer Layer => ParentObject.Layer;
 
-		internal AdvEngine Engine
-		{
-			get
-			{
-				return Layer.Manager.Engine;
-			}
-		}
+		internal AdvEngine Engine => Layer.Manager.Engine;
 
-		protected float PixelsToUnits
-		{
-			get
-			{
-				return Layer.Manager.PixelsToUnits;
-			}
-		}
+		protected float PixelsToUnits => Layer.Manager.PixelsToUnits;
 
-		protected AdvGraphicInfo LastResource
-		{
-			get
-			{
-				return ParentObject.LastResource;
-			}
-		}
+		protected AdvGraphicInfo LastResource => ParentObject.LastResource;
 
 		public virtual void Init(AdvGraphicObject parentObject)
 		{

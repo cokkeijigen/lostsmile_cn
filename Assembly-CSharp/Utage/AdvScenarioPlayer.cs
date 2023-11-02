@@ -57,117 +57,33 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public GameObject SendMessageTarget
-		{
-			get
-			{
-				return sendMessageTarget;
-			}
-		}
+		public GameObject SendMessageTarget => sendMessageTarget;
 
-		internal bool DebugOutputLog
-		{
-			get
-			{
-				return (debugOutPut & DebugOutPut.Log) == DebugOutPut.Log;
-			}
-		}
+		internal bool DebugOutputLog => (debugOutPut & DebugOutPut.Log) == DebugOutPut.Log;
 
-		internal bool DebugOutputWaiting
-		{
-			get
-			{
-				return (debugOutPut & DebugOutPut.Waiting) == DebugOutPut.Waiting;
-			}
-		}
+		internal bool DebugOutputWaiting => (debugOutPut & DebugOutPut.Waiting) == DebugOutPut.Waiting;
 
-		internal bool DebugOutputCommandEnd
-		{
-			get
-			{
-				return (debugOutPut & DebugOutPut.CommandEnd) == DebugOutPut.CommandEnd;
-			}
-		}
+		internal bool DebugOutputCommandEnd => (debugOutPut & DebugOutPut.CommandEnd) == DebugOutPut.CommandEnd;
 
-		internal int MaxFilePreload
-		{
-			get
-			{
-				return maxFilePreload;
-			}
-		}
+		internal int MaxFilePreload => maxFilePreload;
 
-		internal int PreloadDeep
-		{
-			get
-			{
-				return preloadDeep;
-			}
-		}
+		internal int PreloadDeep => preloadDeep;
 
-		public AdvScenarioPlayerEvent OnEndScenario
-		{
-			get
-			{
-				return onEndScenario;
-			}
-		}
+		public AdvScenarioPlayerEvent OnEndScenario => onEndScenario;
 
-		public AdvScenarioPlayerEvent OnPauseScenario
-		{
-			get
-			{
-				return onPauseScenario;
-			}
-		}
+		public AdvScenarioPlayerEvent OnPauseScenario => onPauseScenario;
 
-		public AdvScenarioPlayerEvent OnEndOrPauseScenario
-		{
-			get
-			{
-				return onEndOrPauseScenario;
-			}
-		}
+		public AdvScenarioPlayerEvent OnEndOrPauseScenario => onEndOrPauseScenario;
 
-		public AdvCommandEvent OnBeginCommand
-		{
-			get
-			{
-				return onBeginCommand;
-			}
-		}
+		public AdvCommandEvent OnBeginCommand => onBeginCommand;
 
-		public AdvCommandEvent OnUpdatePreWaitingCommand
-		{
-			get
-			{
-				return onUpdatePreWaitingCommand;
-			}
-		}
+		public AdvCommandEvent OnUpdatePreWaitingCommand => onUpdatePreWaitingCommand;
 
-		public AdvCommandEvent OnUpdateWaitingCommand
-		{
-			get
-			{
-				return onUpdateWaitingCommand;
-			}
-		}
+		public AdvCommandEvent OnUpdateWaitingCommand => onUpdateWaitingCommand;
 
-		public AdvCommandEvent OnEndCommand
-		{
-			get
-			{
-				return onEndCommand;
-			}
-		}
+		public AdvCommandEvent OnEndCommand => onEndCommand;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
 		public AdvScenarioThread MainThread
 		{
@@ -190,21 +106,9 @@ namespace Utage
 
 		public string CurrentGallerySceneLabel { get; set; }
 
-		public bool IsLoading
-		{
-			get
-			{
-				return MainThread.IsLoadingDeep;
-			}
-		}
+		public bool IsLoading => MainThread.IsLoadingDeep;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "ScenarioPlayer";
-			}
-		}
+		public string SaveKey => "ScenarioPlayer";
 
 		public virtual void StartScenario(string label, int page)
 		{

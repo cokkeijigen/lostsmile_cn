@@ -13,13 +13,7 @@ namespace Utage
 		[SerializeField]
 		private List<AdvImportScenarioSheet> importGridList = new List<AdvImportScenarioSheet>();
 
-		public List<AdvImportScenarioSheet> ImportGridList
-		{
-			get
-			{
-				return importGridList;
-			}
-		}
+		public List<AdvImportScenarioSheet> ImportGridList => importGridList;
 
 		public bool CheckVersion()
 		{

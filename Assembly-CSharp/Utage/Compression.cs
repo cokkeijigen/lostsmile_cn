@@ -104,8 +104,7 @@ namespace Utage
 			byte[] bytes2 = BitConverter.GetBytes(num);
 			int num2 = bytes2.Length;
 			byte[] array = new byte[num + num / 128 + 1];
-			int oSize;
-			Compress(array, out oSize, bytes);
+			Compress(array, out var oSize, bytes);
 			byte[] array2 = new byte[oSize + 4];
 			Buffer.BlockCopy(bytes2, 0, array2, 0, num2);
 			Buffer.BlockCopy(array, 0, array2, num2, oSize);

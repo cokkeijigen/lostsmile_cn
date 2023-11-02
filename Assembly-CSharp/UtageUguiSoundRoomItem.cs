@@ -10,13 +10,7 @@ public class UtageUguiSoundRoomItem : MonoBehaviour
 
 	protected AdvSoundSettingData data;
 
-	public AdvSoundSettingData Data
-	{
-		get
-		{
-			return data;
-		}
-	}
+	public AdvSoundSettingData Data => data;
 
 	public virtual void Init(AdvSoundSettingData data, Action<UtageUguiSoundRoomItem> ButtonClickedEvent, int index)
 	{

@@ -58,13 +58,7 @@ namespace Utage
 			}
 		};
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
 
 		private AdvImportScenarios Scenarios { get; set; }
 

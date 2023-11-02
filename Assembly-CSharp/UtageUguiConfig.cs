@@ -72,21 +72,9 @@ public class UtageUguiConfig : UguiView
 
 	protected bool isInit;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
 
-	protected virtual AdvConfig Config
-	{
-		get
-		{
-			return Engine.Config;
-		}
-	}
+	protected virtual AdvConfig Config => Engine.Config;
 
 	public virtual float MessageSpeed
 	{
@@ -363,8 +351,7 @@ public class UtageUguiConfig : UguiView
 		}
 		foreach (TagedMasterVolumSliders tagedMasterVolumSlider in tagedMasterVolumSliders)
 		{
-			float volume;
-			if (!string.IsNullOrEmpty(tagedMasterVolumSlider.tag) && !(tagedMasterVolumSlider.volumeSlider == null) && Config.TryGetTaggedMasterVolume(tagedMasterVolumSlider.tag, out volume))
+			if (!string.IsNullOrEmpty(tagedMasterVolumSlider.tag) && !(tagedMasterVolumSlider.volumeSlider == null) && Config.TryGetTaggedMasterVolume(tagedMasterVolumSlider.tag, out var volume))
 			{
 				tagedMasterVolumSlider.volumeSlider.value = volume;
 			}

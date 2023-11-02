@@ -9,13 +9,7 @@ public class SampleJumpButton : MonoBehaviour
 
 	public string scenarioLabel;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	public void OnClickJump()
 	{

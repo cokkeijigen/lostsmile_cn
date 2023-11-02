@@ -43,37 +43,13 @@ namespace Utage
 			}
 		}
 
-		public AdvSettingDataManager SettingDataManager
-		{
-			get
-			{
-				return settingDataManager;
-			}
-		}
+		public AdvSettingDataManager SettingDataManager => settingDataManager;
 
-		public Dictionary<string, AdvScenarioData> ScenarioDataTbl
-		{
-			get
-			{
-				return scenarioDataTbl;
-			}
-		}
+		public Dictionary<string, AdvScenarioData> ScenarioDataTbl => scenarioDataTbl;
 
-		public bool IsReadySettingData
-		{
-			get
-			{
-				return settingDataManager != null;
-			}
-		}
+		public bool IsReadySettingData => settingDataManager != null;
 
-		public AdvMacroManager MacroManager
-		{
-			get
-			{
-				return macroManager;
-			}
-		}
+		public AdvMacroManager MacroManager => macroManager;
 
 		public virtual void BootInit(string rootDirResource)
 		{
@@ -259,12 +235,7 @@ namespace Utage
 			{
 				if (value.IsContainsScenarioLabel(scenarioLabel))
 				{
-					AdvScenarioLabelData advScenarioLabelData = value.FindScenarioLabelData(scenarioLabel);
-					if (advScenarioLabelData == null)
-					{
-						return null;
-					}
-					return advScenarioLabelData.MakePreloadFileListSub(this, page, maxFilePreload, preloadDeep);
+					return value.FindScenarioLabelData(scenarioLabel)?.MakePreloadFileListSub(this, page, maxFilePreload, preloadDeep);
 				}
 			}
 			return null;

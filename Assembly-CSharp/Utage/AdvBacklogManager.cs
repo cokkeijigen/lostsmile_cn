@@ -23,13 +23,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public int MaxLog
-		{
-			get
-			{
-				return maxLog;
-			}
-		}
+		public int MaxLog => maxLog;
 
 		public bool IgnoreLog
 		{
@@ -43,29 +37,11 @@ namespace Utage
 			}
 		}
 
-		public BacklogEvent OnAddPage
-		{
-			get
-			{
-				return onAddPage;
-			}
-		}
+		public BacklogEvent OnAddPage => onAddPage;
 
-		public BacklogEvent OnAddData
-		{
-			get
-			{
-				return onAddData;
-			}
-		}
+		public BacklogEvent OnAddData => onAddData;
 
-		public List<AdvBacklog> Backlogs
-		{
-			get
-			{
-				return backlogs;
-			}
-		}
+		public List<AdvBacklog> Backlogs => backlogs;
 
 		public AdvBacklog LastLog
 		{
@@ -79,13 +55,7 @@ namespace Utage
 			}
 		}
 
-		public string SaveKey
-		{
-			get
-			{
-				return "BacklogManager";
-			}
-		}
+		public string SaveKey => "BacklogManager";
 
 		public void Clear()
 		{
@@ -118,11 +88,7 @@ namespace Utage
 			onAddData.Invoke(this);
 			if (!IgnoreLog)
 			{
-				AdvBacklog lastLog = LastLog;
-				if (lastLog != null)
-				{
-					lastLog.AddData(dataInPage, characterInfo);
-				}
+				LastLog?.AddData(dataInPage, characterInfo);
 			}
 		}
 

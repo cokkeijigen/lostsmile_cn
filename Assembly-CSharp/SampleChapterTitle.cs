@@ -28,13 +28,7 @@ public class SampleChapterTitle : MonoBehaviour
 
 	public bool isAutoSaveOnQuit = true;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	private void Start()
 	{
@@ -105,8 +99,7 @@ public class SampleChapterTitle : MonoBehaviour
 		Engine.SystemSaveData.IsAutoSaveOnQuit = isAutoSaveOnQuit;
 		foreach (AssetFile item in Engine.DataManager.GetAllFileSet())
 		{
-			AssetFileBase assetFileBase = item as AssetFileBase;
-			if (assetFileBase == null)
+			if (!(item is AssetFileBase assetFileBase))
 			{
 				Debug.LogError("Not Support Type");
 			}

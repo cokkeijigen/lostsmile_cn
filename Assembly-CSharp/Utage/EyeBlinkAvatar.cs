@@ -11,23 +11,14 @@ namespace Utage
 	{
 		private AvatarImage avator;
 
-		private AvatarImage Avator
-		{
-			get
-			{
-				return base.gameObject.GetComponentCache(ref avator);
-			}
-		}
+		private AvatarImage Avator => base.gameObject.GetComponentCache(ref avator);
 
 		protected override IEnumerator CoEyeBlink(Action onComplete)
 		{
 			string pattern = AvatarData.ToPatternName(Avator.AvatarPattern.GetPatternName(base.EyeTag));
 			if (string.IsNullOrEmpty(pattern))
 			{
-				if (onComplete != null)
-				{
-					onComplete();
-				}
+				onComplete?.Invoke();
 				yield break;
 			}
 			foreach (MiniAnimationData.Data data in base.AnimationData.DataList)
@@ -36,10 +27,7 @@ namespace Utage
 				yield return new WaitForSeconds(data.Duration);
 			}
 			Avator.ChangePattern(base.EyeTag, pattern);
-			if (onComplete != null)
-			{
-				onComplete();
-			}
+			onComplete?.Invoke();
 		}
 	}
 }

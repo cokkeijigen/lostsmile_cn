@@ -14,21 +14,9 @@ namespace Utage
 
 		public int countAll { get; private set; }
 
-		public int countActive
-		{
-			get
-			{
-				return countAll - countInactive;
-			}
-		}
+		public int countActive => countAll - countInactive;
 
-		public int countInactive
-		{
-			get
-			{
-				return m_Stack.Count;
-			}
-		}
+		public int countInactive => m_Stack.Count;
 
 		public ObjectPool(UnityAction<T> actionOnGet, UnityAction<T> actionOnRelease)
 		{

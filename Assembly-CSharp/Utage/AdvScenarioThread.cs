@@ -23,13 +23,7 @@ namespace Utage
 
 		private AdvCommand currentCommand;
 
-		public string ThreadName
-		{
-			get
-			{
-				return threadName;
-			}
-		}
+		public string ThreadName => threadName;
 
 		public bool IsMainThread { get; private set; }
 
@@ -56,59 +50,23 @@ namespace Utage
 
 		public bool IsPlaying { get; set; }
 
-		internal AdvIfManager IfManager
-		{
-			get
-			{
-				return ifManager;
-			}
-		}
+		internal AdvIfManager IfManager => ifManager;
 
-		internal AdvJumpManager JumpManager
-		{
-			get
-			{
-				return jumpManager;
-			}
-		}
+		internal AdvJumpManager JumpManager => jumpManager;
 
-		internal AdvWaitManager WaitManager
-		{
-			get
-			{
-				return waitManager;
-			}
-		}
+		internal AdvWaitManager WaitManager => waitManager;
 
 		private AdvScenarioThread ParenetThread { get; set; }
 
-		private List<AdvScenarioThread> SubThreadList
-		{
-			get
-			{
-				return subThreadList;
-			}
-		}
+		private List<AdvScenarioThread> SubThreadList => subThreadList;
 
-		public AdvCommand CurrentCommand
-		{
-			get
-			{
-				return currentCommand;
-			}
-		}
+		public AdvCommand CurrentCommand => currentCommand;
 
 		internal bool SkipPageHeaerOnSave { get; private set; }
 
 		internal AdvScenarioPlayer ScenarioPlayer { get; private set; }
 
-		internal AdvEngine Engine
-		{
-			get
-			{
-				return ScenarioPlayer.Engine;
-			}
-		}
+		internal AdvEngine Engine => ScenarioPlayer.Engine;
 
 		private bool IsBreakCommand
 		{
@@ -426,8 +384,8 @@ namespace Utage
 			{
 				return false;
 			}
-			int count = SubThreadList.Count;
-			int num = 0;
+			_ = SubThreadList.Count;
+			_ = 0;
 			return false;
 		}
 

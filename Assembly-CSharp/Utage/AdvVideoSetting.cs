@@ -22,8 +22,7 @@ namespace Utage
 
 		private AdvVideoSettingData FindData(string label)
 		{
-			AdvVideoSettingData value;
-			if (!base.Dictionary.TryGetValue(label, out value))
+			if (!base.Dictionary.TryGetValue(label, out var value))
 			{
 				return null;
 			}

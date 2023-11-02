@@ -47,13 +47,7 @@ namespace Utage
 
 		public string Tag { get; set; }
 
-		public float Volume
-		{
-			get
-			{
-				return ResourceVolume * PlayVolume;
-			}
-		}
+		public float Volume => ResourceVolume * PlayVolume;
 
 		public bool EnableIntroLoop
 		{

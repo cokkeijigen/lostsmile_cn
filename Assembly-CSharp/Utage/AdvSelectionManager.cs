@@ -35,105 +35,33 @@ namespace Utage
 
 		private const int VERSION_0 = 0;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
-		public List<AdvSelection> Selections
-		{
-			get
-			{
-				return selections;
-			}
-		}
+		public List<AdvSelection> Selections => selections;
 
-		public List<AdvSelection> SpriteSelections
-		{
-			get
-			{
-				return spriteSelections;
-			}
-		}
+		public List<AdvSelection> SpriteSelections => spriteSelections;
 
-		public bool IsSelected
-		{
-			get
-			{
-				return selected != null;
-			}
-		}
+		public bool IsSelected => selected != null;
 
 		public bool IsShowing { get; set; }
 
-		public SelectionEvent OnClear
-		{
-			get
-			{
-				return onClear;
-			}
-		}
+		public SelectionEvent OnClear => onClear;
 
-		public SelectionEvent OnBeginShow
-		{
-			get
-			{
-				return onBeginShow;
-			}
-		}
+		public SelectionEvent OnBeginShow => onBeginShow;
 
-		public SelectionEvent OnBeginWaitInput
-		{
-			get
-			{
-				return onBeginWaitInput;
-			}
-		}
+		public SelectionEvent OnBeginWaitInput => onBeginWaitInput;
 
-		public SelectionEvent OnUpdateWaitInput
-		{
-			get
-			{
-				return onUpdateWaitInput;
-			}
-		}
+		public SelectionEvent OnUpdateWaitInput => onUpdateWaitInput;
 
-		public SelectionEvent OnSelected
-		{
-			get
-			{
-				return onSelected;
-			}
-		}
+		public SelectionEvent OnSelected => onSelected;
 
-		public AdvSelection Selected
-		{
-			get
-			{
-				return selected;
-			}
-		}
+		public AdvSelection Selected => selected;
 
 		public bool IsWaitInput { get; set; }
 
-		public int TotalCount
-		{
-			get
-			{
-				return Selections.Count + SpriteSelections.Count;
-			}
-		}
+		public int TotalCount => Selections.Count + SpriteSelections.Count;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "AdvSelectionManager";
-			}
-		}
+		public string SaveKey => "AdvSelectionManager";
 
 		public void AddSelection(string label, string text, ExpressionParser exp, string prefabName, float? x, float? y, StringGridRow row)
 		{

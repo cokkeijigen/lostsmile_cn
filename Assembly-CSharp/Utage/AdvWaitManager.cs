@@ -6,13 +6,7 @@ namespace Utage
 	{
 		private List<AdvCommandWaitBase> commandList = new List<AdvCommandWaitBase>();
 
-		internal bool IsWaiting
-		{
-			get
-			{
-				return commandList.Count > 0;
-			}
-		}
+		internal bool IsWaiting => commandList.Count > 0;
 
 		internal bool IsWaitingAdd
 		{

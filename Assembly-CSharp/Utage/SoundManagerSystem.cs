@@ -13,13 +13,7 @@ namespace Utage
 
 		private const int Version = 0;
 
-		private Dictionary<string, SoundGroup> Groups
-		{
-			get
-			{
-				return groups;
-			}
-		}
+		private Dictionary<string, SoundGroup> Groups => groups;
 
 		internal SoundManager SoundManager { get; private set; }
 
@@ -77,8 +71,7 @@ namespace Utage
 
 		public SoundGroup GetGroup(string name)
 		{
-			SoundGroup value;
-			if (!Groups.TryGetValue(name, out value))
+			if (!Groups.TryGetValue(name, out var value))
 			{
 				return null;
 			}

@@ -23,14 +23,12 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
-			AdvParamStructTbl value;
-			if (engine.Param.StructTbl.TryGetValue(tblName, out value))
+			if (engine.Param.StructTbl.TryGetValue(tblName, out var value))
 			{
 				int num = 0;
 				foreach (AdvParamStruct value3 in value.Tbl.Values)
 				{
-					AdvParamData value2;
-					if (!value3.Tbl.TryGetValue(valueName, out value2))
+					if (!value3.Tbl.TryGetValue(valueName, out var value2))
 					{
 						Debug.LogError(valueName + " is not parameter name");
 						return;

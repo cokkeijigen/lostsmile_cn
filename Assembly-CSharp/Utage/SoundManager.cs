@@ -154,13 +154,7 @@ namespace Utage
 			}
 		}
 
-		public List<TaggedMasterVolume> TaggedMasterVolumes
-		{
-			get
-			{
-				return taggedMasterVolumes;
-			}
-		}
+		public List<TaggedMasterVolume> TaggedMasterVolumes => taggedMasterVolumes;
 
 		public bool MultiVoice
 		{
@@ -282,21 +276,9 @@ namespace Utage
 			}
 		}
 
-		public bool IsLoading
-		{
-			get
-			{
-				return System.IsLoading;
-			}
-		}
+		public bool IsLoading => System.IsLoading;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "SoundManager";
-			}
-		}
+		public string SaveKey => "SoundManager";
 
 		public static SoundManager GetInstance()
 		{

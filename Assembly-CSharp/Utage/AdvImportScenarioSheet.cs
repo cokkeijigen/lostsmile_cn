@@ -52,8 +52,7 @@ namespace Utage
 				string[] stringArray;
 				if (AdvEntityData.ContainsEntitySimple(item2))
 				{
-					string[] strings;
-					if (AdvEntityData.TryCreateEntityStrings(item2, dataManager.DefaultParam.GetParameter, out strings))
+					if (AdvEntityData.TryCreateEntityStrings(item2, dataManager.DefaultParam.GetParameter, out var strings))
 					{
 						AdvEntityData item = new AdvEntityData(item2.Strings);
 						stringArray = strings;

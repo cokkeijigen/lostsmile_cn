@@ -85,13 +85,7 @@ namespace Utage
 			}
 		}
 
-		public float Time01Inverse
-		{
-			get
-			{
-				return 1f - Time01;
-			}
-		}
+		public float Time01Inverse => 1f - Time01;
 
 		public bool AutoDestroy
 		{

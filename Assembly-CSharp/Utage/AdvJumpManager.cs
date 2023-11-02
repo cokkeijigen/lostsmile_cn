@@ -29,13 +29,7 @@ namespace Utage
 
 		internal SubRoutineInfo SubRoutineReturnInfo { get; private set; }
 
-		internal Stack<SubRoutineInfo> SubRoutineCallStack
-		{
-			get
-			{
-				return subRoutineCallStack;
-			}
-		}
+		internal Stack<SubRoutineInfo> SubRoutineCallStack => subRoutineCallStack;
 
 		internal bool IsReserved
 		{

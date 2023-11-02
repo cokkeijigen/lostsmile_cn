@@ -63,85 +63,25 @@ namespace Utage
 
 		private float waitingTimeInput;
 
-		public AdvPageEvent OnBeginPage
-		{
-			get
-			{
-				return onBeginPage;
-			}
-		}
+		public AdvPageEvent OnBeginPage => onBeginPage;
 
-		public AdvPageEvent OnBeginText
-		{
-			get
-			{
-				return onBeginText;
-			}
-		}
+		public AdvPageEvent OnBeginText => onBeginText;
 
-		public AdvPageEvent OnChangeText
-		{
-			get
-			{
-				return onChangeText;
-			}
-		}
+		public AdvPageEvent OnChangeText => onChangeText;
 
-		public AdvPageEvent OnUpdateSendChar
-		{
-			get
-			{
-				return onUpdateSendChar;
-			}
-		}
+		public AdvPageEvent OnUpdateSendChar => onUpdateSendChar;
 
-		public AdvPageEvent OnEndText
-		{
-			get
-			{
-				return onEndText;
-			}
-		}
+		public AdvPageEvent OnEndText => onEndText;
 
-		public AdvPageEvent OnEndPage
-		{
-			get
-			{
-				return onEndPage;
-			}
-		}
+		public AdvPageEvent OnEndPage => onEndPage;
 
-		public AdvPageEvent OnChangeStatus
-		{
-			get
-			{
-				return onChangeStatus;
-			}
-		}
+		public AdvPageEvent OnChangeStatus => onChangeStatus;
 
-		public AdvPageEvent OnTrigWaitInputInPage
-		{
-			get
-			{
-				return onTrigWaitInputInPage;
-			}
-		}
+		public AdvPageEvent OnTrigWaitInputInPage => onTrigWaitInputInPage;
 
-		public AdvPageEvent OnTrigWaitInputBrPage
-		{
-			get
-			{
-				return onTrigWaitInputBrPage;
-			}
-		}
+		public AdvPageEvent OnTrigWaitInputBrPage => onTrigWaitInputBrPage;
 
-		public AdvPageEvent OnTrigInput
-		{
-			get
-			{
-				return onTrigInput;
-			}
-		}
+		public AdvPageEvent OnTrigInput => onTrigInput;
 
 		public AdvScenarioPageData CurrentData { get; private set; }
 
@@ -189,13 +129,7 @@ namespace Utage
 
 		public AdvCommandText CurrentTextDataInPage { get; private set; }
 
-		private List<AdvCommandText> TextDataList
-		{
-			get
-			{
-				return textDataList;
-			}
-		}
+		private List<AdvCommandText> TextDataList => textDataList;
 
 		public AdvCharacterInfo CharacterInfo { get; set; }
 
@@ -229,13 +163,7 @@ namespace Utage
 
 		public int CurrentTextLengthMax { get; private set; }
 
-		public char CurrenLipiSyncWord
-		{
-			get
-			{
-				return CurrentCharData.Char;
-			}
-		}
+		public char CurrenLipiSyncWord => CurrentCharData.Char;
 
 		public CharData CurrentCharData
 		{
@@ -271,13 +199,7 @@ namespace Utage
 			}
 		}
 
-		public bool IsSendChar
-		{
-			get
-			{
-				return Status == PageStatus.SendChar;
-			}
-		}
+		public bool IsSendChar => Status == PageStatus.SendChar;
 
 		public bool IsWaitTextCommand
 		{
@@ -309,41 +231,17 @@ namespace Utage
 		}
 
 		[Obsolete("Use IsWaitInputInPage instead")]
-		public bool IsWaitIntputInPage
-		{
-			get
-			{
-				return IsWaitInputInPage;
-			}
-		}
+		public bool IsWaitIntputInPage => IsWaitInputInPage;
 
 		public bool IsWaitingInputCommand { get; set; }
 
 		[Obsolete("Use IsWaitingInputCommand instead")]
-		public bool IsWaitingIntputCommand
-		{
-			get
-			{
-				return IsWaitingInputCommand;
-			}
-		}
+		public bool IsWaitingIntputCommand => IsWaitingInputCommand;
 
-		public bool IsWaitBrPage
-		{
-			get
-			{
-				return Status == PageStatus.WaitInputBrPage;
-			}
-		}
+		public bool IsWaitBrPage => Status == PageStatus.WaitInputBrPage;
 
 		[Obsolete]
-		public bool IsShowingText
-		{
-			get
-			{
-				return Engine.UiManager.IsShowingMessageWindow;
-			}
-		}
+		public bool IsShowingText => Engine.UiManager.IsShowingMessageWindow;
 
 		[Obsolete]
 		public bool IsWaitPage
@@ -358,29 +256,11 @@ namespace Utage
 			}
 		}
 
-		public AdvPageController Contoller
-		{
-			get
-			{
-				return contoller;
-			}
-		}
+		public AdvPageController Contoller => contoller;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
-		private AdvIfManager MainThreadIfManager
-		{
-			get
-			{
-				return Engine.ScenarioPlayer.MainThread.IfManager;
-			}
-		}
+		private AdvIfManager MainThreadIfManager => Engine.ScenarioPlayer.MainThread.IfManager;
 
 		private bool LastInputSendMessage { get; set; }
 

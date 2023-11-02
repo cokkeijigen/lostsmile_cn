@@ -53,45 +53,15 @@ namespace Utage
 			}
 		}
 
-		public int CurrentPage
-		{
-			get
-			{
-				return currentPage;
-			}
-		}
+		public int CurrentPage => currentPage;
 
-		public int MaxPage
-		{
-			get
-			{
-				return (maxItemNum - 1) / MaxItemPerPage;
-			}
-		}
+		public int MaxPage => (maxItemNum - 1) / MaxItemPerPage;
 
-		public int NextPage
-		{
-			get
-			{
-				return Mathf.Min(CurrentPage + 1, MaxPage);
-			}
-		}
+		public int NextPage => Mathf.Min(CurrentPage + 1, MaxPage);
 
-		public int PrevPage
-		{
-			get
-			{
-				return Mathf.Max(CurrentPage - 1, 0);
-			}
-		}
+		public int PrevPage => Mathf.Max(CurrentPage - 1, 0);
 
-		public List<GameObject> Items
-		{
-			get
-			{
-				return items;
-			}
-		}
+		public List<GameObject> Items => items;
 
 		private int GetCellCount(float cellSize, float rectSize, float space)
 		{

@@ -20,13 +20,7 @@ public class UtageUguiBoot : UguiView
 
 	public bool isWaitSplashScreen = true;
 
-	public AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	public virtual void Start()
 	{

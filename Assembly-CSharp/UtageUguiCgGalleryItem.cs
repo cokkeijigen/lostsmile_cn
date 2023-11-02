@@ -12,13 +12,7 @@ public class UtageUguiCgGalleryItem : MonoBehaviour
 
 	private AdvCgGalleryData data;
 
-	public AdvCgGalleryData Data
-	{
-		get
-		{
-			return data;
-		}
-	}
+	public AdvCgGalleryData Data => data;
 
 	public virtual void Init(AdvCgGalleryData data, Action<UtageUguiCgGalleryItem> ButtonClickedEvent)
 	{
@@ -32,7 +26,7 @@ public class UtageUguiCgGalleryItem : MonoBehaviour
 		{
 			texture.gameObject.SetActive(true);
 			texture.LoadTextureFile(data.ThumbnailPath);
-			count.text = string.Format("{0,2}/{1,2}", data.NumOpen, data.NumTotal);
+			count.text = $"{data.NumOpen,2}/{data.NumTotal,2}";
 		}
 		else
 		{

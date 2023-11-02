@@ -26,13 +26,7 @@ public class UtageUguiSaveLoad : UguiView
 
 	protected int lastPage;
 
-	public virtual AdvEngine Engine
-	{
-		get
-		{
-			return engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
-		}
-	}
+	public virtual AdvEngine Engine => engine ?? (engine = Object.FindObjectOfType<AdvEngine>());
 
 	public virtual void OpenSave(UguiView prev)
 	{

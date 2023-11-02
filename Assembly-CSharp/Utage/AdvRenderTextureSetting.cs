@@ -11,13 +11,7 @@ namespace Utage
 
 		public Vector3 RenderTextureOffset { get; protected set; }
 
-		public bool EnableRenderTexture
-		{
-			get
-			{
-				return RenderTextureType != AdvRenderTextureMode.None;
-			}
-		}
+		public bool EnableRenderTexture => RenderTextureType != AdvRenderTextureMode.None;
 
 		public Material GetRenderMaterialIfEnable(Material material)
 		{

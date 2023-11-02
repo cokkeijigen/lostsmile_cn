@@ -22,8 +22,7 @@ namespace Utage
 
 		private AdvParticleSettingData FindData(string label)
 		{
-			AdvParticleSettingData value;
-			if (!base.Dictionary.TryGetValue(label, out value))
+			if (!base.Dictionary.TryGetValue(label, out var value))
 			{
 				return null;
 			}

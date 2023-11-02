@@ -24,22 +24,10 @@ namespace Utage
 
 		private const int Version = 0;
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponent<AdvEngine>());
 
 		[SerializeField]
-		public AdvGuiManager GuiManager
-		{
-			get
-			{
-				return base.gameObject.GetComponentCacheCreateIfMissing(ref guiManager);
-			}
-		}
+		public AdvGuiManager GuiManager => base.gameObject.GetComponentCacheCreateIfMissing(ref guiManager);
 
 		public UiStatus Status
 		{
@@ -58,13 +46,7 @@ namespace Utage
 
 		public PointerEventData CurrentPointerData { get; private set; }
 
-		public bool IsPointerDowned
-		{
-			get
-			{
-				return CurrentPointerData != null;
-			}
-		}
+		public bool IsPointerDowned => CurrentPointerData != null;
 
 		public bool IsInputTrig { get; set; }
 
@@ -91,13 +73,7 @@ namespace Utage
 		public bool IsHideMenuButton { get; private set; }
 
 		[Obsolete]
-		public bool IsHide
-		{
-			get
-			{
-				return !IsShowingMessageWindow;
-			}
-		}
+		public bool IsHide => !IsShowingMessageWindow;
 
 		[Obsolete]
 		public bool IsShowingUI
@@ -112,13 +88,7 @@ namespace Utage
 			}
 		}
 
-		public string SaveKey
-		{
-			get
-			{
-				return "UiManager";
-			}
-		}
+		public string SaveKey => "UiManager";
 
 		public abstract void Open();
 

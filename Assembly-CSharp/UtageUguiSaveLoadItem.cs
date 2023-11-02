@@ -27,21 +27,9 @@ public class UtageUguiSaveLoadItem : MonoBehaviour
 
 	protected Color defaultColor;
 
-	public AdvSaveData Data
-	{
-		get
-		{
-			return data;
-		}
-	}
+	public AdvSaveData Data => data;
 
-	public int Index
-	{
-		get
-		{
-			return index;
-		}
-	}
+	public int Index => index;
 
 	public virtual void Init(AdvSaveData data, Action<UtageUguiSaveLoadItem> ButtonClickedEvent, int index, bool isSave)
 	{
@@ -57,7 +45,7 @@ public class UtageUguiSaveLoadItem : MonoBehaviour
 
 	public virtual void Refresh(bool isSave)
 	{
-		no.text = string.Format("No.{0,3}", index);
+		no.text = $"No.{index,3}";
 		if (data.IsSaved)
 		{
 			if (data.Type == AdvSaveData.SaveDataType.Auto || data.Texture == null)

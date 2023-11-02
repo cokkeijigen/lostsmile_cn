@@ -54,13 +54,7 @@ namespace Utage
 			}
 		}
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = UnityEngine.Object.FindObjectOfType<AdvEngine>());
 
 		private void Awake()
 		{
@@ -162,8 +156,7 @@ namespace Utage
 
 		private int GetIndexDepthFirst(AdvSelectionManager selection)
 		{
-			int value;
-			if (!selectedDictionary.TryGetValue(Engine.Page.CurrentData, out value))
+			if (!selectedDictionary.TryGetValue(Engine.Page.CurrentData, out var value))
 			{
 				value = 0;
 				selectedDictionary.Add(Engine.Page.CurrentData, value);

@@ -14,13 +14,7 @@ namespace Utage
 
 		private RenderTexture accumTexture;
 
-		protected override bool NeedRenderTexture
-		{
-			get
-			{
-				return true;
-			}
-		}
+		protected override bool NeedRenderTexture => true;
 
 		private void OnDisable()
 		{

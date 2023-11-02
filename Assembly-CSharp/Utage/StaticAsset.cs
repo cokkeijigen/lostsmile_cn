@@ -9,12 +9,6 @@ namespace Utage
 		[SerializeField]
 		private UnityEngine.Object asset;
 
-		public UnityEngine.Object Asset
-		{
-			get
-			{
-				return asset;
-			}
-		}
+		public UnityEngine.Object Asset => asset;
 	}
 }

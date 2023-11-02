@@ -23,29 +23,11 @@ namespace Utage
 
 		public float Time01 { get; protected set; }
 
-		private float StartTimeDelyed
-		{
-			get
-			{
-				return initTime + delay;
-			}
-		}
+		private float StartTimeDelyed => initTime + delay;
 
-		private float EndTime
-		{
-			get
-			{
-				return StartTimeDelyed + duration;
-			}
-		}
+		private float EndTime => StartTimeDelyed + duration;
 
-		public override bool keepWaiting
-		{
-			get
-			{
-				return Waiting();
-			}
-		}
+		public override bool keepWaiting => Waiting();
 
 		public WaitTimer(float duration, UnityAction<WaitTimer> onStart = null, UnityAction<WaitTimer> onUpdate = null, UnityAction<WaitTimer> onComplete = null)
 		{

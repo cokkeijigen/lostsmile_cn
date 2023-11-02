@@ -12,13 +12,7 @@ public class UtageUguiSceneGalleryItem : MonoBehaviour
 
 	protected AdvSceneGallerySettingData data;
 
-	public AdvSceneGallerySettingData Data
-	{
-		get
-		{
-			return data;
-		}
-	}
+	public AdvSceneGallerySettingData Data => data;
 
 	public virtual void Init(AdvSceneGallerySettingData data, Action<UtageUguiSceneGalleryItem> ButtonClickedEvent, AdvSystemSaveData saveData)
 	{

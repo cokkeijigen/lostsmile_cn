@@ -64,13 +64,7 @@ namespace Utage
 			}
 		}
 
-		public CanvasGroup CanvasGroup
-		{
-			get
-			{
-				return canvasGroup ?? (canvasGroup = GetComponent<CanvasGroup>());
-			}
-		}
+		public CanvasGroup CanvasGroup => canvasGroup ?? (canvasGroup = GetComponent<CanvasGroup>());
 
 		public virtual void Open()
 		{

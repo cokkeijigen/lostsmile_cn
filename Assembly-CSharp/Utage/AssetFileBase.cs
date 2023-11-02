@@ -13,13 +13,7 @@ namespace Utage
 
 		public AssetFileInfo FileInfo { get; private set; }
 
-		public virtual string FileName
-		{
-			get
-			{
-				return FileInfo.FileName;
-			}
-		}
+		public virtual string FileName => FileInfo.FileName;
 
 		public IAssetFileSettingData SettingData { get; private set; }
 

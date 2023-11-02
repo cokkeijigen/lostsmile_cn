@@ -11,13 +11,7 @@ namespace Utage
 
 		protected AdvSelection data;
 
-		public AdvSelection Data
-		{
-			get
-			{
-				return data;
-			}
-		}
+		public AdvSelection Data => data;
 
 		public virtual void Init(AdvSelection data, Action<AdvUguiSelection> ButtonClickedEvent)
 		{

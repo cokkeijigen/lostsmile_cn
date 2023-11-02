@@ -24,13 +24,7 @@ namespace Utage
 
 		private Dictionary<string, LanguageStrings> dataTbl = new Dictionary<string, LanguageStrings>();
 
-		public List<string> Languages
-		{
-			get
-			{
-				return languages;
-			}
-		}
+		public List<string> Languages => languages;
 
 		public bool ContainsKey(string key)
 		{

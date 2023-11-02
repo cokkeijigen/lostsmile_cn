@@ -102,14 +102,12 @@ namespace Utage
 				{
 					continue;
 				}
-				int index;
-				if (original.Grid.TryGetColumnIndex(AdvColumnName.WindowType.QuickToString(), out index) && i == index)
+				if (original.Grid.TryGetColumnIndex(AdvColumnName.WindowType.QuickToString(), out var index) && i == index)
 				{
 					Debug.LogError(" Can not use entity in " + AdvColumnName.WindowType.QuickToString());
 					return false;
 				}
-				int index2;
-				if (original.Grid.TryGetColumnIndex(AdvColumnName.PageCtrl.QuickToString(), out index2) && i == index2)
+				if (original.Grid.TryGetColumnIndex(AdvColumnName.PageCtrl.QuickToString(), out var index2) && i == index2)
 				{
 					Debug.LogError(" Can not use entity in " + AdvColumnName.PageCtrl.QuickToString());
 					return false;

@@ -12,29 +12,11 @@ namespace Utage
 
 		private const int Version = 0;
 
-		protected virtual bool NeedRenderTexture
-		{
-			get
-			{
-				return false;
-			}
-		}
+		protected virtual bool NeedRenderTexture => false;
 
-		protected virtual bool NeedDepth
-		{
-			get
-			{
-				return false;
-			}
-		}
+		protected virtual bool NeedDepth => false;
 
-		protected virtual bool NeedHdr
-		{
-			get
-			{
-				return false;
-			}
-		}
+		protected virtual bool NeedHdr => false;
 
 		private void Start()
 		{

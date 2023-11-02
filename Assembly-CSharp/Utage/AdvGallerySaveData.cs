@@ -12,13 +12,7 @@ namespace Utage
 
 		private const int VERSION = 0;
 
-		public string SaveKey
-		{
-			get
-			{
-				return "AdvGallerySaveData";
-			}
-		}
+		public string SaveKey => "AdvGallerySaveData";
 
 		public void AddCgLabel(string label)
 		{

@@ -59,13 +59,7 @@ namespace Utage
 			}
 		}
 
-		private bool NotOverrideRootDirectory
-		{
-			get
-			{
-				return !OverrideRootDirectory;
-			}
-		}
+		private bool NotOverrideRootDirectory => !OverrideRootDirectory;
 
 		public string RootDirectory
 		{
@@ -134,7 +128,7 @@ namespace Utage
 
 		public void CancelMovie()
 		{
-			bool cancel2 = cancel;
+			_ = cancel;
 		}
 
 		private IEnumerator CoPlayMobileMovie(string path)

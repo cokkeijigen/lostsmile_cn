@@ -76,8 +76,7 @@ namespace Utage
 
 		public Sprite GetSprite(string key)
 		{
-			Sprite value;
-			if (SpriteDictionaryStringKey.TryGetValue(key, out value))
+			if (SpriteDictionaryStringKey.TryGetValue(key, out var value))
 			{
 				return value;
 			}
@@ -91,8 +90,7 @@ namespace Utage
 
 		public Sprite GetSprite(char c)
 		{
-			Sprite value;
-			if (SpriteDictionary.TryGetValue(c, out value))
+			if (SpriteDictionary.TryGetValue(c, out var value))
 			{
 				return value;
 			}

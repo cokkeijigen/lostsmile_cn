@@ -22,8 +22,7 @@ namespace Utage
 				}
 				return;
 			}
-			AdvGuiBase gui;
-			if (!engine.UiManager.GuiManager.TryGet(name, out gui))
+			if (!engine.UiManager.GuiManager.TryGet(name, out var gui))
 			{
 				Debug.LogError(ToErrorString(name + " is not found in GuiManager"));
 			}

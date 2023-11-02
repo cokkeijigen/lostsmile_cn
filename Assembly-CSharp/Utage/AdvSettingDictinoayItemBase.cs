@@ -4,13 +4,7 @@ namespace Utage
 	{
 		private string key;
 
-		public string Key
-		{
-			get
-			{
-				return key;
-			}
-		}
+		public string Key => key;
 
 		public StringGridRow RowData { get; protected set; }
 

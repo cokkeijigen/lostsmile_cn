@@ -9,21 +9,9 @@ namespace Utage
 	{
 		private Dictionary<string, byte[]> buffers = new Dictionary<string, byte[]>();
 
-		private Dictionary<string, byte[]> Buffers
-		{
-			get
-			{
-				return buffers;
-			}
-		}
+		private Dictionary<string, byte[]> Buffers => buffers;
 
-		public bool IsEmpty
-		{
-			get
-			{
-				return Buffers.Count <= 0;
-			}
-		}
+		public bool IsEmpty => Buffers.Count <= 0;
 
 		public static void Write(BinaryWriter writer, List<T> ioList)
 		{
@@ -46,7 +34,7 @@ namespace Utage
 			{
 				if (Buffers.ContainsKey(x.SaveKey))
 				{
-					Debug.LogError(string.Format("Save data Key [{0}] is already exsits. Please use another key.", x.SaveKey));
+					Debug.LogError($"Save data Key [{x.SaveKey}] is already exsits. Please use another key.");
 				}
 				else
 				{
@@ -72,7 +60,7 @@ namespace Utage
 			}
 			else
 			{
-				Debug.LogError(string.Format("Not found Save data Key [{0}] ", io.SaveKey));
+				Debug.LogError($"Not found Save data Key [{io.SaveKey}] ");
 			}
 		}
 

@@ -32,10 +32,7 @@ namespace Utage
 			{
 				GameObject gameObject = base.CachedRectTransform.AddChildPrefab(prefab);
 				list.Add(gameObject);
-				if (callcackCreateItem != null)
-				{
-					callcackCreateItem(gameObject, i);
-				}
+				callcackCreateItem?.Invoke(gameObject, i);
 			}
 			return list;
 		}

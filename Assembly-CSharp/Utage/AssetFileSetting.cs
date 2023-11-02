@@ -20,13 +20,7 @@ namespace Utage
 		[NonSerialized]
 		private AssetFileManagerSettings settings;
 
-		public AssetFileType FileType
-		{
-			get
-			{
-				return fileType;
-			}
-		}
+		public AssetFileType FileType => fileType;
 
 		public bool IsStreamingAssets
 		{
@@ -49,21 +43,9 @@ namespace Utage
 			}
 		}
 
-		private AssetFileManagerSettings Settings
-		{
-			get
-			{
-				return settings;
-			}
-		}
+		private AssetFileManagerSettings Settings => settings;
 
-		public AssetFileManagerSettings.LoadType LoadType
-		{
-			get
-			{
-				return Settings.LoadTypeSetting;
-			}
-		}
+		public AssetFileManagerSettings.LoadType LoadType => Settings.LoadTypeSetting;
 
 		public AssetFileSetting(AssetFileType fileType, string[] extensions)
 		{

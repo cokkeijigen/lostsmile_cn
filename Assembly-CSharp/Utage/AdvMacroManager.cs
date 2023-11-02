@@ -23,8 +23,7 @@ namespace Utage
 			{
 				StringGridRow stringGridRow = grid.Rows[num];
 				num++;
-				string macroName;
-				if (stringGridRow.RowIndex < grid.DataTopRow || stringGridRow.IsEmptyOrCommantOut || !TryParseMacoBegin(stringGridRow, out macroName))
+				if (stringGridRow.RowIndex < grid.DataTopRow || stringGridRow.IsEmptyOrCommantOut || !TryParseMacoBegin(stringGridRow, out var macroName))
 				{
 					continue;
 				}
@@ -57,8 +56,7 @@ namespace Utage
 		public bool TryMacroExpansion(StringGridRow row, List<StringGridRow> outputList, string debugMsg)
 		{
 			string key = AdvParser.ParseCellOptional(row, AdvColumnName.Command, "");
-			AdvMacroData value;
-			if (!macroDataTbl.TryGetValue(key, out value))
+			if (!macroDataTbl.TryGetValue(key, out var value))
 			{
 				return false;
 			}

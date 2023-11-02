@@ -168,10 +168,7 @@ namespace Utage
 				{
 					if (retryCount <= 0)
 					{
-						if (onTimeOut != null)
-						{
-							onTimeOut(uwr);
-						}
+						onTimeOut?.Invoke(uwr);
 					}
 					else
 					{
@@ -182,10 +179,7 @@ namespace Utage
 				{
 					if (retryCount <= 0)
 					{
-						if (onFailed != null)
-						{
-							onFailed(uwr);
-						}
+						onFailed?.Invoke(uwr);
 					}
 					else
 					{
@@ -199,10 +193,7 @@ namespace Utage
 					{
 						OnUpdate(this);
 					}
-					if (onComplete != null)
-					{
-						onComplete(uwr);
-					}
+					onComplete?.Invoke(uwr);
 				}
 			}
 			if (retry)
@@ -305,9 +296,9 @@ namespace Utage
 					onFailed();
 				}
 			}
-			else if (onComplete != null)
+			else
 			{
-				onComplete(val);
+				onComplete?.Invoke(val);
 			}
 			assetBundle.Unload(unloadAllLoadedObjects);
 		}
@@ -334,8 +325,7 @@ namespace Utage
 			{
 				yield return null;
 			}
-			T[] array = request.allAssets as T[];
-			if (array == null || array.Length == 0)
+			if (!(request.allAssets is T[] array) || array.Length == 0)
 			{
 				if (!IgnoreDebugLog)
 				{
@@ -346,9 +336,9 @@ namespace Utage
 					onFailed();
 				}
 			}
-			else if (onComplete != null)
+			else
 			{
-				onComplete(array);
+				onComplete?.Invoke(array);
 			}
 			assetBundle.Unload(unloadAllLoadedObjects);
 		}

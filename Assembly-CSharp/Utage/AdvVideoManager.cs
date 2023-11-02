@@ -23,21 +23,9 @@ namespace Utage
 
 		private Dictionary<string, VideoInfo> videos = new Dictionary<string, VideoInfo>();
 
-		public AdvEngine Engine
-		{
-			get
-			{
-				return engine ?? (engine = GetComponentInParent<AdvEngine>());
-			}
-		}
+		public AdvEngine Engine => engine ?? (engine = GetComponentInParent<AdvEngine>());
 
-		private Dictionary<string, VideoInfo> Videos
-		{
-			get
-			{
-				return videos;
-			}
-		}
+		private Dictionary<string, VideoInfo> Videos => videos;
 
 		internal void Play(string label, string cameraName, AssetFile file, bool loop, bool cancel)
 		{

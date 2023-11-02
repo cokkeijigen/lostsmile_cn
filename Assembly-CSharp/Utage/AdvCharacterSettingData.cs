@@ -80,37 +80,13 @@ namespace Utage
 
 		private AdvGraphicInfoList graphic;
 
-		public string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public string Name => name;
 
-		public string Pattern
-		{
-			get
-			{
-				return pattern;
-			}
-		}
+		public string Pattern => pattern;
 
-		public string NameText
-		{
-			get
-			{
-				return nameText;
-			}
-		}
+		public string NameText => nameText;
 
-		public AdvGraphicInfoList Graphic
-		{
-			get
-			{
-				return graphic;
-			}
-		}
+		public AdvGraphicInfoList Graphic => graphic;
 
 		public IconInfo Icon { get; private set; }
 

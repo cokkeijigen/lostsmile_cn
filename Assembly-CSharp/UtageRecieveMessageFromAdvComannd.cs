@@ -44,7 +44,7 @@ public class UtageRecieveMessageFromAdvComannd : MonoBehaviour
 
 	private void OnWait(AdvCommandSendMessage command)
 	{
-		string name2 = command.Name;
+		_ = command.Name;
 		command.IsWait = false;
 	}
 

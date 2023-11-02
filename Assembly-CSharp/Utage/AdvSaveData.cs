@@ -48,13 +48,7 @@ namespace Utage
 
 		public DateTime Date { get; set; }
 
-		public bool IsSaved
-		{
-			get
-			{
-				return !Buffer.IsEmpty;
-			}
-		}
+		public bool IsSaved => !Buffer.IsEmpty;
 
 		public int FileVersion { get; private set; }
 
