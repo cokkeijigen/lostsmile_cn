@@ -14,17 +14,18 @@ namespace CHS {
 
         private static void CHSAssetBundlesLoadIfNotInitialized()
         {
-            string cn_BundlesDir = Directory.GetCurrentDirectory();
-            cn_BundlesDir = Path.Combine(cn_BundlesDir, "LOSTSMILE_CN", "Assets");
-            if (Directory.Exists(cn_BundlesDir))
+            string cnBundlesDir = Directory.GetCurrentDirectory();
+            cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
+            if (Directory.Exists(cnBundlesDir))
             {
                 if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
-                foreach (string filePath in Directory.GetFiles(cn_BundlesDir))
+                foreach (string filePath in Directory.GetFiles(cnBundlesDir))
                 {
                     try
                     {
-                        if (!filePath.EndsWith(".asset")) continue;
+                        if (filePath.EndsWith(".dll")) continue;
                         AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
+                        if (assetBundle == null) continue;
                         CHSAssetBundles.Add(assetBundle);
                     }
                     catch (Exception e)
@@ -45,8 +46,10 @@ namespace CHS {
                 try {
                     if (bundle.Contains(fileName))
                     {
-                        staticAsset = new StaticAsset();
-                        staticAsset.Asset = bundle.LoadAsset<UnityEngine.Object>(fileName);
+                        staticAsset = new StaticAsset
+                        {
+                            Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
+                        };
                         //LogPrinter.Puts($"找到文件：{fileName}");
                         return staticAsset.Asset != null;
                     }
