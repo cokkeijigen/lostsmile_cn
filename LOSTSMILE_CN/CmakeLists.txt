@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.20.0)
+project(LOSTSMILE_CN)
+
+set(CMAKE_CXX_STANDARD 20)
+
+if (MSVC)
+    add_compile_options("/source-charset:utf-8")
+    if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+    elseif(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+    endif()
+endif(MSVC)
+
+set(SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
+
+add_executable(LAUNCHER 
+	"${SOURCE_DIR}/launcher.cpp" 
+	"${SOURCE_DIR}/icon/icon.rc"
+)
+set_target_properties(LAUNCHER 
+	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
+)
+target_include_directories(LAUNCHER 
+	PUBLIC "${SOURCE_DIR}/lib"
+)
+target_link_libraries(LAUNCHER 
+	"${SOURCE_DIR}/lib/detours.lib"
+)
+
+add_library(DLLMAIN SHARED "${SOURCE_DIR}/dllmain.cpp")
+set_target_properties(DLLMAIN 
+	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
+)
+target_include_directories(DLLMAIN 
+	PUBLIC "${SOURCE_DIR}/lib"
+)
+target_link_libraries(DLLMAIN 
+	"${SOURCE_DIR}/lib/detours.lib"
+)
