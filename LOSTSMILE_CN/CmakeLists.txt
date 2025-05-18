@@ -28,7 +28,9 @@ target_link_libraries(LAUNCHER
 	"${SOURCE_DIR}/lib/detours.lib"
 )
 
-add_library(DLLMAIN SHARED "${SOURCE_DIR}/dllmain.cpp")
+add_library(DLLMAIN SHARED 
+	"${SOURCE_DIR}/dllmain.cpp"
+)
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
 )
