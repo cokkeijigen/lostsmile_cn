@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <filesystem>
 #include <windows.h>
 #include <patch.hpp>
