@@ -14,7 +14,7 @@ namespace LOSTSMILE
         if (call == nullptr)
         {
             auto raw{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x875B20 };
-            call = { reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_PathJoin)*>(raw) };;
+            call = { reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_PathJoin)*>(raw)  };
         }
         return { call(path1, path2, symbol, output) };
     }
