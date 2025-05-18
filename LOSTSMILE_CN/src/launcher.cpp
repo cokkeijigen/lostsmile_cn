@@ -29,4 +29,6 @@ auto main(void) -> int
 		::CloseHandle(pi.hThread);
 		::CloseHandle(pi.hProcess);
 	}
+
+	return {};
 }
