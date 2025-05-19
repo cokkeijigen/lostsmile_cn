@@ -21,10 +21,10 @@ namespace LOSTSMILE
 
     static auto __fastcall UnityPlayer_PathJoin_Hook(uintptr_t output, uintptr_t path1, uintptr_t path2) -> uintptr_t
     {
-        *((int64_t*)(output + 0x00)) = 0x00;
-        *((int64_t*)(output + 0x18)) = 0x00;
-        *((int32_t*)(output + 0x20)) = 0x45;
-        *((int8_t* )(output + 0x08)) = 0x00;
+        *reinterpret_cast<int64_t*>(output + 0x00) = 0x00;
+        *reinterpret_cast<uint8_t*>(output + 0x08) = 0x00;
+        *reinterpret_cast<int64_t*>(output + 0x18) = 0x00;
+        *reinterpret_cast<int32_t*>(output + 0x20) = 0x45;
 
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
