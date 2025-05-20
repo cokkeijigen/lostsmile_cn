@@ -10,12 +10,8 @@ namespace LOSTSMILE
 
     static auto __fastcall UnityPlayer_PathJoin(uintptr_t path1, uintptr_t path2, uint8_t symbol, uintptr_t output) -> uintptr_t
     {
-        static auto call{ static_cast<decltype(LOSTSMILE::UnityPlayer_PathJoin)*>(nullptr) };
-        if (call == nullptr)
-        {
-            auto raw{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x875B20 };
-            call = { reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_PathJoin)*>(raw)  };
-        }
+        auto raw { reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x875B20 };
+        auto call{ reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_PathJoin)*>(raw) };
         return { call(path1, path2, symbol, output) };
     }
 
