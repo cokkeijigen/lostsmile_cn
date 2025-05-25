@@ -16,7 +16,6 @@ set(SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
 
 add_executable(LAUNCHER 
 	"${SOURCE_DIR}/launcher.cpp" 
-	"${SOURCE_DIR}/icon/icon.rc"
 )
 set_target_properties(LAUNCHER 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
@@ -26,6 +25,7 @@ target_include_directories(LAUNCHER
 )
 target_link_libraries(LAUNCHER 
 	"${SOURCE_DIR}/lib/detours.lib"
+	"${SOURCE_DIR}/launcher.icon.res"
 )
 
 add_library(DLLMAIN SHARED 

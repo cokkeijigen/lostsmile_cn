@@ -73,6 +73,8 @@ namespace LOSTSMILE
             std::replace(workpath.begin(), workpath.end(), '\\', '/');
             LOSTSMILE::TargetPath.insert(0, workpath);
         }
+
+        DEBUG_ONLY(::LoadLibraryW(L"MonoEnableDebugger.dll"));
     }
 }
 
