@@ -14,10 +14,8 @@
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_02.png)<br>
 接着随便新建一个项目，`Template`随意，用默认的就行了
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_03.png)<br>
-来到项目`Assets`目录下新建一个`Editor`的目录
+来到项目`Assets`目录下新建一个`Editor`的目录，进入里面接着创建一个C#脚本，名称随意，我这里叫`BuildAssetBundle`，内容如下
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_04.png)<br>
-进入`Editor`目录里创建一个C#脚本，名称随意，我这里叫`BuildAssetBundle`，内容如下
-![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_05.png)<br>
 ```cs
 using UnityEngine;
 using UnityEditor;
@@ -40,3 +38,4 @@ public class BuildAssetBundles : MonoBehaviour
     }
 }
 ```
+
