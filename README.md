@@ -16,3 +16,27 @@
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_03.png)<br>
 来到项目`Assets`目录下新建一个`Editor`的目录
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_04.png)<br>
+进入`Editor`目录里创建一个C#脚本，名称随意，我这里叫`BuildAssetBundle`，内容如下
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_05.png)<br>
+```cs
+using UnityEngine;
+using UnityEditor;
+using System.IO;
+
+public class BuildAssetBundles : MonoBehaviour
+{
+    [MenuItem("Assets/Build AssetBundles")]
+    static void BuildAllAssetBundles()
+    {
+        // 设置AB包输出路径
+        string assetBundleDirectory = Path.Combine(Application.streamingAssetsPath, "AssetBundles");
+        if (!Directory.Exists(assetBundleDirectory))
+        {
+            Directory.CreateDirectory(assetBundleDirectory);
+        }
+
+        // 构建StandaloneWindows的AB包
+        BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+    }
+}
+```
