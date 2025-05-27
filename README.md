@@ -6,3 +6,7 @@
 ## `Assembly-CSharp` 
 **原版`Assembly-CSharp.dll`反编译源码，修复存档路径问题，以及添加自定义AssetBundle加载和资源替换 <br>
 注：`release`分支为未修改过的源码**
+
+## 笔记：如何打包使用Unity打包Assetbundle
+首先要知道游戏的unity版本，这个可以通过在游戏`主程序.exe`的属性或者`UnityPlayer.dll`属性中查看，再或者用`ida`打开`UnityPlayer.dll`查找字符串`version`或者`UnityPlayer`等字眼找到。
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_01.png)<br>
