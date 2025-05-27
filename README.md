@@ -47,3 +47,29 @@ public class BuildAssetBundles : MonoBehaviour
 输出的`AssetBundles`就在项目目录下的`Assets\StreamingAssets\AssetBundles`
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_08.png)<br>
 ## 加载自己打包的`AssetBundles`并替换
+```cs
+private static List<AssetBundle> CHSAssetBundles;
+private static bool IsInitialized = false;
+
+private static void CHSAssetBundlesLoadIfNotInitialized()
+{
+    string cnBundlesDir = Directory.GetCurrentDirectory();
+    cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
+    if (Directory.Exists(cnBundlesDir))
+    {
+        if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
+        foreach (string filePath in Directory.GetFiles(cnBundlesDir))
+        {
+             try
+             {
+                 if (filePath.EndsWith(".dll")) continue;
+                 AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
+                 if (assetBundle == null) continue;
+                 CHSAssetBundles.Add(assetBundle);
+             }
+             catch (Exception e) {}
+        }
+    }
+    IsInitialized = true
+}
+```
