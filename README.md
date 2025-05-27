@@ -49,50 +49,54 @@ public class BuildAssetBundles : MonoBehaviour
 ## 加载自己打包的`AssetBundles`并替换
 首先创建一个工具类，用来管理我们自己的AssetBundle
 ```cs
-private static List<AssetBundle> CHSAssetBundles;
-private static bool IsInitialized = false;
 
-private static void CHSAssetBundlesLoadIfNotInitialized()
+public class AssetManager
 {
-    string cnBundlesDir = Directory.GetCurrentDirectory();
-    // 从`游戏目录/LOSTSMILE_CN/`加载所有Assetbundle
-    cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
-    if (Directory.Exists(cnBundlesDir))
+    private static List<AssetBundle> CHSAssetBundles;
+    private static bool IsInitialized = false;
+    
+    private static void CHSAssetBundlesLoadIfNotInitialized()
     {
-        if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
-        foreach (string filePath in Directory.GetFiles(cnBundlesDir))
+        string cnBundlesDir = Directory.GetCurrentDirectory();
+        // 从`游戏目录/LOSTSMILE_CN/`加载所有Assetbundle
+        cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
+        if (Directory.Exists(cnBundlesDir))
         {
-             try
-             {
-                 if (filePath.EndsWith(".dll")) continue;
-                 AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
-                 if (assetBundle == null) continue;
-                 CHSAssetBundles.Add(assetBundle);
-             }
-             catch (Exception e) {}
-        }
-    }
-    IsInitialized = true
-}
-
-// 从AssetBundle中获取资源
-public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
-{
-    staticAsset = null;
-    if(!AssetManager.IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
-    if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
-    foreach (AssetBundle bundle in AssetManager.CHSAssetBundles) {
-        try
-        {
-            if (bundle.Contains(fileName))
+            if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
+            foreach (string filePath in Directory.GetFiles(cnBundlesDir))
             {
-                 staticAsset = new StaticAsset
+                 try
                  {
-                     Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
+                     if (filePath.EndsWith(".dll")) continue;
+                     AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
+                     if (assetBundle == null) continue;
+                     CHSAssetBundles.Add(assetBundle);
                  }
-                 return staticAsset.Asset != null;
+                 catch (Exception e) {}
             }
-        } catch (Exception e){}
+        }
+        IsInitialized = true
+    }
+    
+    // 从AssetBundle中获取资源
+    public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
+    {
+        staticAsset = null;
+        if(!AssetManager.IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
+        if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
+        foreach (AssetBundle bundle in AssetManager.CHSAssetBundles) {
+            try
+            {
+                if (bundle.Contains(fileName))
+                {
+                     staticAsset = new StaticAsset
+                     {
+                         Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
+                     }
+                     return staticAsset.Asset != null;
+                }
+            } catch (Exception e){}
+        }
     }
 }
 ```
