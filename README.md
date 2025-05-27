@@ -60,11 +60,12 @@ namespace CHS {
     {
         private static List<AssetBundle> CHSAssetBundles;
         private static bool IsInitialized = false;
-        
+
+        // 加载所有Assetbundle
         private static void CHSAssetBundlesLoadIfNotInitialized()
         {
             string cnBundlesDir = Directory.GetCurrentDirectory();
-            // 从`游戏目录/LOSTSMILE_CN/`加载所有Assetbundle
+            // Assetbundle存档位置为：`游戏目录/LOSTSMILE_CN/`
             cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
             if (Directory.Exists(cnBundlesDir))
             {
@@ -105,5 +106,27 @@ namespace CHS {
             }
         }
     }
+}
+```
+找到游戏获取`AssetFile`的地方插入自己写的方法调用代码，位置在： [Utage::StaticAssetManager::FindAssetFile](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/StaticAssetManager.cs#L23)
+```cs
+public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
+{
+
+    if (Assets == null)
+    {
+         return null;
+    }
+    string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
+    StaticAsset staticAsset; // 尝试获取LOSTSMILE_CN目录下的资源
+    if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
+    {
+        staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
+        if (staticAsset == null)
+        {
+            return null;
+        }
+    }
+    return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 }
 ```
