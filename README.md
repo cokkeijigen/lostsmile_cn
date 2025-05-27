@@ -127,3 +127,4 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
     return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 }
 ```
+## 0x02 修复存档中的绝对路径
