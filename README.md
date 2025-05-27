@@ -129,7 +129,7 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
 ```
 ## 0x02 修复存档中的绝对路径
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_09.png)<br>
-为了保证存档兼容原版，我这里选择了在获取`AssetFile`的地方替换路径，位置：[Utage::AssetFileManager::GetFileCreateIfMissing](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AssetFileManager.cs#L586)
+为了保证存档兼容原版，我这里选择了在获取`AssetFile`的地方替换路径 ~~（可能不是最佳位置）~~，位置：[Utage::AssetFileManager::GetFileCreateIfMissing](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AssetFileManager.cs#L586)
 ```cs
 private static string CurrentDir;
 
