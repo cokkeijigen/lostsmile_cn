@@ -10,3 +10,5 @@
 ## 笔记：如何打包使用Unity打包Assetbundle
 首先要知道游戏的unity版本，这个可以通过在游戏`主程序.exe`的属性或者`UnityPlayer.dll`属性中查看，再或者用`ida`打开`UnityPlayer.dll`查找字符串`version`或者`UnityPlayer`等字眼找到。
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_01.png)<br>
+接着从[UnityArchive](https://unity.com/cn/releases/editor/archive)中下载对应版本的Unity并安装，过程就不多说了，聪明的你一定也懂。
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_02.png)<br>
