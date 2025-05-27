@@ -34,7 +34,7 @@ public class BuildAssetBundles : MonoBehaviour
     }
 }
 ```
-回到`Assets`，创建一个目录用于存档要打包的资源，名称也随意，我这里叫`LostSmile`，点击目录，可以看到右下角有个`Asset Lables`，针对这个文件新建一个，第一个是`输出的文件名`，第二个是`后缀名`
+回到`Assets`，创建一个目录用于存档要打包的资源，名称也随意，我这里叫`LostSmile`，点击目录，可以看到右下角有个`Asset Lables`，没有可以新建一个，第一个是`输出的文件名`，第二个是`后缀名`
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_05.png)<br>
 进入`LostSmile`，将要打包的资源放入
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_06.png)<br>
