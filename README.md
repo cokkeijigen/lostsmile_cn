@@ -1,6 +1,6 @@
 # lostsmile unity 中文本地化项目
 ## 本项目仅供学习交流使用，严禁一切商业或特殊用途！！！
-![Image text](https://github.com/cokkeijigen/lostsmile_cn/blob/master/test.png)<br>
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_00.png.png)<br>
 ## `LOSTSMILE_CN`
 **程序`hook`相关，实现了资源重定向，可以与原版资源共存**
 ## `Assembly-CSharp` 
