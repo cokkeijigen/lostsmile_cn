@@ -13,7 +13,8 @@ namespace Utage
 
 		public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo fileInfo, IAssetFileSettingData settingData)
 		{
-			if (Assets == null)
+
+            if (Assets == null)
 			{
 				return null;
 			}
