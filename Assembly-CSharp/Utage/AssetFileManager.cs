@@ -582,7 +582,7 @@ namespace Utage
 		public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
 		{
 
-            //iTsukezigen++  �滻�浵�е�·��
+            //iTsukezigen++  替换存档中的路径
             if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
             {
                 int index = path.LastIndexOf("/LOSTSMILE_Data");
