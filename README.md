@@ -128,3 +128,26 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
 }
 ```
 ## 0x02 修复存档中的绝对路径
+为了保证存档兼容原版，我这里选择了在获取`AssetFile`的地方替换路径，位置：[Utage::AssetFileManager::GetFileCreateIfMissing](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AssetFileManager.cs#L586)
+```cs
+private static string CurrentDir;
+
+public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
+{
+
+    if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
+    {
+        int index = path.LastIndexOf("/LOSTSMILE_Data");
+        path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
+        }
+        if (!IsEditorErrorCheck)
+        {
+        return GetInstance().AddSub(path, settingData);
+        }
+        if (path.Contains(" "))
+        {
+        Debug.LogWarning("[" + path + "] contains white space");
+    }
+    return null;
+}
+```
