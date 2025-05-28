@@ -136,18 +136,17 @@ private static string CurrentDir;
 
 public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingData settingData = null)
 {
-
     if ((CurrentDir != null || (CurrentDir = Directory.GetCurrentDirectory().Replace("\\", "/")) != null) && !path.Contains(CurrentDir))
     {
         int index = path.LastIndexOf("/LOSTSMILE_Data");
         path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
-        }
-        if (!IsEditorErrorCheck)
-        {
-            return GetInstance().AddSub(path, settingData);
-        }
-        if (path.Contains(" "))
-        {
+    }
+    if (!IsEditorErrorCheck)
+    {
+        return GetInstance().AddSub(path, settingData);
+    }
+    if (path.Contains(" "))
+    {
         Debug.LogWarning("[" + path + "] contains white space");
     }
     return null;
