@@ -26,7 +26,8 @@ namespace LOSTSMILE
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
 
-        //console::fmt::write("UnityPlayer_PathJoin_Hook{ %s, %s }\n", str1, str2);
+        // DEBUG_ONLY(console::fmt::write("PathJoin_Hook{ %s, %s }\n", str1, str2));
+
         if (str2 != nullptr)
         {
             auto target{ std::string{ LOSTSMILE::TargetPath }.append(str2) };
@@ -56,7 +57,7 @@ namespace LOSTSMILE
         return { call(str, length, value) };
     }
 
-    static auto __fastcall UnityPlayer_StrCat(uintptr_t dest, const char* src, size_t length) -> void
+    static auto __fastcall UnityPlayer_StrCat_Hook(uintptr_t dest, const char* src, size_t length) -> void
     {
 
         if (length == 0x00 || src == nullptr)
@@ -104,7 +105,6 @@ namespace LOSTSMILE
         std::copy_backward(src, src + length, dest_str + dest_len + length);
     }
 
-
     static auto INIT_ALL_PATCH(void) -> void
     {
         
@@ -132,7 +132,7 @@ namespace LOSTSMILE
         Patch::Mem::JmpWrite
         (
             { reinterpret_cast<LPVOID>(strcat) },
-            { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_StrCat) }
+            { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_StrCat_Hook) }
         );
 
         auto workpath{ std::filesystem::current_path().string() };
