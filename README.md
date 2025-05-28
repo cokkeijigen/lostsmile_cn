@@ -144,7 +144,7 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
         }
         if (!IsEditorErrorCheck)
         {
-        return GetInstance().AddSub(path, settingData);
+            return GetInstance().AddSub(path, settingData);
         }
         if (path.Contains(" "))
         {
