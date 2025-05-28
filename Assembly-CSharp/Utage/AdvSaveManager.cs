@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Utage
@@ -98,7 +99,32 @@ namespace Utage
 			}
 		}
 
-		public int CaptureWidth => defaultSetting.CaptureWidth;
+		// iTsukezigen++
+        private string savePath;
+
+        private string SavePath
+        {
+            get
+            {
+                if (savePath == null || savePath.Count() <= 0)
+                {
+                    var index = Application.consoleLogPath.LastIndexOf("/");
+                    if (index != -1)
+                    {
+                        var path = Application.consoleLogPath.Substring(0, index);
+                        savePath = FilePathUtil.Combine(path, "Utage", DirectoryName + "/");
+                    }
+                    else
+                    {
+                        savePath = FilePathUtil.Combine(FileIOManagerBase.SdkPersistentDataPath, DirectoryName + "/");
+                    }
+                }
+                return savePath;
+            }
+        }
+		// end++
+
+        public int CaptureWidth => defaultSetting.CaptureWidth;
 
 		public int CaptureHeight => defaultSetting.CaptureHeight;
 
@@ -167,8 +193,8 @@ namespace Utage
 
 		public virtual void Init()
 		{
-			FileIOManager.CreateDirectory(ToDirPath());
-			autoSaveData = new AdvSaveData(AdvSaveData.SaveDataType.Auto, ToFilePath("Auto"));
+			FileIOManager.CreateDirectory(SavePath); // iTsukezigen++
+            autoSaveData = new AdvSaveData(AdvSaveData.SaveDataType.Auto, ToFilePath("Auto"));
 			currentAutoSaveData = new AdvSaveData(AdvSaveData.SaveDataType.Auto, ToFilePath("Auto"));
 			quickSaveData = new AdvSaveData(AdvSaveData.SaveDataType.Quick, ToFilePath("Quick"));
 			saveDataList = new List<AdvSaveData>();
@@ -181,8 +207,9 @@ namespace Utage
 
 		protected virtual string ToFilePath(string id)
 		{
-			return FilePathUtil.Combine(ToDirPath(), FileName + id);
+			return FilePathUtil.Combine(SavePath/* iTsukezigen++ */, FileName + id);
 		}
+
 
 		protected virtual string ToDirPath()
 		{
