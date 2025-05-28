@@ -63,7 +63,7 @@ namespace CHS {
         private static void CHSAssetBundlesLoadIfNotInitialized()
         {
             string cnBundlesDir = Directory.GetCurrentDirectory();
-            // Assetbundle存档位置为：`游戏目录/LOSTSMILE_CN/`
+            // Assetbundle存放位置为：`游戏目录/LOSTSMILE_CN/`
             cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
             if (Directory.Exists(cnBundlesDir))
             {
