@@ -283,7 +283,7 @@ namespace Utage
 		{
 		}
 
-		private void ChangeLanguage()
+        private void ChangeLanguage()
 		{
 			Page.OnChangeLanguage();
 			OnChangeLanguage.Invoke(this);
@@ -346,7 +346,8 @@ namespace Utage
 
 		private IEnumerator CoBootInit(string rootDirResource)
 		{
-			BootInitCustomCommand();
+			yield return null; // iTsukezigen++
+            BootInitCustomCommand();
 			DataManager.BootInit(rootDirResource);
 			GraphicManager.BootInit(this, DataManager.SettingDataManager.LayerSetting);
 			Param.InitDefaultAll(DataManager.SettingDataManager.DefaultParam);
