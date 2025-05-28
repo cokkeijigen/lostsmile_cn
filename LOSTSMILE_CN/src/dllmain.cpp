@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <windows.h>
 #include <patch.hpp>
+#include <console.hpp>
 
 namespace LOSTSMILE 
 {
@@ -25,6 +26,7 @@ namespace LOSTSMILE
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
 
+        //console::fmt::write("UnityPlayer_PathJoin_Hook{ %s, %s }\n", str1, str2);
         if (str2 != nullptr)
         {
             auto target{ std::string{ LOSTSMILE::TargetPath }.append(str2) };
@@ -47,8 +49,65 @@ namespace LOSTSMILE
         return { output };
     }
 
+    static auto __fastcall  UnityPlayer_StringCheck(uintptr_t str, size_t length, char value) -> size_t
+    {
+        auto raw{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x1B63E0 };
+        auto call{ reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_StringCheck)*>(raw) };
+        return { call(str, length, value) };
+    }
+
+    static auto __fastcall UnityPlayer_StrCat(uintptr_t dest, const char* src, size_t length) -> void
+    {
+
+        if (length == 0x00 || src == nullptr)
+        {
+            return;
+        }
+
+        if (*reinterpret_cast<char**>(dest) != nullptr)
+        {
+            std::string_view str1{ *reinterpret_cast<char**>(dest) }, str2{ src };
+            auto is_replacement_attempt_needed
+            {
+                str1.size() > 2 && str1[1] == ':' &&
+                str2.size() > 2 && str2[1] != ':' &&
+                str1.find("_Data") != std::string_view::npos
+            };
+
+            if (is_replacement_attempt_needed)
+            {
+                // 这里进行路径替换
+                auto target{ std::string{ LOSTSMILE::TargetPath }.append(str2) };
+                if (::GetFileAttributesA(target.c_str()) != INVALID_FILE_ATTRIBUTES)
+                {
+                    *reinterpret_cast<char**>(dest)[0] = 0x00;
+                    LOSTSMILE::UnityPlayer_StringCheck(dest, target.size(), 1);
+                    std::copy(target.begin(), target.end(), *reinterpret_cast<char**>(dest));
+                    return;
+                }
+            }
+        }
+
+        auto dest_str{  reinterpret_cast<char*>  (dest + 0x08) };
+        auto dest_len{ *reinterpret_cast<size_t*>(dest + 0x18) };
+
+        LOSTSMILE::UnityPlayer_StringCheck(dest, dest_len + length, 1);
+        
+        if (auto org_dest_str = *reinterpret_cast<char**>(dest))
+        {
+            dest_str = org_dest_str;
+        }
+        if (src >= dest_str && src < dest_str + dest_len)
+        {
+            src += (dest_str - reinterpret_cast<char*>(dest + 8));
+        }
+        std::copy_backward(src, src + length, dest_str + dest_len + length);
+    }
+
+
     static auto INIT_ALL_PATCH(void) -> void
     {
+        
         if (LOSTSMILE::UnityPlayerDll == nullptr)
         {
             auto uniMod{ ::GetModuleHandleW(L"UnityPlayer.dll") };
@@ -61,11 +120,19 @@ namespace LOSTSMILE
                 return;
             }
         }
-        auto target{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x8759D0 };
+
+        auto pathjoin{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x8759D0 };
         Patch::Mem::JmpWrite
         (
-            { reinterpret_cast<LPVOID>(target) },
+            { reinterpret_cast<LPVOID>(pathjoin) },
             { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_PathJoin_Hook) }
+        );
+
+        auto strcat{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x1B6070 };
+        Patch::Mem::JmpWrite
+        (
+            { reinterpret_cast<LPVOID>(strcat) },
+            { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_StrCat) }
         );
 
         auto workpath{ std::filesystem::current_path().string() };
@@ -74,7 +141,12 @@ namespace LOSTSMILE
             LOSTSMILE::TargetPath.insert(0, workpath);
         }
 
-        DEBUG_ONLY(::LoadLibraryW(L"MonoEnableDebugger.dll"));
+        DEBUG_ONLY
+        ({
+            console::make();
+            console::pause("DEBUG!!!!!!!!!!!!!!!\n");
+            ::LoadLibraryW(L"MonoEnableDebugger.dll");
+        })
     }
 }
 
