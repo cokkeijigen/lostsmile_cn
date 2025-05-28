@@ -19,8 +19,9 @@ using System.IO;
 
 public class BuildAssetBundles : MonoBehaviour
 {
+    // 向Unity右键菜单添加一个选项
     [MenuItem("Assets/Build AssetBundles")]
-    static void BuildAllAssetBundles()
+    static void BuildAllAssetBundles() 
     {
         // 设置AB包输出路径
         string assetBundleDirectory = Path.Combine(Application.streamingAssetsPath, "AssetBundles");
