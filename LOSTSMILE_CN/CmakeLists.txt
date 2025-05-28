@@ -30,6 +30,7 @@ target_link_libraries(LAUNCHER
 
 add_library(DLLMAIN SHARED 
 	"${SOURCE_DIR}/dllmain.cpp"
+	"${SOURCE_DIR}/lib/console.cpp" 
 )
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
