@@ -72,7 +72,7 @@ namespace LOSTSMILE
             {
                 str1.size() > 2 && str1[1] == ':' &&
                 str2.size() > 2 && str2[1] != ':' &&
-                str1.find("_Data") != std::string_view::npos
+                str1.rfind("_Data") != std::string_view::npos
             };
 
             if (is_replacement_attempt_needed)
