@@ -158,7 +158,7 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
 
 ## 0x03 如何编译
 #### `Assembly-CSharp.dll`（由[ILSpy](https://github.com/icsharpcode/ILSpy)反编译生成的vs项目）
-> 首先是补全依赖，用vs打开`Assembly-CSharp.csproj`编辑，将这些路径都替换成你的游戏安装路径，接着`Ctrl + B`编译即可。<br>![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
+> 用vs打开项目，首先是补全依赖，编辑`Assembly-CSharp.csproj`，将这些路径都替换成你的游戏安装路径，接着`Ctrl + B`编译即可。<br>![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
 
 #### `LOSTSMILE_CN.exe`和`LOSTSMILE_CN.dll`
 > vs打开等待cmake缓存完成，接着`Ctrl + B`编译即可。或者直接运行`build.bat`。
