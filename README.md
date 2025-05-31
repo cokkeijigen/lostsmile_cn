@@ -131,6 +131,7 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
 ## 0x02 修复存档中的绝对路径
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_09.png)<br>
 为了保证存档兼容原版，我这里选择了在获取`AssetFile`的地方替换路径 ~~（可能不是最佳位置，能跑就行）~~，位置：[Utage::AssetFileManager::GetFileCreateIfMissing](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AssetFileManager.cs#L586)
+
 ```cs
 private static string CurrentDir;
 
@@ -153,3 +154,10 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
 }
 ```
 其他修改的地方可以到`Assembly-CSharp`搜索注释`iTsukezigen++`查看（）
+
+## 0x03 如何编译
+#### `Assembly-CSharp.dll`，由[ILSpy](https://github.com/icsharpcode/ILSpy)反编译生成的vs项目
+> 首先是补全依赖，用vs打开`Assembly-CSharp.csproj`编辑，将这些路径都替换成你的游戏安装路径，接着`Ctrl + B`编译即可<br>![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
+
+#### `LOSTSMILE_CN.exe`和`LOSTSMILE_CN.dll`
+> vs打开等待cmake缓存完成，接着`Ctrl + B`编译即可。或者直接运行`build.bat`
