@@ -1,3 +1,4 @@
+using CHSPatch;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace Utage
 			string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
             // iTsukeziegn++ 
             StaticAsset staticAsset; // 尝试获取LOSTSMILE_CN目录下的资源
-            if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
+            if (!AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
             {
                 staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
                 if (staticAsset == null)
