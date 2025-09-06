@@ -143,8 +143,10 @@ namespace LOSTSMILE
         DEBUG_ONLY
         ({
             console::make();
-            console::pause("DEBUG!!!!!!!!!!!!!!!\n");
-            ::LoadLibraryW(L"MonoEnableDebugger.dll");
+            if (::LoadLibraryW(L"MonoEnableDebugger.dll"))
+            {
+                console::pause("DEBUG!!!!!!!!!!!!!!!\n");
+            }
         })
     }
 }
