@@ -50,7 +50,7 @@ namespace LOSTSMILE
         return { output };
     }
 
-    static auto __fastcall  UnityPlayer_StringCheck(uintptr_t str, size_t length, char value) -> size_t
+    static auto __fastcall UnityPlayer_StringCheck(uintptr_t str, size_t length, char value) -> size_t
     {
         auto raw { reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x1B63E0 };
         auto call{ reinterpret_cast<decltype(LOSTSMILE::UnityPlayer_StringCheck)*>(raw) };
@@ -140,7 +140,6 @@ namespace LOSTSMILE
             std::replace(workpath.begin(), workpath.end(), '\\', '/');
             LOSTSMILE::TargetPath.insert(0, workpath);
         }
-
         DEBUG_ONLY
         ({
             console::make();
@@ -158,6 +157,13 @@ extern "C"
     {
         return { "https://github.com/cokkeijigen/lostsmile_cn" };
     }
+
+    DEBUG_ONLY(__declspec(dllexport)
+        auto _cdecl DebugMessage(const wchar_t* message) -> void
+        {
+            console::write(message);
+        }
+    )
 
     auto APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID) -> BOOL
     {

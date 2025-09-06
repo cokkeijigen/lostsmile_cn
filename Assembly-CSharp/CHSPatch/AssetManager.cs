@@ -5,7 +5,8 @@ using Utage;
 using System;
 
 // iTsukezigen++ CHS资源加载器
-namespace CHS {
+namespace CHSPatch
+{
     public class AssetManager
     {
 
@@ -30,19 +31,20 @@ namespace CHS {
                     }
                     catch (Exception e)
                     {
-                        LogPrinter.Puts($"CHSAssetBundlesLoad: {e.Message}", "err");
+                        Logger.OutMessage($"CHSAssetBundlesLoad: {e.Message}");
                     }
                 }
             }
-            AssetManager.IsInitialized = true;
+            IsInitialized = true;
         }
 
         public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
         {
             staticAsset = null;
-            if(!AssetManager.IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
+            //Logger.OutMessage($"查找文件：{fileName}");
+            if (!IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
             if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
-            foreach (AssetBundle bundle in AssetManager.CHSAssetBundles) {
+            foreach (AssetBundle bundle in CHSAssetBundles) {
                 try {
                     if (bundle.Contains(fileName))
                     {
@@ -50,11 +52,11 @@ namespace CHS {
                         {
                             Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
                         };
-                        //LogPrinter.Puts($"找到文件：{fileName}");
+                        Logger.OutMessage($"找到文件：{fileName}");
                         return staticAsset.Asset != null;
                     }
                 } catch (Exception e) {
-                    LogPrinter.Puts($"GetCHSAssetFileIfExists: {e.Message}", "err");
+                    Logger.OutMessage($"GetCHSAssetFileIfExists: {e.Message}");
                 }
             }
             return false;
