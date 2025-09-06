@@ -4,7 +4,8 @@ using UtageExtensions;
 
 public class UtageSampleLoadCaharacter : MonoBehaviour
 {
-	private AdvGraphicLoader loader;
+
+    private AdvGraphicLoader loader;
 
 	public AdvUguiLoadGraphicFile texture;
 
