@@ -36,10 +36,10 @@ namespace CHSPatch
 
         public static void OutMessage(string message, bool breakline = true)
         {
-            if (message != null)
+            if (Logger.LoggerDebugMessage != null && message != null)
             {
                 if(breakline) message += '\n';
-                Logger.LoggerDebugMessage?.Invoke(message);
+                Logger.LoggerDebugMessage.Invoke(message);
             }
         }
 
