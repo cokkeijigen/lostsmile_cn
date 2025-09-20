@@ -588,6 +588,7 @@ namespace Utage
                 int index = path.LastIndexOf("/LOSTSMILE_Data");
                 path = ((index != -1) ? ("file:///" + CurrentDir + path.Substring(index)) : path);
             }
+
             //end++
             if (!IsEditorErrorCheck)
 			{
