@@ -22,9 +22,12 @@ namespace Utage
 			{
 				return null;
 			}
-			string characterLabel;
-			string text = (characterLabel = command.ParseCell<string>(AdvColumnName.Arg1));
-			bool isHide = false;
+
+			// iTsukezigen++
+			string text = command.ParseCell<string>(AdvColumnName.Arg1);
+            string characterLabel = GetRawCharacterName(text);
+
+            bool isHide = false;
 			string erroMsg = "";
 			string text2 = ParserUtil.ParseTagTextToString(command.ParseCellOptional(AdvColumnName.Arg2, ""), delegate(string tagName, string arg)
 			{
@@ -69,7 +72,21 @@ namespace Utage
 			return new AdvCharacterInfo(characterLabel, text, text2, isHide, characterData.Graphic);
 		}
 
-		private AdvCharacterInfo(string label, string nameText, string pattern, bool isHide, AdvGraphicInfoList graphic)
+        // iTsukezigen++
+        private static string GetRawCharacterName(string text)
+		{
+			switch (text) {
+				case "有记":
+					return "有紀";
+				case "美铃":
+					return "美鈴";
+				default:
+					return text;
+			}
+		}
+		// end++
+
+        private AdvCharacterInfo(string label, string nameText, string pattern, bool isHide, AdvGraphicInfoList graphic)
 		{
 			Label = label;
 			NameText = nameText;
