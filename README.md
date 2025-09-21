@@ -112,11 +112,11 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
 
     if (Assets == null)
     {
-         return null;
+        return null;
     }
     string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
     StaticAsset staticAsset; // 尝试获取LOSTSMILE_CN目录下的资源
-    if (!CHS.AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
+    if (!AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
     {
         staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
         if (staticAsset == null)
@@ -124,6 +124,7 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
             return null;
         }
     }
+
     return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 }
 ```
