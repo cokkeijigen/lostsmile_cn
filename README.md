@@ -49,68 +49,59 @@ public class BuildAssetBundles : MonoBehaviour
 ##  0x01 加载自己打包的`AssetBundles`并替换
 首先创建一个工具类，用来管理我们自己的AssetBundle：[CHSPatch::AssetManager](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/CHSPatch/AssetManager.cs)。
 ```cs
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using Utage;
-using System;
-
-namespace CHSPatch
+public class AssetManager
 {
-    public class AssetManager
+
+    private static List<AssetBundle> CHSAssetBundles;
+    private static bool IsInitialized = false;
+
+    private static void CHSAssetBundlesLoadIfNotInitialized()
     {
-
-        private static List<AssetBundle> CHSAssetBundles;
-        private static bool IsInitialized = false;
-
-        private static void CHSAssetBundlesLoadIfNotInitialized()
+        string cnBundlesDir = Directory.GetCurrentDirectory();
+        cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
+        if (Directory.Exists(cnBundlesDir))
         {
-            string cnBundlesDir = Directory.GetCurrentDirectory();
-            cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
-            if (Directory.Exists(cnBundlesDir))
+            if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
+            foreach (string filePath in Directory.GetFiles(cnBundlesDir))
             {
-                if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
-                foreach (string filePath in Directory.GetFiles(cnBundlesDir))
+                try
                 {
-                    try
-                    {
-                        if (filePath.EndsWith(".dll")) continue;
-                        AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
-                        if (assetBundle == null) continue;
-                        CHSAssetBundles.Add(assetBundle);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.OutMessage($"CHSAssetBundlesLoad: {e.Message}");
-                    }
+                    if (filePath.EndsWith(".dll")) continue;
+                    AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
+                    if (assetBundle == null) continue;
+                    CHSAssetBundles.Add(assetBundle);
+                }
+                catch (Exception e)
+                {
+                    Logger.OutMessage($"CHSAssetBundlesLoad: {e.Message}");
                 }
             }
-            IsInitialized = true;
         }
+        IsInitialized = true;
+    }
 
-        public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
-        {
-            staticAsset = null;
-            //Logger.OutMessage($"查找文件：{fileName}");
-            if (!IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
-            if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
-            foreach (AssetBundle bundle in CHSAssetBundles) {
-                try {
-                    if (bundle.Contains(fileName))
+    public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
+    {
+        staticAsset = null;
+        //Logger.OutMessage($"查找文件：{fileName}");
+        if (!IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
+        if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
+        foreach (AssetBundle bundle in CHSAssetBundles) {
+            try {
+                if (bundle.Contains(fileName))
+                {
+                    staticAsset = new StaticAsset
                     {
-                        staticAsset = new StaticAsset
-                        {
-                            Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
-                        };
-                        Logger.OutMessage($"找到文件：{fileName}");
-                        return staticAsset.Asset != null;
-                    }
-                } catch (Exception e) {
-                    Logger.OutMessage($"GetCHSAssetFileIfExists: {e.Message}");
+                        Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
+                    };
+                    Logger.OutMessage($"找到文件：{fileName}");
+                    return staticAsset.Asset != null;
                 }
+            } catch (Exception e) {
+                Logger.OutMessage($"GetCHSAssetFileIfExists: {e.Message}");
             }
-            return false;
         }
+        return false;
     }
 }
 ```
@@ -161,9 +152,48 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
     return null;
 }
 ```
+## 0x03 修复翻译角色名字后部分立绘不显示
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_11.png)
+手动改的地方太多了，避免产生新的不过，因此这里采用动态替换，完整代码：[Utage::AdvCharacterInfo.cs](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AdvCharacterInfo.cs)
+```cs
+
+public class AdvCharacterInfo
+{
+    public static AdvCharacterInfo Create(AdvCommand command, AdvSettingDataManager dataManager)
+    {
+        // ...其他代码
+        // 对话角色名字文本
+        string text = command.ParseCell<string>(AdvColumnName.Arg1);
+        // 获取原文角色名字
+        string characterLabel = GetRawCharacterName(text);  
+        // ...其他代码
+    }
+
+    private static string GetRawCharacterName(string text)
+    {
+        switch (text)
+        {
+            case "美铃":
+                return "美鈴";
+            case "春纪":
+                return "春紀";
+            case "少":
+                return "スクナ";
+            case "胡桃":
+                return "胡桃";
+
+            // ...此处省略
+
+            default:
+                return text;
+        }
+    }
+}
+```
+
 其他修改的地方可以到`Assembly-CSharp`搜索注释`iTsukezigen++`查看（）
 
-## 0x03 如何编译
+## 0x04 如何编译
 #### `Assembly-CSharp.dll`（由[ILSpy](https://github.com/icsharpcode/ILSpy)反编译生成的vs项目）
 > 用vs打开项目，首先是补全依赖，编辑`Assembly-CSharp.csproj`，将这些路径都替换成你的游戏安装路径，接着`Ctrl + B`编译即可。<br>![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
 
