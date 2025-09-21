@@ -161,10 +161,12 @@ public class AdvCharacterInfo
     public static AdvCharacterInfo Create(AdvCommand command, AdvSettingDataManager dataManager)
     {
         // ...其他代码
+
         // 对话角色名字文本
         string text = command.ParseCell<string>(AdvColumnName.Arg1);
         // 获取原文角色名字
         string characterLabel = GetRawCharacterName(text);  
+
         // ...其他代码
     }
 
