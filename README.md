@@ -2,7 +2,7 @@
 ## 本项目仅供学习交流使用，严禁一切商业或特殊用途！！！ ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_00.png)<br>
 - 游戏详细：https://vndb.org/v23409
 - LOSTSMILE_CN：程序`hook`相关，实现了资源重定向，可以与原版资源共存。
-- Assembly-CSharp：原版`Assembly-CSharp.dll`反编译源码，修复存档路径问题，以及添加自定义AssetBundle加载和资源替换（注：`release`分支为未修改过的源码）。
+- Assembly-CSharp：原版`Assembly-CSharp.dll`反编译源码，修复存档路径、立绘显示等若干bug，以及添加自定义AssetBundle加载和资源替换（注：`release`分支为未修改过的源码）。
 
 ## 0x00 如何打包使用Unity打包Assetbundle
 首先要知道游戏的unity版本，这个可以通过在游戏`主程序.exe`的属性或者`UnityPlayer.dll`属性中查看，再或者用`ida`打开`UnityPlayer.dll`查找字符串`version`或者`UnityPlayer`等字眼找到。
