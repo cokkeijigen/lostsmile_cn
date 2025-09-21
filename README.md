@@ -154,7 +154,7 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
 ```
 ## 0x03 修复翻译角色名字后部分立绘不显示
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_11.png)
-手动改的地方太多了，避免产生新的bug，因此这里采用动态替换，完整代码：[Utage::AdvCharacterInfo.cs](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AdvCharacterInfo.cs)。
+手动改的地方太多了，避免产生新的bug，因此这里采用动态替换，完整代码：[Utage::AdvCharacterInfo](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AdvCharacterInfo.cs)。
 ```cs
 public class AdvCharacterInfo
 {
