@@ -154,7 +154,7 @@ public static AssetFile GetFileCreateIfMissing(string path, IAssetFileSettingDat
 }
 ```
 ## 0x03 修复翻译角色名字后部分立绘不显示
-![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_11.png)
+![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
 手动改的地方太多了，避免产生新的bug，因此这里采用动态替换，完整代码：[Utage::AdvCharacterInfo](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Utage/AdvCharacterInfo.cs)。
 ```cs
 public class AdvCharacterInfo
@@ -197,7 +197,17 @@ public class AdvCharacterInfo
 
 ## 0x04 如何编译
 #### `Assembly-CSharp.dll`（由[ILSpy](https://github.com/icsharpcode/ILSpy)反编译生成的vs项目）
-> 用vs打开项目，首先是补全依赖，编辑`Assembly-CSharp.csproj`，将这些路径都替换成你的游戏安装路径，接着`Ctrl + B`编译即可。<br>![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_10.png)
-
+> 用vs打开项目，首先是补全依赖，编辑`Assembly-CSharp.csproj`中的
+> [GamePath](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/Assembly-CSharp.csproj#L3)，替换成你的游戏安装路径。接着`Ctrl + B`编译即可。
+> ```xml
+> <PropertyGroup>
+>     <GamePath>I:\Galgame\lostsmile</GamePath>
+>     <AssemblyName>Assembly-CSharp</AssemblyName>
+>     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+>     <TargetFramework>net4.7</TargetFramework>
+> </PropertyGroup>
+> ```
+> ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_11.png)
 #### `LOSTSMILE_CN.exe`和`LOSTSMILE_CN.dll`
 > vs打开等待cmake缓存完成，接着`Ctrl + B`编译即可。或者直接运行`build.bat`。
+> ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_12.png)
