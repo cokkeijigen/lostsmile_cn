@@ -64,6 +64,6 @@
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy $(TargetPath) $(GamePath)\LOSTSMILE_CN\$(TargetName).dll" />
-    <Exec Command="copy $(OutDir)Assembly-CSharp.pdb $(GamePath)\LOSTSMILE_CN\Assembly-CSharp.pdb" />
+    <Exec Command="copy $(OutDir)$(TargetName).pdb $(GamePath)\LOSTSMILE_CN\$(TargetName).pdb" />
   </Target>
 </Project>
