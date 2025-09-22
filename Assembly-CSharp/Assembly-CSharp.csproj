@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+	<GamePath>I:\Galgame\lostsmile</GamePath>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>net4.7</TargetFramework>
@@ -12,59 +13,59 @@
   <ItemGroup />
   <ItemGroup>
 	<Reference Include="UnityEngine">
-		<HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.dll</HintPath>
+		<HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.dll</HintPath>
 	</Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>I:\Galgame\lostsmile\LOSTSMILE_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy $(TargetPath) I:\Galgame\lostsmile\LOSTSMILE_CN\$(TargetName).dll" />
-    <Exec Command="copy I:\REPOSITORIES\LOSTSMILE_Assembly-CSharp\bin\Debug\net4.7\Assembly-CSharp.pdb I:\Galgame\lostsmile\LOSTSMILE_CN\Assembly-CSharp.pdb" />
+    <Exec Command="copy $(TargetPath) $(GamePath)\LOSTSMILE_CN\$(TargetName).dll" />
+    <Exec Command="copy $(OutDir)Assembly-CSharp.pdb $(GamePath)\LOSTSMILE_CN\Assembly-CSharp.pdb" />
   </Target>
 </Project>
