@@ -9,8 +9,6 @@
     <LangVersion>7</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup />
-  <ItemGroup />
   <ItemGroup>
 	<Reference Include="UnityEngine">
 		<HintPath>$(GamePath)\LOSTSMILE_Data\Managed\UnityEngine.dll</HintPath>
