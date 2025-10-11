@@ -1,45 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 // iTsukezigen++
 namespace CHSPatch
 {
     public class Logger
     {
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        private delegate void LoggerDebugMessageFromCPP(string message);
-
-        private static readonly LoggerDebugMessageFromCPP LoggerDebugMessage = null;
-
-        static Logger()
-        {
-            IntPtr hDll = GetModuleHandle("LOSTSMILE_CN.dll");
-            if (hDll != IntPtr.Zero)
-            {
-                LoggerDebugMessage = (LoggerDebugMessageFromCPP)Marshal.GetDelegateForFunctionPointer(
-                    GetProcAddress(hDll, "DebugMessage"), typeof(LoggerDebugMessageFromCPP)
-                );
-            }
-        }
+#if DEBUG
+        [DllImport("LOSTSMILE_CN.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void DebugMessage(string message);
 
         public static void OutMessage(string message, bool breakline = true)
         {
-            if (Logger.LoggerDebugMessage != null && message != null)
+            try
             {
-                if(breakline) message += '\n';
-                Logger.LoggerDebugMessage.Invoke(message);
+                if (breakline) message += '\n';
+                DebugMessage(message);
+            }
+            catch (Exception) {
             }
         }
 
@@ -56,5 +36,14 @@ namespace CHSPatch
             }
             Logger.OutMessage(sb.ToString());
         }
+#else
+    public static void OutMessage(string message, bool breakline = true)
+    {
+    }
+
+    public static void OutStackTrace()
+    {
+    }
+#endif
     }
 }
