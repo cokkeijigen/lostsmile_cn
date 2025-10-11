@@ -21,10 +21,10 @@ namespace Utage
 			}
 			string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
             // iTsukeziegn++ 
-            StaticAsset staticAsset; // 尝试获取LOSTSMILE_CN目录下的资源
-            if (!AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
+            StaticAsset staticAsset; // 尝试替换资源文件
+            if (!AssetPatchManager.GetAssetIfExists(assetName.ToLower(), out staticAsset))
             {
-                staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
+                staticAsset = Assets.Find(x => x.Asset.name == assetName);
                 if (staticAsset == null)
                 {
                     return null;

@@ -7,19 +7,17 @@ using System;
 // iTsukezigen++ CHS资源加载器
 namespace CHSPatch
 {
-    public class AssetManager
+    public class AssetPatchManager
     {
 
-        private static List<AssetBundle> CHSAssetBundles;
-        private static bool IsInitialized = false;
+        private static readonly List<AssetBundle> AssetBundles = new List<AssetBundle>();
 
-        private static void CHSAssetBundlesLoadIfNotInitialized()
+        static AssetPatchManager()
         {
             string cnBundlesDir = Directory.GetCurrentDirectory();
             cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
             if (Directory.Exists(cnBundlesDir))
             {
-                if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
                 foreach (string filePath in Directory.GetFiles(cnBundlesDir))
                 {
                     try
@@ -27,25 +25,24 @@ namespace CHSPatch
                         if (filePath.EndsWith(".dll")) continue;
                         AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
                         if (assetBundle == null) continue;
-                        CHSAssetBundles.Add(assetBundle);
+                        AssetBundles.Add(assetBundle);
                     }
                     catch (Exception e)
                     {
-                        Logger.OutMessage($"CHSAssetBundlesLoad: {e.Message}");
+                        Logger.OutMessage($"[ERRO] AssetPatchManager: {e.Message}");
                     }
                 }
             }
-            IsInitialized = true;
         }
 
-        public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
+        public static bool GetAssetIfExists(string fileName, out StaticAsset staticAsset)
         {
             staticAsset = null;
             //Logger.OutMessage($"查找文件：{fileName}");
-            if (!IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
-            if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
-            foreach (AssetBundle bundle in CHSAssetBundles) {
-                try {
+            foreach (AssetBundle bundle in AssetBundles)
+            {
+                try
+                {
                     if (bundle.Contains(fileName))
                     {
                         staticAsset = new StaticAsset
@@ -55,8 +52,10 @@ namespace CHSPatch
                         Logger.OutMessage($"找到文件：{fileName}");
                         return staticAsset.Asset != null;
                     }
-                } catch (Exception e) {
-                    Logger.OutMessage($"GetCHSAssetFileIfExists: {e.Message}");
+                }
+                catch (Exception e)
+                {
+                    Logger.OutMessage($"[ERRO] AssetPatchManager::GetAssetIfExists: {e.Message}");
                 }
             }
             return false;
