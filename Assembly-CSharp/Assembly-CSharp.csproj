@@ -6,7 +6,7 @@
     <TargetFramework>net4.7</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>7</LangVersion>
+    <LangVersion>8</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
