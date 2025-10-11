@@ -47,21 +47,19 @@ public class BuildAssetBundles : MonoBehaviour
 ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_08.png)<br>
 
 ##  0x01 加载自己打包的`AssetBundles`并替换
-首先创建一个工具类，用来管理我们自己的AssetBundle：[CHSPatch::AssetManager](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/CHSPatch/AssetManager.cs)。
+首先创建一个工具类，用来管理我们自己的AssetBundle：[CHSPatch::AssetPatchManager](https://github.com/cokkeijigen/lostsmile_cn/blob/master/Assembly-CSharp/CHSPatch/AssetPatchManager.cs)。
 ```cs
-public class AssetManager
+public class AssetPatchManager
 {
 
-    private static List<AssetBundle> CHSAssetBundles;
-    private static bool IsInitialized = false;
+    private static readonly List<AssetBundle> AssetBundles = new List<AssetBundle>();
 
-    private static void CHSAssetBundlesLoadIfNotInitialized()
+    static AssetPatchManager()
     {
         string cnBundlesDir = Directory.GetCurrentDirectory();
         cnBundlesDir = Path.Combine(cnBundlesDir, "LOSTSMILE_CN");
         if (Directory.Exists(cnBundlesDir))
         {
-            if (CHSAssetBundles == null) CHSAssetBundles = new List<AssetBundle>();
             foreach (string filePath in Directory.GetFiles(cnBundlesDir))
             {
                 try
@@ -69,25 +67,24 @@ public class AssetManager
                     if (filePath.EndsWith(".dll")) continue;
                     AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
                     if (assetBundle == null) continue;
-                    CHSAssetBundles.Add(assetBundle);
+                    AssetBundles.Add(assetBundle);
                 }
                 catch (Exception e)
                 {
-                    Logger.OutMessage($"CHSAssetBundlesLoad: {e.Message}");
+                    Logger.OutMessage($"[ERRO] AssetPatchManager: {e.Message}");
                 }
             }
         }
-        IsInitialized = true;
     }
 
-    public static bool GetCHSAssetFileIfExists(string fileName, out StaticAsset staticAsset)
+    public static bool GetAssetIfExists(string fileName, out StaticAsset staticAsset)
     {
         staticAsset = null;
         //Logger.OutMessage($"查找文件：{fileName}");
-        if (!IsInitialized) CHSAssetBundlesLoadIfNotInitialized();
-        if (CHSAssetBundles == null || CHSAssetBundles.Count == 0) return false;
-        foreach (AssetBundle bundle in CHSAssetBundles) {
-            try {
+        foreach (AssetBundle bundle in AssetBundles)
+        {
+            try
+            {
                 if (bundle.Contains(fileName))
                 {
                     staticAsset = new StaticAsset
@@ -97,8 +94,10 @@ public class AssetManager
                     Logger.OutMessage($"找到文件：{fileName}");
                     return staticAsset.Asset != null;
                 }
-            } catch (Exception e) {
-                Logger.OutMessage($"GetCHSAssetFileIfExists: {e.Message}");
+            }
+            catch (Exception e)
+            {
+                Logger.OutMessage($"[ERRO] AssetPatchManager::GetAssetIfExists: {e.Message}");
             }
         }
         return false;
@@ -111,21 +110,22 @@ public AssetFileBase FindAssetFile(AssetFileManager mangager, AssetFileInfo file
 {
 
     if (Assets == null)
+	{
+		return null;
+	}
+	string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
+    // iTsukeziegn++ 
+    StaticAsset staticAsset; // 尝试替换资源文件
+    if (!AssetPatchManager.GetAssetIfExists(assetName.ToLower(), out staticAsset))
     {
-        return null;
-    }
-    string assetName = FilePathUtil.GetFileNameWithoutExtension(fileInfo.FileName);
-    StaticAsset staticAsset; // 尝试获取LOSTSMILE_CN目录下的资源
-    if (!AssetManager.GetCHSAssetFileIfExists(assetName.ToLower(), out staticAsset))
-    {
-        staticAsset = Assets.Find((StaticAsset x) => x.Asset.name == assetName);
+        staticAsset = Assets.Find(x => x.Asset.name == assetName);
         if (staticAsset == null)
         {
             return null;
         }
     }
-
-    return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
+    // end
+	return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 }
 ```
 ## 0x02 修复存档中的绝对路径
