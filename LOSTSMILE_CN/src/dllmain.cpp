@@ -16,7 +16,7 @@ namespace LOSTSMILE
                 hWnd, 
                 {
                     std::wstring_view{ lpString } == L"LOSTSMILE" ?
-                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 Beta.1.0" : lpString
+                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v0.9" : lpString
                 }
             );
     }
