@@ -3,6 +3,10 @@ project(LOSTSMILE_CN)
 
 set(CMAKE_CXX_STANDARD 20)
 
+# 安装 VC-LTL5（可选）
+# https://github.com/Chuyu-Team/VC-LTL5/releases/latest
+include("VC-LTL helper for cmake.cmake")
+
 if (MSVC)
     add_compile_options("/source-charset:utf-8")
     if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
