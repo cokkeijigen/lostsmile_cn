@@ -209,6 +209,6 @@ public class AdvCharacterInfo
 > ```
 > ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_11.png)
 #### `LOSTSMILE_CN.exe`和`LOSTSMILE_CN.dll`
-> - 安装[`VC-LTL5`](https://github.com/Chuyu-Team/VC-LTL5/releases/latest)，可选，但是编译出来的文件体积可能会有点大。
+> - 安装[`VC-LTL5`](https://github.com/Chuyu-Team/VC-LTL5/releases/latest)，可以不安装，但是编译出来的文件体积可能会有点大。
 > - vs打开等待cmake缓存完成，接着`Ctrl + B`编译即可。或者直接运行`build.bat`。
 > ![Image text](https://raw.githubusercontent.com/cokkeijigen/lostsmile_cn/master/Pictures/lostsmile_12.png)
