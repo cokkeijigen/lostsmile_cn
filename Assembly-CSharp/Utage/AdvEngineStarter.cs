@@ -133,8 +133,6 @@ namespace Utage
 
 		private void Awake()
 		{
-			CHSPatch.Settings.Init(); // iTsukezigen++
-
             if (isLoadOnAwake)
 			{
 				StartCoroutine(LoadEngineAsync(delegate

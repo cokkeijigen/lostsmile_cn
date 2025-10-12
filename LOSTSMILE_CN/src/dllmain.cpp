@@ -9,6 +9,18 @@ namespace LOSTSMILE
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
     static std::string TargetPath{ "/LOSTSMILE_CN/" };
 
+    static auto WINAPI SetWindowTextW(HWND hWnd, LPCWSTR lpString) -> BOOL
+    {
+        return Patch::Hooker::Call<LOSTSMILE::SetWindowTextW>
+            (
+                hWnd, 
+                {
+                    std::wstring_view{ lpString } == L"LOSTSMILE" ?
+                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 Beta.1.0" : lpString
+                }
+            );
+    }
+
     static auto __fastcall UnityPlayer_PathJoin(uintptr_t path1, uintptr_t path2, uint8_t symbol, uintptr_t output) -> uintptr_t
     {
         auto raw { reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x875B20 };
@@ -107,7 +119,7 @@ namespace LOSTSMILE
 
     static auto INIT_ALL_PATCH(void) -> void
     {
-        
+
         if (LOSTSMILE::UnityPlayerDll == nullptr)
         {
             auto uniMod{ ::GetModuleHandleW(L"UnityPlayer.dll") };
@@ -121,25 +133,23 @@ namespace LOSTSMILE
             }
         }
 
-        auto pathjoin{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x8759D0 };
-        Patch::Mem::JmpWrite
-        (
-            { reinterpret_cast<LPVOID>(pathjoin) },
-            { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_PathJoin_Hook) }
-        );
+        Patch::Hooker::Begin();
+        Patch::Hooker::Add<LOSTSMILE::SetWindowTextW>(::SetWindowTextW);
 
-        auto strcat{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x1B6070 };
-        Patch::Mem::JmpWrite
-        (
-            { reinterpret_cast<LPVOID>(strcat) },
-            { reinterpret_cast<LPVOID>(LOSTSMILE::UnityPlayer_StrCat_Hook) }
-        );
+        auto UnityPlayer_StrCat{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x1B6070 };
+        Patch::Hooker::Add<LOSTSMILE::UnityPlayer_StrCat_Hook>(reinterpret_cast<void*>(UnityPlayer_StrCat));
+
+        auto UnityPlayer_PathJoin{ reinterpret_cast<uintptr_t>(LOSTSMILE::UnityPlayerDll) + 0x8759D0 };
+        Patch::Hooker::Add<LOSTSMILE::UnityPlayer_PathJoin_Hook>(reinterpret_cast<void*>(UnityPlayer_PathJoin));
+
+        Patch::Hooker::Commit();
 
         auto workpath{ std::filesystem::current_path().string() };
         {
             std::replace(workpath.begin(), workpath.end(), '\\', '/');
             LOSTSMILE::TargetPath.insert(0, workpath);
         }
+
         DEBUG_ONLY
         ({
             console::make();
