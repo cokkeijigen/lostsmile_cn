@@ -104,6 +104,13 @@ namespace Utage
 
 		internal AdvGraphicObject Draw(string name, AdvGraphicOperaitonArg arg)
 		{
+		#if DEBUG
+            var index = arg.Graphic.File.FileName.IndexOf("file:///");
+            if (index >= 0)
+            {
+                CHSPatch.Logger.OutMessage($"[AdvGraphicLayer::Draw] {name} {arg.Graphic.File.FileName.Substring(index + 8)}");
+            }
+		#endif
 			AdvGraphicObject obj = GetObjectCreateIfMissing(name, arg.Graphic);
 			obj.Loader.LoadGraphic(arg.Graphic, delegate
 			{
