@@ -29,7 +29,9 @@ namespace CHSPatch
                     }
                     catch (Exception e)
                     {
-                        Logger.OutMessage($"[ERRO] AssetPatchManager: {e.Message}");
+                        #if DEBUG
+                            Logger.OutMessage($"[AssetPatchManager] ERRO: {e.Message}");
+                        #endif
                     }
                 }
             }
@@ -38,7 +40,7 @@ namespace CHSPatch
         public static bool GetAssetIfExists(string fileName, out StaticAsset staticAsset)
         {
             staticAsset = null;
-            //Logger.OutMessage($"查找文件：{fileName}");
+            //Logger.OutMessage($"[AssetPatchManager::GetAssetIfExists] Find：{fileName}");
             foreach (AssetBundle bundle in AssetBundles)
             {
                 try
@@ -49,13 +51,17 @@ namespace CHSPatch
                         {
                             Asset = bundle.LoadAsset<UnityEngine.Object>(fileName)
                         };
-                        Logger.OutMessage($"找到文件：{fileName}");
+                        #if DEBUG
+                            Logger.OutMessage($"[AssetPatchManager::GetAssetIfExists] Found：{fileName}");
+                        #endif
                         return staticAsset.Asset != null;
                     }
                 }
                 catch (Exception e)
                 {
-                    Logger.OutMessage($"[ERRO] AssetPatchManager::GetAssetIfExists: {e.Message}");
+                    #if DEBUG
+                        Logger.OutMessage($"[AssetPatchManager::GetAssetIfExists] ERRO: {e.Message}");
+                    #endif
                 }
             }
             return false;
