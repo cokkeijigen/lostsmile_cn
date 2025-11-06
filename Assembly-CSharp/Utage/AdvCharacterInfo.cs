@@ -75,47 +75,30 @@ namespace Utage
         // iTsukezigen++
         private static string GetRawCharacterName(string text)
 		{
-			switch (text) {
-                case "美铃":
-                    return "美鈴";
-                case "春纪":
-                    return "春紀";
-                case "少":
-                    return "スクナ";
-                case "胡桃":
-                    return "胡桃";
-                case "美广":
-                    return "みひろ";
-                case "巡":
-                    return "めぐる";
-                case "结李":
-                    return "結李";
-                case "利夫":
-                    return "利夫";
-                case "有纪":
-                    return "有紀";
-                case "纯":
-                    return "純";
-                case "沙希":
-                    return "サキ";
-                case "海洋之神":
-                    return "沖ツ御神";
-                case "棉花糖":
-                    return "わたあめ";
-                case "凑":
-                    return "湊";
-                case "彩芽":
-                    return "あやめ";
-                case "隼人":
-                    return "隼人";
-                case "由希子":
-                    return "由希子";
-                case "珠珠":
-                    return "シュシュ";
-                default:
-					return text;
-			}
-		}
+            return text switch
+            {
+                "海洋之神" => "沖ツ御神",
+                "棉花糖" => "わたあめ",
+                "由希子" => "由希子",
+                "美铃" => "美鈴",
+                "春纪" => "春紀",
+                "胡桃" => "胡桃",
+                "结李" => "結李",
+                "利夫" => "利夫",
+                "有纪" => "有紀",
+                "沙希" => "サキ",
+                "隼人" => "隼人",
+                "村长" => "村長",
+                "彩芽" => "あやめ",
+                "美广" => "みひろ",
+                "珠珠" => "シュシュ",
+                "巡" => "めぐる",
+                "少" => "スクナ",
+                "纯" => "純",
+                "凑" => "湊",
+                _ => text,
+            };
+        }
 		// end++
 
         private AdvCharacterInfo(string label, string nameText, string pattern, bool isHide, AdvGraphicInfoList graphic)
