@@ -108,7 +108,8 @@ namespace Utage
             var index = arg.Graphic.File.FileName.IndexOf("file:///");
             if (index >= 0)
             {
-                CHSPatch.Logger.OutMessage($"[AdvGraphicLayer::Draw] {name} {arg.Graphic.File.FileName.Substring(index + 8)}");
+				var file = arg.Graphic.File.FileName.Substring(index + 8);
+                CHSPatch.Logger.OutMessage($"[AdvGraphicLayer::Draw] {name} {file}");
             }
 		#endif
 			AdvGraphicObject obj = GetObjectCreateIfMissing(name, arg.Graphic);
