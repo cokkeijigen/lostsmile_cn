@@ -172,24 +172,18 @@ public class AdvCharacterInfo
     }
 
     private static string GetRawCharacterName(string text)
-    {
-        switch (text)
-        {
-            case "美铃":
-                return "美鈴";
-            case "春纪":
-                return "春紀";
-            case "少":
-                return "スクナ";
-            case "胡桃":
-                return "胡桃";
-
-            // ...此处省略
-
-            default:
-                return text;
-        }
-    }
+	{
+		return text switch
+		{
+			"海洋之神" => "沖ツ御神",
+			"棉花糖" => "わたあめ",
+			"由希子" => "由希子",
+			"美铃" => "美鈴",
+			"春纪" => "春紀",
+			// ...此处省略
+			_ => text,
+		};
+	}
 }
 ```
 
