@@ -23,9 +23,8 @@ namespace Utage
 				return null;
 			}
 
-			// iTsukezigen++
 			string text = command.ParseCell<string>(AdvColumnName.Arg1);
-            string characterLabel = GetRawCharacterName(text);
+            string characterLabel = GetRawCharacterName(text); // iTsukezigen++ 
 
             bool isHide = false;
 			string erroMsg = "";
