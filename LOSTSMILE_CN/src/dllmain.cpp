@@ -16,7 +16,9 @@ namespace LOSTSMILE
                 hWnd, 
                 {
                     std::wstring_view{ lpString } == L"LOSTSMILE" ?
-                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v0.9" : lpString
+                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v1.0 "
+                    L"※仅供学习交流使用，禁止一切直播录播和商用行为※" : 
+                    lpString
                 }
             );
     }
@@ -155,7 +157,7 @@ namespace LOSTSMILE
             console::make();
             if (::LoadLibraryW(L"MonoEnableDebugger.dll"))
             {
-                console::pause("DEBUG!!!!!!!!!!!!!!!\n");
+                console::writeline("MonoEnableDebugger!\n");
             }
         })
     }
