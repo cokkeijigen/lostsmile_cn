@@ -243,15 +243,16 @@ namespace Utage
 
 		private AssetFileBase AddSub(string path, IAssetFileSettingData settingData)
 		{
-			if (!fileTbl.TryGetValue(path, out var value))
+            if (!fileTbl.TryGetValue(path, out var value))
 			{
 				if (path.Contains(" "))
 				{
 					Debug.LogWarning("[" + path + "] contains white space");
 				}
 				AssetBundleInfo assetBundleInfo = AssetBundleInfoManager.FindAssetBundleInfo(path);
+				
 				AssetFileInfo fileInfo = new AssetFileInfo(path, settings, assetBundleInfo);
-				value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
+                value = StaticAssetManager.FindAssetFile(this, fileInfo, settingData);
 				if (value == null)
 				{
 					value = CustomLoadManager.Find(this, fileInfo, settingData);

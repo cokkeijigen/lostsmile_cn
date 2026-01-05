@@ -31,7 +31,7 @@ namespace Utage
                 }
             }
             // end
-			return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
+            return new StaticAssetFile(staticAsset, mangager, fileInfo, settingData);
 		}
 
 		public bool Contains(Object asset)
