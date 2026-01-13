@@ -56,11 +56,3 @@ target_include_directories(DLLMAIN
 target_link_libraries(DLLMAIN 
 	"${SOURCE_DIR}/lib/detours.lib"
 )
-
-add_custom_command(TARGET LAUNCHER POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:LAUNCHER>" "I:\\Galgame\\lostsmile\\"
-)
-
-add_custom_command(TARGET DLLMAIN POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:DLLMAIN>" "I:\\Galgame\\lostsmile\\LOSTSMILE_CN\\"
-)
