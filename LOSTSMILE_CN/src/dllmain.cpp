@@ -6,8 +6,6 @@
 
 DEBUG_ONLY(console::helper_t console::helper{ L"" PROJECT_NAME " v" PROJECT_VERSION });
 
-
-
 namespace LOSTSMILE
 {
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
