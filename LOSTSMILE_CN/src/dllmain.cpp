@@ -42,7 +42,6 @@ namespace LOSTSMILE
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
         
-        
         // DEBUG_ONLY(xcout::helper.write("PathJoin_Hook{ %s, %s }\n", str1, str2));
 
         if (str2 != nullptr)
@@ -63,7 +62,9 @@ namespace LOSTSMILE
                 return { output };
             }
         }
+        
         LOSTSMILE::UnityPlayer_PathJoin(path1, path2, 0x2F, output);
+        
         return { output };
     }
 
