@@ -12,6 +12,7 @@ include("VC-LTL helper for cmake.cmake")
 
 if (MSVC)
 	set(CMAKE_CXX_FLAGS_RELEASE "/O1 /Ob2 /DNDEBUG")
+    set(DEFAULT_LINK_FLAGS "/DYNAMICBASE:NO /MANIFEST:NO")
     add_compile_options(
         "/source-charset:utf-8"
         "$<$<CONFIG:Release>:/GF>"
@@ -42,7 +43,7 @@ target_link_libraries(LAUNCHER
 )
 set_target_properties(LAUNCHER 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
-	LINK_FLAGS "/DYNAMICBASE:NO /MANIFEST:NO"
+	LINK_FLAGS ${DEFAULT_LINK_FLAGS}
 )
 
 add_library(DLLMAIN SHARED 
@@ -52,7 +53,7 @@ add_library(DLLMAIN SHARED
 
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
-	LINK_FLAGS "/DYNAMICBASE:NO /MANIFEST:NO"
+	LINK_FLAGS ${DEFAULT_LINK_FLAGS}
 )
 
 target_include_directories(DLLMAIN 
