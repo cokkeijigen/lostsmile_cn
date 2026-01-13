@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.20.0)
 project(LOSTSMILE_CN VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 23)
+set(SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
+add_definitions("-DPROJECT_NAME=\"${PROJECT_NAME}\"")
+add_definitions("-DPROJECT_VERSION=\"${PROJECT_VERSION}\"")
 
 # 安装 VC-LTL5（可选）
 # https://github.com/Chuyu-Team/VC-LTL5/releases/latest
@@ -20,12 +23,10 @@ if (MSVC)
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
     elseif(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+        set(DEBUG_ONLY_CONSOLE_CPP "${SOURCE_DIR}/lib/console.cpp")
     endif()
 endif(MSVC)
 
-set(SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
-add_definitions("-DPROJECT_NAME=\"${PROJECT_NAME}\"")
-add_definitions("-DPROJECT_VERSION=\"${PROJECT_VERSION}\"")
 
 add_executable(LAUNCHER 
 	"${SOURCE_DIR}/launcher.cpp" 
@@ -43,11 +44,12 @@ target_link_libraries(LAUNCHER
 
 add_library(DLLMAIN SHARED 
 	"${SOURCE_DIR}/dllmain.cpp"
-	"${SOURCE_DIR}/lib/console.cpp" 
+	"${DEBUG_ONLY_CONSOLE_CPP}"
 )
+
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
-	LINK_FLAGS "/DYNAMICBASE:NO"
+	LINK_FLAGS "/DYNAMICBASE:NO /MANIFEST:NO"
 )
 
 target_include_directories(DLLMAIN 
