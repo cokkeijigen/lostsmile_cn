@@ -6,6 +6,8 @@
 
 DEBUG_ONLY(console::helper_t console::helper{ L"" PROJECT_NAME " v" PROJECT_VERSION });
 
+
+
 namespace LOSTSMILE
 {
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
@@ -41,8 +43,9 @@ namespace LOSTSMILE
 
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
-
-        // DEBUG_ONLY(console::fmt::write("PathJoin_Hook{ %s, %s }\n", str1, str2));
+        
+        
+        DEBUG_ONLY(xcout::helper.write("PathJoin_Hook{ %s, %s }\n", str1, str2));
 
         if (str2 != nullptr)
         {
