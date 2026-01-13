@@ -43,7 +43,7 @@ namespace LOSTSMILE
         const auto str2{ *reinterpret_cast<char**>(path2) };
         
         
-        DEBUG_ONLY(xcout::helper.write("PathJoin_Hook{ %s, %s }\n", str1, str2));
+        //DEBUG_ONLY(xcout::helper.write("PathJoin_Hook{ %s, %s }\n", str1, str2));
 
         if (str2 != nullptr)
         {
