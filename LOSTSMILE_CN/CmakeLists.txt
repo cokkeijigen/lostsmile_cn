@@ -27,7 +27,6 @@ if (MSVC)
     endif()
 endif(MSVC)
 
-
 add_executable(LAUNCHER 
 	"${SOURCE_DIR}/launcher.cpp" 
 )
