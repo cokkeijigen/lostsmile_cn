@@ -4,7 +4,9 @@
 #include <patch.hpp>
 #include <console.hpp>
 
-namespace LOSTSMILE 
+DEBUG_ONLY(console::helper_t console::helper{ L"" PROJECT_NAME " v" PROJECT_VERSION });
+
+namespace LOSTSMILE
 {
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
     static std::string TargetPath{ "/LOSTSMILE_CN/" };
@@ -12,15 +14,15 @@ namespace LOSTSMILE
     static auto WINAPI SetWindowTextW(HWND hWnd, LPCWSTR lpString) -> BOOL
     {
         return Patch::Hooker::Call<LOSTSMILE::SetWindowTextW>
-            (
-                hWnd, 
-                {
-                    std::wstring_view{ lpString } == L"LOSTSMILE" ?
-                    L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v1.0 "
-                    L"※仅供学习交流使用，禁止一切直播录播和商用行为※" : 
-                    lpString
-                }
-            );
+        (
+            hWnd, 
+            {
+                std::wstring_view{ lpString } == L"LOSTSMILE" ?
+                L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v" PROJECT_VERSION
+                L" ※仅供学习交流使用，禁止一切直播录播和商用行为※" : 
+                lpString
+            }
+        );
     }
 
     static auto __fastcall UnityPlayer_PathJoin(uintptr_t path1, uintptr_t path2, uint8_t symbol, uintptr_t output) -> uintptr_t
@@ -154,37 +156,35 @@ namespace LOSTSMILE
 
         DEBUG_ONLY
         ({
-            console::make();
             if (::LoadLibraryW(L"MonoEnableDebugger.dll"))
             {
-                console::writeline("MonoEnableDebugger!\n");
+                xcout::helper.writeline("MonoEnableDebugger!\n");
             }
         })
     }
-}
 
-extern "C"
-{
-    __declspec(dllexport) auto hook(void) -> void {}
-
-    __declspec(dllexport) auto _patch_by_iTsukezigen_(void) -> const char*
+    extern "C"
     {
-        return { "https://github.com/cokkeijigen/lostsmile_cn" };
-    }
+        __declspec(dllexport) auto hook(void) -> void {}
 
-    DEBUG_ONLY(__declspec(dllexport)
+        __declspec(dllexport) auto _patch_by_iTsukezigen_(void) -> const char*
+        {
+            return { "https://github.com/cokkeijigen/lostsmile_cn" };
+        }
+
+        DEBUG_ONLY(__declspec(dllexport)
         auto _cdecl DebugMessage(const wchar_t* message) -> void
         {
-            console::write(message);
-        }
-    )
-
-    auto APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID) -> BOOL
-    {
-        if (DLL_PROCESS_ATTACH == ul_reason_for_call)
+            xcout::helper.write(message);
+        })
+        
+        auto APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID) -> BOOL
         {
-            LOSTSMILE::INIT_ALL_PATCH();
+            if (DLL_PROCESS_ATTACH == ul_reason_for_call)
+            {
+                LOSTSMILE::INIT_ALL_PATCH();
+            }
+            return { TRUE };
         }
-        return { TRUE };
     }
 }

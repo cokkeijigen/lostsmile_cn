@@ -1,14 +1,21 @@
 cmake_minimum_required(VERSION 3.20.0)
-project(LOSTSMILE_CN)
+project(LOSTSMILE_CN VERSION 1.0)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 # 安装 VC-LTL5（可选）
 # https://github.com/Chuyu-Team/VC-LTL5/releases/latest
 include("VC-LTL helper for cmake.cmake")
 
 if (MSVC)
-    add_compile_options("/source-charset:utf-8")
+	set(CMAKE_CXX_FLAGS_RELEASE "/O1 /Ob2 /DNDEBUG")
+    add_compile_options(
+        "/source-charset:utf-8"
+        "$<$<CONFIG:Release>:/GF>"
+        "$<$<CONFIG:Release>:/Oy>"
+        "$<$<CONFIG:Release>:/GL>"
+        "$<$<CONFIG:Release>:/GS->"
+    )
     if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
     elseif(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -17,6 +24,8 @@ if (MSVC)
 endif(MSVC)
 
 set(SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
+add_definitions("-DPROJECT_NAME=\"${PROJECT_NAME}\"")
+add_definitions("-DPROJECT_VERSION=\"${PROJECT_VERSION}\"")
 
 add_executable(LAUNCHER 
 	"${SOURCE_DIR}/launcher.cpp" 
@@ -38,10 +47,20 @@ add_library(DLLMAIN SHARED
 )
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
+	LINK_FLAGS "/DYNAMICBASE:NO"
 )
+
 target_include_directories(DLLMAIN 
 	PUBLIC "${SOURCE_DIR}/lib"
 )
 target_link_libraries(DLLMAIN 
 	"${SOURCE_DIR}/lib/detours.lib"
+)
+
+add_custom_command(TARGET LAUNCHER POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:LAUNCHER>" "I:\\Galgame\\lostsmile\\"
+)
+
+add_custom_command(TARGET DLLMAIN POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:DLLMAIN>" "I:\\Galgame\\lostsmile\\LOSTSMILE_CN\\"
 )
