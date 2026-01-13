@@ -50,12 +50,10 @@ add_library(DLLMAIN SHARED
 	"${SOURCE_DIR}/dllmain.cpp"
 	"${DEBUG_ONLY_CONSOLE_CPP}"
 )
-
 set_target_properties(DLLMAIN 
 	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
 	LINK_FLAGS ${DEFAULT_LINK_FLAGS}
 )
-
 target_include_directories(DLLMAIN 
 	PUBLIC "${SOURCE_DIR}/lib"
 )
