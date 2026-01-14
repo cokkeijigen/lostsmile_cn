@@ -20,7 +20,7 @@ auto main(void) -> int
 			{ NULL },
 			{ &si },
 			{ &pi },
-			{ ".\\LOSTSMILE_CN\\LOSTSMILE_CN.dll" },
+			{ ".\\" PROJECT_NAME "\\" PROJECT_NAME ".dll" },
 			{ NULL }
 		)
 	};
