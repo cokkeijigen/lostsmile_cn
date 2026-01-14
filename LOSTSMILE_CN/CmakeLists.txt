@@ -31,9 +31,6 @@ endif(MSVC)
 add_executable(LAUNCHER 
 	"${SOURCE_DIR}/launcher.cpp" 
 )
-set_target_properties(LAUNCHER 
-	PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
-)
 target_include_directories(LAUNCHER 
 	PUBLIC "${SOURCE_DIR}/lib"
 )
