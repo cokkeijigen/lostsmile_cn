@@ -15,7 +15,7 @@ namespace LOSTSMILE
     {
         return Patch::Hooker::Call<LOSTSMILE::SetWindowTextW>
         (
-            hWnd, 
+            hWnd,
             {
                 std::wstring_view{ lpString } == L"LOSTSMILE" ?
                 L"【星美岛绿茶品鉴中心】 LOSTSMILE 简体中文版 v" PROJECT_VERSION
