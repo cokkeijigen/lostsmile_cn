@@ -9,7 +9,7 @@ DEBUG_ONLY(console::helper_t console::helper{ L"" PROJECT_NAME " v" PROJECT_VERS
 namespace LOSTSMILE
 {
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
-    static std::string TargetPath{ "/LOSTSMILE_CN/" };
+    static std::string TargetPath{ "/" PROJECT_NAME "/" };
 
     static auto WINAPI SetWindowTextW(HWND hWnd, LPCWSTR lpString) -> BOOL
     {
