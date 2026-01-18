@@ -4,10 +4,9 @@
 #include <patch.hpp>
 #include <console.hpp>
 
-DEBUG_ONLY(console::helper_t console::helper{ L"" PROJECT_NAME " v" PROJECT_VERSION });
-
 namespace LOSTSMILE
 {
+    static DEBUG_ONLY(std::unique_ptr<console::helper_t> xcout{ nullptr });
     static HMODULE UnityPlayerDll{ ::LoadLibraryW(L"UnityPlayer.dll") };
     static std::string TargetPath{ "/" PROJECT_NAME "/" };
 
@@ -42,7 +41,7 @@ namespace LOSTSMILE
         const auto str1{ *reinterpret_cast<char**>(path1) };
         const auto str2{ *reinterpret_cast<char**>(path2) };
         
-        // DEBUG_ONLY(xcout::helper.write("PathJoin_Hook{ %s, %s }\n", str1, str2));
+        // DEBUG_ONLY(xcout->write("PathJoin_Hook{ %s, %s }\n", str1, str2));
 
         if (str2 != nullptr)
         {
@@ -125,7 +124,6 @@ namespace LOSTSMILE
 
     static auto INIT_ALL_PATCH(void) -> void
     {
-
         if (LOSTSMILE::UnityPlayerDll == nullptr)
         {
             auto uniMod{ ::GetModuleHandleW(L"UnityPlayer.dll") };
@@ -158,9 +156,10 @@ namespace LOSTSMILE
 
         DEBUG_ONLY
         ({
+            xcout = std::make_unique<console::helper_t>(L"" PROJECT_NAME " v" PROJECT_VERSION);
             if (::LoadLibraryW(L"MonoEnableDebugger.dll"))
             {
-                xcout::helper.writeline("MonoEnableDebugger!\n");
+                xcout->writeline("MonoEnableDebugger!\n");
             }
         })
     }
@@ -177,7 +176,7 @@ namespace LOSTSMILE
         DEBUG_ONLY(__declspec(dllexport)
         auto _cdecl DebugMessage(const wchar_t* message) -> void
         {
-            xcout::helper.write(message);
+            xcout->write(message);
         })
         
         auto APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID) -> BOOL
