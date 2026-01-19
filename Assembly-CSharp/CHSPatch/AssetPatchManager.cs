@@ -73,7 +73,7 @@ namespace CHSPatch
             return false;
         }
 
-        public static bool GetSprite(string fileName, out Sprite sprite) 
+        public static bool GetSpriteIfExists(string fileName, out Sprite sprite) 
         {
             sprite = null;
             foreach (AssetBundle bundle in AssetBundles)
