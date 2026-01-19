@@ -20,12 +20,19 @@ namespace CHSPatch
             {
                 foreach (string filePath in Directory.GetFiles(cnBundlesDir))
                 {
+                    if (filePath.EndsWith(".dll")) continue;
                     try
                     {
-                        if (filePath.EndsWith(".dll")) continue;
                         AssetBundle assetBundle = AssetBundle.LoadFromFile(filePath);
-                        if (assetBundle == null) continue;
+                        if (assetBundle == null) 
+                        {
+                            continue;
+                        }
                         AssetBundles.Add(assetBundle);
+                       
+                        #if DEBUG
+                            Logger.OutMessage($"[AssetPatchManager] ADD: {filePath}");
+                        #endif
                     }
                     catch (Exception e)
                     {
@@ -40,7 +47,6 @@ namespace CHSPatch
         public static bool GetAssetIfExists(string fileName, out StaticAsset staticAsset)
         {
             staticAsset = null;
-            //Logger.OutMessage($"[AssetPatchManager::GetAssetIfExists] Find：{fileName}");
             foreach (AssetBundle bundle in AssetBundles)
             {
                 try
@@ -61,6 +67,32 @@ namespace CHSPatch
                 {
                     #if DEBUG
                         Logger.OutMessage($"[AssetPatchManager::GetAssetIfExists] ERRO: {e.Message}");
+                    #endif
+                }
+            }
+            return false;
+        }
+
+        public static bool GetSprite(string fileName, out Sprite sprite) 
+        {
+            sprite = null;
+            foreach (AssetBundle bundle in AssetBundles)
+            {
+                try
+                {
+                    if (bundle.Contains(fileName))
+                    {
+                        sprite = bundle.LoadAsset<Sprite>(fileName);
+                        #if DEBUG
+                            Logger.OutMessage($"[AssetPatchManager::GetSprite] Found：{fileName}");
+                        #endif
+                        return sprite != null;
+                    }
+                }
+                catch (Exception e)
+                {
+                    #if DEBUG
+                        Logger.OutMessage($"[AssetPatchManager::GetSprite] ERRO: {e.Message}");
                     #endif
                 }
             }

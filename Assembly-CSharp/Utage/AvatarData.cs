@@ -93,9 +93,21 @@ namespace Utage
 				}
 				return sprite;
 			}
-		}
 
-		[NotEditable]
+            // iTsukezigen++
+            public Sprite GetSprite(string pattern, string fromName)
+            {
+                Sprite sprite = null;
+                if (!CHSPatch.AssetPatchManager.GetSprite($"{fromName}_{pattern}", out sprite))
+                {
+                    sprite = GetSprite(pattern);
+                }
+                return sprite;
+            }
+            // End++
+        }
+
+        [NotEditable]
 		public List<Category> categories = new List<Category>();
 
 		[SerializeField]
@@ -148,7 +160,7 @@ namespace Utage
 					{
 						if (!(category.Tag != data.tag))
 						{
-							list.Add(category.GetSprite(data.patternName));
+							list.Add(category.GetSprite(data.patternName, this.name)); // iTsukezigen++
 						}
 					}
 					continue;
@@ -182,7 +194,8 @@ namespace Utage
 			{
 				if (category.Tag != optionTag)
 				{
-					if (!(category.Tag != patternData.tag) && category.GetSprite(patternData.patternName) != null)
+					// iTsukezigen++
+					if (!(category.Tag != patternData.tag) && category.GetSprite(patternData.patternName, this.name) != null)
 					{
 						return false;
 					}
