@@ -98,7 +98,7 @@ namespace Utage
             public Sprite GetSprite(string pattern, string fromName)
             {
                 Sprite sprite = null;
-                if (!CHSPatch.AssetPatchManager.GetSprite($"{fromName}_{pattern}", out sprite))
+                if (!CHSPatch.AssetPatchManager.GetSpriteIfExists($"{fromName}_{pattern}", out sprite))
                 {
                     sprite = GetSprite(pattern);
                 }
