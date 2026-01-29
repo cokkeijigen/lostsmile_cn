@@ -45,7 +45,7 @@ namespace LOSTSMILE
 
         if (str2 != nullptr)
         {
-            const auto target{ LOSTSMILE::TargetPath.substr(0).append(str2) };
+            const std::string target{ LOSTSMILE::TargetPath.substr(0).append(str2) };
             if (::GetFileAttributesA(target.c_str()) != INVALID_FILE_ATTRIBUTES)
             {
                 const auto len1{ *reinterpret_cast<uint64_t*>(path1 + 0x18) };
@@ -103,7 +103,7 @@ namespace LOSTSMILE
             if (is_replacement_attempt_needed)
             {
                 // 这里进行路径替换
-                const auto target{ LOSTSMILE::TargetPath.substr(0).append(str2) };
+                const std::string target{ LOSTSMILE::TargetPath.substr(0).append(str2) };
                 if (::GetFileAttributesA(target.c_str()) != INVALID_FILE_ATTRIBUTES)
                 {
                     *reinterpret_cast<char**>(dest)[0] = 0x00;
