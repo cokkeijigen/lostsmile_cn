@@ -70,7 +70,7 @@ namespace LOSTSMILE
             }
         }
         
-        LOSTSMILE::UnityPlayer_PathJoin(path1, path2, 0x2F, output);
+        LOSTSMILE::UnityPlayer_PathJoin(path1, path2, '/', output);
         
         return { output };
     }
