@@ -38,26 +38,34 @@ namespace LOSTSMILE
         *reinterpret_cast<int64_t*>(output + 0x18) = 0x00;
         *reinterpret_cast<int32_t*>(output + 0x20) = 0x45;
 
-        const auto str1{ *reinterpret_cast<char**>(path1) };
-        const auto str2{ *reinterpret_cast<char**>(path2) };
+        const auto str1{ *reinterpret_cast<const char**>(path1) };
+        const auto str2{ *reinterpret_cast<const char**>(path2) };
         
         // DEBUG_ONLY(xcout->write("PathJoin_Hook{ %s, %s }\n", str1, str2));
 
         if (str2 != nullptr)
         {
-            auto target{ std::string{ LOSTSMILE::TargetPath }.append(str2) };
+            const auto target{ std::string{ LOSTSMILE::TargetPath }.append(str2) };
             if (::GetFileAttributesA(target.c_str()) != INVALID_FILE_ATTRIBUTES)
             {
-                size_t length{ *reinterpret_cast<uint64_t*>(path1 + 0x18) };
-                // 重定向资源路径
-                *reinterpret_cast<char**>(path1 + 0x00)    = const_cast<char*>(LOSTSMILE::TargetPath.data());
-                // 替换字符串长度
-                *reinterpret_cast<uint64_t*>(path1 + 0x18) = LOSTSMILE::TargetPath.size();
+                const auto len1{ *reinterpret_cast<uint64_t*>(path1 + 0x18) };
+                const auto len2{ *reinterpret_cast<uint64_t*>(path2 + 0x18) };
+
+                // 替换字符串和长度
+                *reinterpret_cast<uint64_t*>(path1 + 0x18)    = 0x0llu;
+                *reinterpret_cast<uint64_t*>(path2 + 0x18)    = target.size();
+                *reinterpret_cast<const char**>(path1 + 0x00) = nullptr;
+                *reinterpret_cast<const char**>(path2 + 0x00) = target.data();
+                
                 // 调用原来的函数进行拼接
-                LOSTSMILE::UnityPlayer_PathJoin(path1, path2, 0x2F, output);
-                // 需要还原，不然会出现问题
-                *reinterpret_cast<char**>(path1 + 0x00)    = str1;
-                *reinterpret_cast<uint64_t*>(path1 + 0x18) = length;
+                LOSTSMILE::UnityPlayer_PathJoin(path1, path2, '/', output);
+
+                // 还原字符串和长度
+                *reinterpret_cast<uint64_t*>(path1 + 0x18)    = len1;
+                *reinterpret_cast<uint64_t*>(path2 + 0x18)    = len2;
+                *reinterpret_cast<const char**>(path1 + 0x00) = str1;
+                *reinterpret_cast<const char**>(path2 + 0x00) = str2;
+
                 return { output };
             }
         }
