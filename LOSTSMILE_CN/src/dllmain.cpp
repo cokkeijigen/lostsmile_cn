@@ -52,19 +52,19 @@ namespace LOSTSMILE
                 const auto len2{ *reinterpret_cast<uint64_t*>(path2 + 0x18) };
 
                 // 替换字符串和长度
-                *reinterpret_cast<uint64_t*>(path1 + 0x18)    = 0x0llu;
-                *reinterpret_cast<uint64_t*>(path2 + 0x18)    = target.size();
-                *reinterpret_cast<const char**>(path1 + 0x00) = nullptr;
-                *reinterpret_cast<const char**>(path2 + 0x00) = target.data();
+                *reinterpret_cast<uint64_t*>(path1 + 0x18) = 0x0llu;
+                *reinterpret_cast<uint64_t*>(path2 + 0x18) = target.size();
+                *reinterpret_cast<const char**>(path1)     = nullptr;
+                *reinterpret_cast<const char**>(path2)     = target.data();
                 
                 // 调用原来的函数进行拼接
                 LOSTSMILE::UnityPlayer_PathJoin(path1, path2, '/', output);
 
                 // 还原字符串和长度
-                *reinterpret_cast<uint64_t*>(path1 + 0x18)    = len1;
-                *reinterpret_cast<uint64_t*>(path2 + 0x18)    = len2;
-                *reinterpret_cast<const char**>(path1 + 0x00) = str1;
-                *reinterpret_cast<const char**>(path2 + 0x00) = str2;
+                *reinterpret_cast<uint64_t*>(path1 + 0x18) = len1;
+                *reinterpret_cast<uint64_t*>(path2 + 0x18) = len2;
+                *reinterpret_cast<const char**>(path1)     = str1;
+                *reinterpret_cast<const char**>(path2)     = str2;
 
                 return { output };
             }
